@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://eeh0hg0rhn5d"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2im3f"]
+[ext_resource type="PackedScene" uid="uid://dvjyiy31r3bqn" path="res://floor.tscn" id="1_wgtqp"]
+[ext_resource type="PackedScene" uid="uid://b5fm7sbsxfxyb" path="res://wall.tscn" id="2_c2o63"]
+[ext_resource type="PackedScene" uid="uid://ca3ktphds8w2n" path="res://table.tscn" id="3_o7e77"]
+[ext_resource type="PackedScene" uid="uid://c36x01l6o14xc" path="res://wall-window.tscn" id="4_46i3y"]
+[ext_resource type="PackedScene" uid="uid://344gk8ncqdyu" path="res://file_cabinet.tscn" id="5_ewq2r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_d1yea"]
+sky_top_color = Color(0.933333, 0, 0.372549, 1)
+sky_horizon_color = Color(0.635294, 0, 0.243137, 1)
+ground_bottom_color = Color(0.34902, 0, 0.121569, 1)
+ground_horizon_color = Color(0.635294, 0, 0.243137, 1)
+ground_curve = 0.298571
+
+[sub_resource type="Sky" id="Sky_w5161"]
+sky_material = SubResource("ProceduralSkyMaterial_d1yea")
+
+[sub_resource type="Environment" id="Environment_p2ub2"]
+background_mode = 2
+sky = SubResource("Sky_w5161")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 1
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_2im3f")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p2ub2")
+
+[node name="map" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 2, 5)
+
+[node name="ceiling" type="Node3D" parent="map"]
+visible = false
+
+[node name="floor3" parent="map/ceiling" instance=ExtResource("1_wgtqp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2, 2.18557e-07)
+
+[node name="floor4" parent="map/ceiling" instance=ExtResource("1_wgtqp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 2, -10)
+
+[node name="floor" parent="map" instance=ExtResource("1_wgtqp")]
+
+[node name="floor2" parent="map" instance=ExtResource("1_wgtqp")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, -2, -10)
+
+[node name="walls" type="Node3D" parent="map"]
+
+[node name="wall" parent="map/walls" instance=ExtResource("2_c2o63")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, 5)
+
+[node name="wall2" parent="map/walls" instance=ExtResource("2_c2o63")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -15)
+
+[node name="wall3" parent="map/walls" instance=ExtResource("2_c2o63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 5.68248e-07)
+
+[node name="wall4" parent="map/walls" instance=ExtResource("2_c2o63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 1.31134e-07)
+
+[node name="wall5" parent="map/walls" instance=ExtResource("2_c2o63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -10)
+
+[node name="table" parent="." instance=ExtResource("3_o7e77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -3)
+
+[node name="table2" parent="." instance=ExtResource("3_o7e77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27502, 2, -6.5388)
+
+[node name="table3" parent="." instance=ExtResource("3_o7e77")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8804, 2, -4.06514)
+
+[node name="table4" parent="." instance=ExtResource("3_o7e77")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.8804, 2, -1.94547)
+
+[node name="wall" parent="." instance=ExtResource("4_46i3y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9.98334, 2.01221, -7.99471)
+
+[node name="file_cabinet" parent="." instance=ExtResource("5_ewq2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16705, 1.41851, 0)
+
+[node name="file_cabinet2" parent="." instance=ExtResource("5_ewq2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16705, 1.41851, -5.2647)
+
+[node name="file_cabinet3" parent="." instance=ExtResource("5_ewq2r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.97799, 1.41851, -6.9132)
+
+[node name="file_cabinet4" parent="." instance=ExtResource("5_ewq2r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.08914, 1.41851, -6.9132)
+
+[node name="file_cabinet5" parent="." instance=ExtResource("5_ewq2r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.09548, 1.41851, -6.9132)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.37839, -2.66153)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76658, 3.37839, -3.93867)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.72189, 3.37839, -2.66153)

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cj8rjjymcpp4s"]
+
+[node name="flip_detector" type="RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.501996)
+enabled = false
+target_position = Vector3(0, 0, -0.1)
+collision_mask = 2
