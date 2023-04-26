@@ -41,7 +41,10 @@ func _process(delta):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		
 	if Input.is_action_just_pressed("use"):
+		var col = use_ray.get_collision_point()
+		print(col)
 		var obj = use_ray.get_collider()
 		if obj:
 			obj._flip()
+			obj._kick(col)
 		use.emit()

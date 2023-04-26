@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://b72dbnj475t73"]
+
+[ext_resource type="Script" path="res://kicker.gd" id="1_yjk74"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkr2p"]
+albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f86j4"]
+material = SubResource("StandardMaterial3D_hkr2p")
+size = Vector3(0.1, 0.05, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4imao"]
+albedo_color = Color(0.631373, 0.631373, 0.631373, 1)
+grow_amount = -0.703
+
+[sub_resource type="BoxMesh" id="BoxMesh_d8viy"]
+material = SubResource("StandardMaterial3D_4imao")
+size = Vector3(1.5, 2, 0.75)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xquu2"]
+points = PackedVector3Array(-0.75, -1, -0.375, -0.75, -1, 0.375, -0.75, 1, -0.375, 0.75, -1, -0.375, 0.75, -1, 0.375, -0.75, 1, 0.375, 0.75, 1, -0.375, 0.75, 1, 0.375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ss0fn"]
+size = Vector3(1.50668, 2.00603, 0.760125)
+
+[node name="file_cabinet" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+sleeping = true
+
+[node name="handle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.751229, -0.413617, 0)
+mesh = SubResource("BoxMesh_f86j4")
+skeleton = NodePath("../cabinet")
+
+[node name="handle2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.751229, 0.201657, 0)
+mesh = SubResource("BoxMesh_f86j4")
+skeleton = NodePath("../cabinet")
+
+[node name="handle3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.751229, 0.844335, 0)
+mesh = SubResource("BoxMesh_f86j4")
+skeleton = NodePath("../cabinet")
+
+[node name="cabinet" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_d8viy")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_xquu2")
+
+[node name="kicker" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_yjk74")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="kicker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00675571, 0)
+shape = SubResource("BoxShape3D_ss0fn")
+
+[node name="sides" type="Node3D" parent="kicker"]
+
+[node name="Marker3D" type="Marker3D" parent="kicker/sides"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.618635)
+
+[node name="Marker3D2" type="Marker3D" parent="kicker/sides"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625486)
+
+[node name="Marker3D3" type="Marker3D" parent="kicker/sides"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.55736, 0, 0)
+
+[node name="Marker3D4" type="Marker3D" parent="kicker/sides"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.52119, 0, 0)
