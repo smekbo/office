@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://b1um7lgs8o1ph"
-path="res://.godot/imported/gangstarig.glb-34fcb71c619a0d278d0cc5a8152bbcc4.scn"
+path="res://.godot/imported/gangstarig.glb-c0e478ed7e82b3e659dec5d890bacf30.scn"
 
 [deps]
 
-source_file="res://fear_fps_controller/player/gangstarig.glb"
-dest_files=["res://.godot/imported/gangstarig.glb-34fcb71c619a0d278d0cc5a8152bbcc4.scn"]
+source_file="res://entities/player/gangstarig.glb"
+dest_files=["res://.godot/imported/gangstarig.glb-c0e478ed7e82b3e659dec5d890bacf30.scn"]
 
 [params]
 
