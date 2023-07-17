@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bgqffqcrj76oa"]
 
-[ext_resource type="Script" path="res://fear_fps_controller/fear_fps_camera.gd" id="1_l1qma"]
-[ext_resource type="PackedScene" uid="uid://b1um7lgs8o1ph" path="res://fear_fps_controller/player/gangstarig.glb" id="2_5rgd3"]
+[ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
+[ext_resource type="PackedScene" uid="uid://b1um7lgs8o1ph" path="res://entities/player/gangstarig.glb" id="2_5rgd3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
 

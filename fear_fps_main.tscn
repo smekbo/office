@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cc8tlw5hbk52s"]
 
-[ext_resource type="PackedScene" uid="uid://bio537nfnpaax" path="res://1_map_blocks/floor.tscn" id="1_i1bkg"]
-[ext_resource type="PackedScene" uid="uid://dbex1wqk7tb1i" path="res://1_map_blocks/wall.tscn" id="2_s58jb"]
-[ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://fear_fps_controller/fear_fps_camera.tscn" id="3_vy4if"]
+[ext_resource type="PackedScene" uid="uid://bio537nfnpaax" path="res://levels/static/floor.tscn" id="1_jttng"]
+[ext_resource type="PackedScene" uid="uid://dbex1wqk7tb1i" path="res://levels/static/wall.tscn" id="2_wtk4b"]
+[ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/fear_fps_camera.tscn" id="3_ilhe8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
 
@@ -19,103 +19,103 @@ ambient_light_source = 3
 
 [node name="floor" type="Node3D" parent="room_1"]
 
-[node name="floor" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor" parent="room_1/floor" instance=ExtResource("1_jttng")]
 
-[node name="floor2" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor2" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
-[node name="floor3" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor3" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
-[node name="floor4" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor4" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
 
-[node name="floor5" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor5" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="floor6" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor6" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
-[node name="floor7" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor7" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -8)
 
-[node name="floor8" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor8" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8)
 
-[node name="floor9" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor9" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
-[node name="floor10" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor10" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16)
 
-[node name="floor11" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor11" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -16)
 
-[node name="floor12" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor12" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -16)
 
-[node name="floor13" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor13" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 
-[node name="floor14" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor14" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -24)
 
-[node name="floor15" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor15" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -24)
 
-[node name="floor16" parent="room_1/floor" instance=ExtResource("1_i1bkg")]
+[node name="floor16" parent="room_1/floor" instance=ExtResource("1_jttng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -24)
 
 [node name="wall" type="Node3D" parent="room_1"]
 
-[node name="wall" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 
-[node name="wall2" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall2" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
-[node name="wall3" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall3" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
-[node name="wall4" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall4" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 
-[node name="wall5" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall5" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 
-[node name="wall6" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall6" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -8)
 
-[node name="wall7" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall7" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -16)
 
-[node name="wall8" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall8" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, -24)
 
-[node name="wall9" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall9" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -9.53674e-07)
 
-[node name="wall10" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall10" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 0)
 
-[node name="wall11" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall11" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, 0)
 
-[node name="wall12" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall12" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 0, 9.53674e-07)
 
-[node name="wall13" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall13" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -32)
 
-[node name="wall14" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall14" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -32)
 
-[node name="wall15" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall15" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, -32)
 
-[node name="wall16" parent="room_1/wall" instance=ExtResource("2_s58jb")]
+[node name="wall16" parent="room_1/wall" instance=ExtResource("2_wtk4b")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 0, -32)
 
-[node name="fear_fps_camera" parent="." instance=ExtResource("3_vy4if")]
+[node name="fear_fps_camera" parent="." instance=ExtResource("3_ilhe8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

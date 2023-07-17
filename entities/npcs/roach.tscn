@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://hfetij4f8ktt"]
 
-[ext_resource type="Script" path="res://roach.gd" id="1_00gca"]
+[ext_resource type="Script" path="res://entities/npcs/roach.gd" id="1_rtnu8"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3rgpa"]
 points = PackedVector3Array(0, 0.25, 0.05, 0.5, -0.25, 0.05, 0, 0.25, -0.05, -0.5, -0.25, 0.05, 0.5, -0.25, -0.05, -0.5, -0.25, -0.05)
@@ -25,7 +25,7 @@ size = Vector3(1, 1, 0.1)
 [node name="roach" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 6
-script = ExtResource("1_00gca")
+script = ExtResource("1_rtnu8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.2, 1.27146e-08, -5.55773e-16, 5.29396e-23, -8.74228e-09, -0.2, -1.27146e-08, 0.2, -8.74228e-09, 9.52876e-09, 0, 0.149887)
