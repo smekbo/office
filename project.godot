@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="office"
-run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.0", "GL Compatibility")
+run/main_scene="res://fear_fps_controller/fear_fps_main.tscn"
+config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
-
-[autoload]
-
-Player="*res://player.tscn"
 
 [input]
 
@@ -60,5 +56,4 @@ use={
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
