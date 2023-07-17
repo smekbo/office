@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://wlc4s2lsffk4"]
+
+[ext_resource type="Script" path="res://entities/player/weapon.gd" id="1_u2h6h"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hc5j8"]
+top_radius = 0.005
+bottom_radius = 0.005
+height = 100.0
+radial_segments = 8
+
+[sub_resource type="Animation" id="Animation_vaens"]
+resource_name = "firing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oa705"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pouki"]
+_data = {
+"RESET": SubResource("Animation_oa705"),
+"firing": SubResource("Animation_vaens")
+}
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7773w"]
+
+[node name="weapon" type="Node3D"]
+script = ExtResource("1_u2h6h")
+
+[node name="bullet_trail" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
+visible = false
+mesh = SubResource("CylinderMesh_hc5j8")
+skeleton = NodePath("../CPUParticles3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bullet_trail"]
+libraries = {
+"": SubResource("AnimationLibrary_pouki")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+visible = false
+mesh = SubResource("RibbonTrailMesh_7773w")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 100)
