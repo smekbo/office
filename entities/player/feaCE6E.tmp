@@ -43,7 +43,7 @@ bones/4/scale = Vector3(0.176141, 0.176141, 0.176141)
 bones/13/rotation = Quaternion(-0.43485, 0.54086, 0.56141, 0.450771)
 bones/14/rotation = Quaternion(-0.143304, -0.0376908, 0.307377, 0.93998)
 bones/15/rotation = Quaternion(0.166846, -0.0411977, 0.22675, 0.958671)
-bones/16/rotation = Quaternion(0.0879085, -0.702558, -0.0947219, 0.699795)
+bones/16/rotation = Quaternion(0.077711, -0.703689, -0.0844522, 0.701178)
 
 [node name="AnimationTree" type="AnimationTree" parent="gangstarig"]
 tree_root = SubResource("AnimationNodeBlendTree_e5klj")

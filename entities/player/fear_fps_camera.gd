@@ -8,6 +8,8 @@ var minLookAngle : float = -90.0
 var maxLookAngle : float = 90.0
 var lookSensitivity : float = 10.0
 
+var slomoActive : bool = false
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -19,6 +21,15 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
 
+func _process(delta):
+	# slomo block; sets engine timescale
+	if Input.is_action_just_pressed("slomo"):
+		if slomoActive == false:
+			Engine.time_scale = 0.5
+			slomoActive = true
+		else:
+			Engine.time_scale = 1
+			slomoActive = false
 
 func _physics_process(delta):
 	velocity.x = 0
