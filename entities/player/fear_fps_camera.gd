@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 @onready var camera : Node3D = $cam_pivot
-@onready var player_model : Node3D = $gangstarig
+
+@onready var animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
 
 var mouseDelta : Vector2 = Vector2()
 var minLookAngle : float = -90.0
@@ -60,6 +61,12 @@ func _physics_process(delta):
 	
 	if mouseDelta:
 		process_camera(delta)
+		
+	if Input.is_action_pressed("fire"):
+		animation["parameters/Blend2/blend_amount"] = 1
+	else :
+		animation["parameters/Blend2/blend_amount"] = 0
+		
 #	if Input.is_action_just_pressed("use"):
 #		var col = use_ray.get_collision_point()
 #		print(col)
@@ -77,6 +84,6 @@ func process_camera(delta):
 	#camera.rotation_degrees.x = clamp(rotation_degrees.x, minLookAngle, maxLookAngle)
 
 	# rotate the player along their y-axis
-	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
+	camera.rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
 	
 	mouseDelta = Vector2()
