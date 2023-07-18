@@ -56,4 +56,18 @@ parameters/Blend2/blend_amount = 0.0
 [node name="weapon" parent="cam_pivot" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.447659, -0.318672, -0.796681)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slomo" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 945.0
+offset_top = 566.0
+offset_right = 997.0
+offset_bottom = 592.0
+text = "pingus"
+
 [editable path="cam_pivot/gangstarig"]
