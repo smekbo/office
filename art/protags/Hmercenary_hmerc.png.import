@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpeucd51h20so"
-path.s3tc="res://.godot/imported/hmerc.png-c6c0af5155d19689c77a0d4ef2a669a4.s3tc.ctex"
+uid="uid://dft8dx0il33hh"
+path.s3tc="res://.godot/imported/Hmercenary_hmerc.png-d8c7d4bbe28444cacc01aaa6ee2aa23c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://art/protags/hmerc.png"
-dest_files=["res://.godot/imported/hmerc.png-c6c0af5155d19689c77a0d4ef2a669a4.s3tc.ctex"]
+source_file="res://art/protags/Hmercenary_hmerc.png"
+dest_files=["res://.godot/imported/Hmercenary_hmerc.png-d8c7d4bbe28444cacc01aaa6ee2aa23c.s3tc.ctex"]
 
 [params]
 

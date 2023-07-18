@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgqffqcrj76oa"]
+[gd_scene load_steps=17 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://b1um7lgs8o1ph" path="res://entities/player/gangstarig.glb" id="2_5rgd3"]
@@ -7,14 +7,11 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwe3y"]
-animation = &"kick"
-
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6sw8"]
-animation = &"strafe"
+animation = &"jog"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b6252"]
-animation = &"strafe"
+animation = &"jog"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fsb2d"]
 animation = &"RESET"
@@ -37,17 +34,11 @@ blend_point_3/pos = Vector2(0, -1)
 blend_point_4/node = SubResource("AnimationNodeAnimation_d25f4")
 blend_point_4/pos = Vector2(0, 1)
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_13fad"]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jlid4"]
-graph_offset = Vector2(-724.985, 28.3095)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_bwe3y")
-nodes/Animation/position = Vector2(-200, 300)
+graph_offset = Vector2(-528, 40)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_p8721")
 nodes/BlendSpace2D/position = Vector2(-180, 100)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_13fad")
-nodes/OneShot/position = Vector2(80, 200)
-node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"BlendSpace2D", &"OneShot", 1, &"Animation"]
+node_connections = [&"output", 0, &"BlendSpace2D"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cq40r"]
 animation = &"Anim_Layer"
@@ -127,13 +118,9 @@ tree_root = SubResource("AnimationNodeBlendTree_jlid4")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/OneShot/active = false
-parameters/OneShot/internal_active = false
-parameters/OneShot/request = 0
 
 [node name="cam_pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92733, -0.0780326)
-rotation_edit_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97129, -0.150247)
 
 [node name="Camera3D" type="Camera3D" parent="cam_pivot"]
 
@@ -157,20 +144,5 @@ parameters/Blend2/blend_amount = 0.0
 [node name="weapon" parent="cam_pivot" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.447659, -0.318672, -0.796681)
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Slomo" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 945.0
-offset_top = 566.0
-offset_right = 997.0
-offset_bottom = 592.0
-text = "pingus"
-
 [editable path="Hmercenary"]
-
 [editable path="cam_pivot/gangstarig"]

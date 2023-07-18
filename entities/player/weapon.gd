@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var impact_scene = load("res://entities/player/weapon_impact.tscn")
+@onready var impact_scene = preload("res://entities/player/weapon_impact.tscn")
 
 @onready var ray : RayCast3D = $RayCast3D
 

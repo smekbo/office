@@ -2,7 +2,11 @@ extends CharacterBody3D
 
 @onready var camera : Node3D = $cam_pivot
 
-@onready var animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
+@onready var gun_animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
+
+@onready var legs : Node3D = $Hmercenary
+@onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
+var smooth_animation_input : Vector2 
 
 var mouseDelta : Vector2 = Vector2()
 var minLookAngle : float = -90.0
@@ -54,9 +58,10 @@ func _physics_process(delta):
 	velocity.z = 0
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var forward = camera.global_transform.basis.z
-	var right = camera.global_transform.basis.x
 
+	var forward = global_transform.basis.z
+	var right = camera.global_transform.basis.x
+	
 	var relativeDir = (forward * input_dir.y + right * input_dir.x)
 
 	# set the velocity
@@ -65,6 +70,8 @@ func _physics_process(delta):
 
 	# apply gravity
 	velocity.y -= gravity * delta
+
+	print(velocity)
 
 	# move the player
 	move_and_slide()
@@ -80,9 +87,17 @@ func _physics_process(delta):
 		process_camera(delta)
 		
 	if Input.is_action_pressed("fire"):
-		animation["parameters/Blend2/blend_amount"] = 1
+		gun_animation["parameters/Blend2/blend_amount"] = 1
 	else :
-		animation["parameters/Blend2/blend_amount"] = 0
+		gun_animation["parameters/Blend2/blend_amount"] = 0
+	
+	if Input.is_action_just_pressed("kick"):
+		legs_animation["parameters/OneShot/request"] = 1
+	
+	# Legs animation and easing	
+	smooth_animation_input.x = move_toward(smooth_animation_input.x, input_dir.x, delta*2)
+	smooth_animation_input.y = move_toward(smooth_animation_input.y, input_dir.y, delta*2)
+	legs_animation["parameters/BlendSpace2D/blend_position"] = smooth_animation_input
 		
 #	if Input.is_action_just_pressed("use"):
 #		var col = use_ray.get_collision_point()
@@ -101,6 +116,7 @@ func process_camera(delta):
 	#camera.rotation_degrees.x = clamp(rotation_degrees.x, minLookAngle, maxLookAngle)
 
 	# rotate the player along their y-axis
-	camera.rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
+	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
+	
 	
 	mouseDelta = Vector2()
