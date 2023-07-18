@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://bgqffqcrj76oa"]
+
+[ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
+[ext_resource type="PackedScene" uid="uid://b1um7lgs8o1ph" path="res://entities/player/gangstarig.glb" id="2_5rgd3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_og7qq"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46rhh"]
+animation = &"Anim_Layer"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1l88"]
+animation = &"Base_Layer"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_e5klj"]
+graph_offset = Vector2(-245.39, 80.901)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_og7qq")
+nodes/Add2/position = Vector2(600, 140)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_r1l88")
+nodes/Animation/position = Vector2(400, 120)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_46rhh")
+"nodes/Animation 2/position" = Vector2(400, 240)
+nodes/output/position = Vector2(820, 180)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
+
+[node name="fear_fps_camera" type="CharacterBody3D"]
+script = ExtResource("1_l1qma")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_kl5tv")
+
+[node name="cam_pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97129, -0.150247)
+
+[node name="Camera3D" type="Camera3D" parent="cam_pivot"]
+
+[node name="gangstarig" parent="." instance=ExtResource("2_5rgd3")]
+
+[node name="Skeleton3D" parent="gangstarig/metarig" index="0"]
+bones/4/scale = Vector3(0.176141, 0.176141, 0.176141)
+bones/13/rotation = Quaternion(-0.43485, 0.54086, 0.56141, 0.450771)
+bones/14/rotation = Quaternion(-0.143304, -0.0376908, 0.307377, 0.93998)
+bones/15/rotation = Quaternion(0.166846, -0.0411977, 0.22675, 0.958671)
+bones/16/rotation = Quaternion(0.077711, -0.703689, -0.0844522, 0.701178)
+
+[node name="AnimationTree" type="AnimationTree" parent="gangstarig"]
+tree_root = SubResource("AnimationNodeBlendTree_e5klj")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Add2/add_amount = 0.0
+
+[editable path="gangstarig"]

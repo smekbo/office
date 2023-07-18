@@ -13,6 +13,10 @@ var minLookAngle : float = -90.0
 var maxLookAngle : float = 90.0
 var lookSensitivity : float = 10.0
 
+var slomoActive : bool = false
+var slomo : float = 10.0
+var slomoMax : float = 10.0
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -24,6 +28,30 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouseDelta = event.relative
 
+func _process(delta):
+	
+	# autostops when out
+	if slomo <= 0:
+		slomoActive = false
+		Engine.time_scale = 1
+	
+	# sets engine timescale
+	if Input.is_action_just_pressed("slomo"):
+		if slomoActive == false:
+			if slomo > 2:
+				Engine.time_scale = 0.2
+				slomoActive = true
+		else:
+			Engine.time_scale = 1
+			slomoActive = false
+	
+	# slomo resource bar; goes up/down depending on use, 
+	if slomoActive == true:
+		slomo = max(slomo - (delta * (1 / Engine.time_scale)), 0)
+	elif slomoActive == false:
+		slomo = min(slomo + delta, slomoMax)
+		
+	$Control/Slomo.set_text(str("slomo ", round(slomo), "s ", "ts ", Engine.time_scale, " ", slomoActive))
 
 func _physics_process(delta):
 	velocity.x = 0
