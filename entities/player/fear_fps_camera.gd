@@ -4,6 +4,7 @@ extends CharacterBody3D
 
 @onready var gun_animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
 
+@onready var kick_raycast : RayCast3D = $cam_pivot/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
 var smooth_animation_input : Vector2 
@@ -71,8 +72,6 @@ func _physics_process(delta):
 	# apply gravity
 	velocity.y -= gravity * delta
 
-	print(velocity)
-
 	# move the player
 	move_and_slide()
 
@@ -93,6 +92,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("kick"):
 		legs_animation["parameters/OneShot/request"] = 1
+		var obj = kick_raycast.get_collider()
+		if obj:
+			obj._flip()
+
 	
 	# Legs animation and easing	
 	smooth_animation_input.x = move_toward(smooth_animation_input.x, input_dir.x, delta*2)

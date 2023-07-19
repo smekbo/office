@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=9 format=3 uid="uid://b3r0paotiofsf"]
 
 [ext_resource type="PackedScene" uid="uid://bio537nfnpaax" path="res://levels/static/floor.tscn" id="1_jttng"]
 [ext_resource type="PackedScene" uid="uid://dbex1wqk7tb1i" path="res://levels/static/wall.tscn" id="2_wtk4b"]
 [ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/fear_fps_camera.tscn" id="3_ilhe8"]
+[ext_resource type="PackedScene" uid="uid://344gk8ncqdyu" path="res://entities/props/file_cabinet.tscn" id="4_kibtf"]
+[ext_resource type="PackedScene" uid="uid://ca3ktphds8w2n" path="res://entities/props/table.tscn" id="5_mo150"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
 
@@ -124,3 +126,18 @@ environment = SubResource("Environment_vafh1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, 0.5, -0.183013, -0.553603, 0.812422, 0.683013, -0.665976, -0.29995, 0, 7, 0)
 shadow_enabled = true
+
+[node name="file_cabinet" parent="." instance=ExtResource("4_kibtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -7)
+
+[node name="file_cabinet2" parent="." instance=ExtResource("4_kibtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -7.88308)
+
+[node name="file_cabinet3" parent="." instance=ExtResource("4_kibtf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -8.94147)
+
+[node name="table" parent="." instance=ExtResource("5_mo150")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88513, 1.3444, -10.0841)
+
+[node name="table2" parent="." instance=ExtResource("5_mo150")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6328, 1.3444, -10.0841)

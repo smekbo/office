@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bio537nfnpaax"]
 
-[ext_resource type="Texture2D" uid="uid://crvcvefx6nsmi" path="res://testing_assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_0usku"]
+[ext_resource type="Texture2D" uid="uid://crvcvefx6nsmi" path="res://1_testing_assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_0usku"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
 size = Vector3(8, 0.25, 8)
@@ -14,6 +14,7 @@ material = SubResource("StandardMaterial3D_kwpov")
 size = Vector3(8, 0.25, 8)
 
 [node name="floor" type="StaticBody3D"]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00388527, -4)

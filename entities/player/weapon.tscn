@@ -66,3 +66,4 @@ mesh = SubResource("RibbonTrailMesh_7773w")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 100)
+collision_mask = 6
