@@ -40,6 +40,7 @@ blend_point_4/pos = Vector2(0, 1)
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_13fad"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jlid4"]
+graph_offset = Vector2(-458.669, 21.2435)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_bwe3y")
 nodes/Animation/position = Vector2(-200, 300)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_p8721")
@@ -156,6 +157,7 @@ parameters/Blend2/blend_amount = 0.0
 
 [node name="weapon" parent="cam_pivot" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.447659, -0.318672, -0.796681)
+visible = false
 
 [node name="kick_raycast" type="RayCast3D" parent="cam_pivot"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0844736, -0.35325, -0.9484)

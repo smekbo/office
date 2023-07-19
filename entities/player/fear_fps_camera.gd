@@ -97,9 +97,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("kick"):
 		legs_animation["parameters/OneShot/request"] = 1
-		var obj = kick_raycast.get_collider()
-		if obj:
-			obj._flip()
+
 
 	
 	# Legs animation and easing	
@@ -116,6 +114,11 @@ func _physics_process(delta):
 #			obj._kick(col)
 #		use.emit()
 
+
+func kick():
+	var obj = kick_raycast.get_collider()
+	if obj:
+		obj._flip()
 
 func process_camera(delta):
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
