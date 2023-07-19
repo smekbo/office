@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var kick_raycast : RayCast3D = $cam_pivot/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
+@onready var weapon = $cam_pivot/weapon
 var smooth_animation_input : Vector2 
 
 var mouseDelta : Vector2 = Vector2()
@@ -52,7 +53,11 @@ func _process(delta):
 	elif slomoActive == false:
 		slomo = min(slomo + delta, slomoMax)
 		
-	$Control/Slomo.set_text(str("slomo ", round(slomo), "s ", "ts ", Engine.time_scale, " ", slomoActive))
+	$Control/Slomo.set_text(str("slomo ", snapped(slomo, .01), "s ", "ts ", Engine.time_scale, " ", slomoActive))
+	$Control/Reload.set_text(str("reloading ", weapon.reloading, " ", snapped(weapon.reload_timer, .01), "s"))
+	$Control/Ammo.set_text(str("ammo ", weapon.ammo, " / ", weapon.ammo_max, " reserve ", weapon.reserve, " / ", weapon.reserve_max))
+	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_full, " missing ", weapon.ammo_reload))
+	$Control/Refire.set_text(str("refire ", snapped(weapon.fire_timer, .01), " cooldown ", snapped(weapon.fire_cooldown, .01)))
 
 func _physics_process(delta):
 	velocity.x = 0
