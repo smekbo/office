@@ -171,11 +171,43 @@ offset_bottom = 40.0
 
 [node name="Slomo" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 945.0
-offset_top = 566.0
-offset_right = 997.0
-offset_bottom = 592.0
+offset_left = 930.0
+offset_top = 547.0
+offset_right = 982.0
+offset_bottom = 573.0
 text = "pingus"
+
+[node name="Reload" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 523.0
+offset_right = 990.0
+offset_bottom = 549.0
+text = "reload"
+
+[node name="Ammo" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 474.0
+offset_right = 1024.0
+offset_bottom = 500.0
+text = "ammo"
+
+[node name="Ammo2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 497.0
+offset_right = 1024.0
+offset_bottom = 523.0
+text = "ammo2"
+
+[node name="Refire" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 575.0
+offset_right = 993.0
+offset_bottom = 601.0
+text = "refire"
 
 [editable path="Hmercenary"]
 [editable path="cam_pivot/gangstarig"]
