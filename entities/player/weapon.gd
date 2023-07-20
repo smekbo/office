@@ -7,6 +7,7 @@ extends Node3D
 # damage variables
 @export var damage : int = 10		# base damage
 @export var damage_pen : int = 3	# how much the damage penetrates armor
+@export var force : float = 2.5		# how much impulse force is applied on hit
 
 # firing variables
 var firing : bool = false		# is this weapon firing? used for burst
@@ -58,7 +59,7 @@ func _fire():
 		
 		# impact impulse
 		if col.is_class("RigidBody3D"):
-			col.apply_impulse(col.global_position, col_point)
+			col.apply_impulse((col_point - ray.global_position) * force)
 			
 		# impact effect
 		get_tree().root.add_child(impact)
