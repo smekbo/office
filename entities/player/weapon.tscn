@@ -6,9 +6,16 @@
 
 [node name="weapon" type="Node3D"]
 script = ExtResource("1_u2h6h")
+spread_max = 10.0
+spread_inc = 2.0
+spread_dec = 2.0
+reload_num = 2
+reload_speed = 0.2
+reserve_max = -1
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 visible = false
+layers = 5
 mesh = SubResource("RibbonTrailMesh_7773w")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

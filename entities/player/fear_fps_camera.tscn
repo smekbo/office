@@ -213,6 +213,14 @@ offset_right = 993.0
 offset_bottom = 601.0
 text = "refire"
 
+[node name="Spread" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 898.0
+offset_top = 600.0
+offset_right = 993.0
+offset_bottom = 626.0
+text = "spread"
+
 [node name="crosshair" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -228,19 +236,40 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(5, 5)
 
-[node name="ColorRect" type="ColorRect" parent="Control/crosshair"]
+[node name="u_cross" type="ColorRect" parent="Control/crosshair"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 5.0
-offset_right = 6.0
-offset_bottom = 11.0
+anchor_left = 0.545
+anchor_top = 0.543
+anchor_right = 0.545
+anchor_bottom = 0.543
+offset_left = -0.995
+offset_top = -5.973
+offset_right = 0.00499964
+offset_bottom = -0.973001
 
-[node name="ColorRect2" type="ColorRect" parent="Control/crosshair"]
+[node name="d_cross" type="ColorRect" parent="Control/crosshair"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 4.5
+offset_top = 5.5
+offset_right = 5.5
+offset_bottom = 10.5
+
+[node name="l_cross" type="ColorRect" parent="Control/crosshair"]
 layout_mode = 1
 anchors_preset = -1
 offset_top = 5.0
-offset_right = 11.0
+offset_right = 5.0
 offset_bottom = 6.0
+
+[node name="r_cross" type="ColorRect" parent="Control/crosshair"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 5.5
+offset_top = 4.5
+offset_right = 10.5
+offset_bottom = 5.5
 
 [editable path="Hmercenary"]
 [editable path="cam_pivot/gangstarig"]

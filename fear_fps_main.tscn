@@ -131,7 +131,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0,
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 24, 0, -32)
 
 [node name="fear_fps_camera" parent="." instance=ExtResource("3_ilhe8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71233, 0, -1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vafh1")
@@ -139,7 +139,7 @@ environment = SubResource("Environment_vafh1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, 0.5, -0.183013, -0.553603, 0.812422, 0.683013, -0.665976, -0.29995, 0, 7, 0)
 light_color = Color(0.984314, 0.490196, 0.494118, 1)
-light_energy = 0.25
+light_energy = 0.341
 shadow_enabled = true
 
 [node name="file_cabinet" parent="." instance=ExtResource("4_kibtf")]
@@ -150,6 +150,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -7.88308)
 
 [node name="file_cabinet3" parent="." instance=ExtResource("4_kibtf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -8.94147)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.947465, 0.174552, -0.268032, -0.0385573, 0.894186, 0.446031, 0.317526, -0.412265, 0.853941, 6.58827, 5.52795, -5.1017)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_cull_mask = 4294967291
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+shadow_blur = 0.829
+distance_fade_begin = 93.62
+distance_fade_shadow = 304.27
+distance_fade_length = 4096.0
+spot_range = 28.0985
+spot_angle = 39.0406
 
 [node name="table" parent="." instance=ExtResource("5_mo150")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88513, 1.09009, -10.0841)
