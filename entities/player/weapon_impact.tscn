@@ -122,9 +122,11 @@ libraries = {
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+layers = 4
 mesh = SubResource("SphereMesh_8hp4x")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+layers = 4
 emitting = false
 amount = 2
 explosiveness = 1.0
