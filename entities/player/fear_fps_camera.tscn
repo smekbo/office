@@ -140,13 +140,12 @@ rotation_edit_mode = 2
 
 [node name="kick_raycast" type="RayCast3D" parent="cam_pivot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-target_position = Vector3(0, -2, 0)
-collision_mask = 4
-collide_with_areas = true
-collide_with_bodies = false
+target_position = Vector3(0, -3, 0)
+collision_mask = 2
 
 [node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 
 [node name="gangstarig" parent="cam_pivot" instance=ExtResource("2_5rgd3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.97129, 0.150247)
