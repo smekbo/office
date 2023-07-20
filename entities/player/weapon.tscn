@@ -6,6 +6,12 @@
 
 [node name="weapon" type="Node3D"]
 script = ExtResource("1_u2h6h")
+spread_max = 10.0
+spread_inc = 2.0
+spread_dec = 1.0
+reload_num = 2
+reload_speed = 0.2
+reserve_max = -1
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 visible = false

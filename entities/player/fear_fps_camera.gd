@@ -58,8 +58,14 @@ func _process(delta):
 	$Control/Slomo.set_text(str("slomo ", snapped(slomo, .01), "s ", "ts ", Engine.time_scale, " ", slomoActive))
 	$Control/Reload.set_text(str("reloading ", weapon.reloading, " ", snapped(weapon.reload_timer, .01), "s"))
 	$Control/Ammo.set_text(str("ammo ", weapon.ammo, " / ", weapon.ammo_max, " reserve ", weapon.reserve, " / ", weapon.reserve_max))
-	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_full, " missing ", weapon.ammo_reload))
+	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_num >= weapon.ammo_max, " missing ", weapon.ammo_reload))
 	$Control/Refire.set_text(str("refire ", snapped(weapon.fire_timer, .01), " cooldown ", snapped(weapon.fire_cooldown, .01)))
+	$Control/Spread.set_text(str("spread ", snapped(weapon.spread, .01)))
+	
+	$Control/crosshair/u_cross.position = Vector2(2, -2-(weapon.spread*2))
+	$Control/crosshair/d_cross.position = Vector2(2, 2+(weapon.spread*2))
+	$Control/crosshair/l_cross.position = Vector2(-2-(weapon.spread*2), 2)
+	$Control/crosshair/r_cross.position = Vector2(2+(weapon.spread*2), 2)
 
 func _physics_process(delta):
 	velocity.x = 0
