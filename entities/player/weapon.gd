@@ -40,11 +40,17 @@ func _fire():
 	if fire_timer > 0 or ammo <= 0:
 		return
 	if ray.is_colliding():
-		var col = ray.get_collision_point()
+		var col : Object = ray.get_collider()
+		var col_point = ray.get_collision_point()
 		var impact = impact_scene.instantiate()
 		
+		# impact impulse
+		if col.is_class("RigidBody3D"):
+			col.apply_impulse(col.global_position, col_point)
+			
+		# impact effect
 		get_tree().root.add_child(impact)
-		impact.position = col
+		impact.position = col_point
 	
 	fire_timer = fire_speed
 	ammo -= 1

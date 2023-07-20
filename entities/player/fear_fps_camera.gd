@@ -4,10 +4,10 @@ extends CharacterBody3D
 
 @onready var gun_animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
 
-@onready var kick_raycast : RayCast3D = $cam_pivot/kick_raycast
+@onready var kick_raycast : RayCast3D = $cam_pivot/Camera3D/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
-@onready var weapon = $cam_pivot/weapon
+@onready var weapon = $cam_pivot/Camera3D/weapon
 var smooth_animation_input : Vector2 
 
 var mouseDelta : Vector2 = Vector2()
@@ -25,6 +25,8 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+func _init():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
 	if event is InputEventMouseMotion:

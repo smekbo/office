@@ -138,6 +138,16 @@ rotation_edit_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="cam_pivot"]
 
+[node name="kick_raycast" type="RayCast3D" parent="cam_pivot/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2, 0)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
 [node name="gangstarig" parent="cam_pivot" instance=ExtResource("2_5rgd3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.97129, 0.150247)
 visible = false
@@ -155,21 +165,13 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Blend2/blend_amount = 0.0
 
-[node name="weapon" parent="cam_pivot" instance=ExtResource("3_4olqu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.447659, -0.318672, -0.796681)
-visible = false
-
-[node name="kick_raycast" type="RayCast3D" parent="cam_pivot"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0844736, -0.35325, -0.9484)
-collision_mask = 4
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Slomo" type="Label" parent="Control"]
 layout_mode = 0
@@ -210,6 +212,35 @@ offset_top = 575.0
 offset_right = 993.0
 offset_bottom = 601.0
 text = "refire"
+
+[node name="crosshair" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.5
+offset_top = -5.5
+offset_right = 5.5
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+
+[node name="ColorRect" type="ColorRect" parent="Control/crosshair"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 5.0
+offset_right = 6.0
+offset_bottom = 11.0
+
+[node name="ColorRect2" type="ColorRect" parent="Control/crosshair"]
+layout_mode = 1
+anchors_preset = -1
+offset_top = 5.0
+offset_right = 11.0
+offset_bottom = 6.0
 
 [editable path="Hmercenary"]
 [editable path="cam_pivot/gangstarig"]

@@ -1,19 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=14 format=3 uid="uid://b3r0paotiofsf"]
 
 [ext_resource type="PackedScene" uid="uid://bio537nfnpaax" path="res://levels/static/floor.tscn" id="1_jttng"]
 [ext_resource type="PackedScene" uid="uid://dbex1wqk7tb1i" path="res://levels/static/wall.tscn" id="2_wtk4b"]
 [ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/fear_fps_camera.tscn" id="3_ilhe8"]
 [ext_resource type="PackedScene" uid="uid://344gk8ncqdyu" path="res://entities/props/file_cabinet.tscn" id="4_kibtf"]
 [ext_resource type="PackedScene" uid="uid://ca3ktphds8w2n" path="res://entities/props/table.tscn" id="5_mo150"]
+[ext_resource type="PackedScene" uid="uid://0lqtif0tsjl2" path="res://entities/props/computer.tscn" id="6_yt7hq"]
+[ext_resource type="PackedScene" uid="uid://beaw6q5ryfffo" path="res://entities/props/building-giant.tscn" id="7_mgl3c"]
+[ext_resource type="PackedScene" uid="uid://bkxfia4slx4hr" path="res://entities/props/building-large.tscn" id="8_k3rf7"]
+[ext_resource type="PackedScene" uid="uid://e80cpb5in6ry" path="res://entities/props/building-medium.tscn" id="9_caf34"]
+[ext_resource type="PackedScene" uid="uid://cxbky4fygpyrr" path="res://entities/props/building-small.tscn" id="10_8brqj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
+sky_top_color = Color(1, 0.85098, 0.827451, 1)
+sky_horizon_color = Color(1, 0.490196, 0.286275, 1)
+sky_curve = 0.9415
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.00784314, 0.00784314, 0.0313726, 1)
+sun_curve = 0.0184576
 
 [sub_resource type="Sky" id="Sky_1ul0o"]
 sky_material = SubResource("ProceduralSkyMaterial_81ae5")
 
 [sub_resource type="Environment" id="Environment_vafh1"]
+background_mode = 2
 sky = SubResource("Sky_1ul0o")
 ambient_light_source = 3
+reflected_light_source = 2
 
 [node name="fear_fps_main" type="Node3D"]
 
@@ -125,6 +138,8 @@ environment = SubResource("Environment_vafh1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, 0.5, 0.5, -0.183013, -0.553603, 0.812422, 0.683013, -0.665976, -0.29995, 0, 7, 0)
+light_color = Color(0.984314, 0.490196, 0.494118, 1)
+light_energy = 0.25
 shadow_enabled = true
 
 [node name="file_cabinet" parent="." instance=ExtResource("4_kibtf")]
@@ -137,7 +152,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -7.88308)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.29949, -8.94147)
 
 [node name="table" parent="." instance=ExtResource("5_mo150")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88513, 1.3444, -10.0841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88513, 1.09009, -10.0841)
 
 [node name="table2" parent="." instance=ExtResource("5_mo150")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6328, 1.3444, -10.0841)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6328, 1.09009, -10.0841)
+
+[node name="computer" parent="." instance=ExtResource("6_yt7hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2347, 1.14389, -10.2943)
+
+[node name="skybox" type="Node3D" parent="."]
+
+[node name="building-giant" parent="skybox" instance=ExtResource("7_mgl3c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -60.7498, 0, 0)
+
+[node name="building-giant3" parent="skybox" instance=ExtResource("7_mgl3c")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 234.924, 0, -179.594)
+
+[node name="building-giant2" parent="skybox" instance=ExtResource("7_mgl3c")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 252.915, 3.05176e-05, 68.8979)
+
+[node name="building-giant4" parent="skybox" instance=ExtResource("7_mgl3c")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -203.969, 3.05176e-05, 253.213)
+
+[node name="building-large" parent="skybox" instance=ExtResource("8_k3rf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.578, 0, 158.277)
+
+[node name="building-large3" parent="skybox" instance=ExtResource("8_k3rf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.411, 0, 82.2276)
+
+[node name="building-large4" parent="skybox" instance=ExtResource("8_k3rf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.901, 8.34583, -22.8067)
+
+[node name="building-medium" parent="skybox" instance=ExtResource("9_caf34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.578, 0, 72.3276)
+
+[node name="building-medium2" parent="skybox" instance=ExtResource("9_caf34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8214, 0, -97.691)
+
+[node name="building-medium4" parent="skybox" instance=ExtResource("9_caf34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.3248, 0, -241.636)
+
+[node name="building-medium5" parent="skybox" instance=ExtResource("9_caf34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.4499, 0, -314.124)
+
+[node name="building-large2" parent="skybox" instance=ExtResource("8_k3rf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.578, 0, 257.877)
+
+[node name="building-medium3" parent="skybox" instance=ExtResource("9_caf34")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.4888, 3.05176e-05, 300.881)
+
+[node name="building-small" parent="skybox" instance=ExtResource("10_8brqj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.93, -7.62939e-06, -37.6869)
+
+[node name="building-small2" parent="skybox" instance=ExtResource("10_8brqj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.5645, -7.62939e-06, 54.27)

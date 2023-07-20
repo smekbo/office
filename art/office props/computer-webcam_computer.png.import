@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bax0tqx2acg75"
-path.s3tc="res://.godot/imported/building.png-29586c8d1f22f0df5d6c65a84c0dbb0d.s3tc.ctex"
+uid="uid://de6dr6i1mf5ac"
+path.s3tc="res://.godot/imported/computer-webcam_computer.png-86e8f7c0a1b5133cecbbd4e6919a9a66.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://art/skyboxbuildings/building.png"
-dest_files=["res://.godot/imported/building.png-29586c8d1f22f0df5d6c65a84c0dbb0d.s3tc.ctex"]
+source_file="res://art/office props/computer-webcam_computer.png"
+dest_files=["res://.godot/imported/computer-webcam_computer.png-86e8f7c0a1b5133cecbbd4e6919a9a66.s3tc.ctex"]
 
 [params]
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://beaw6q5ryfffo"]
+
+[ext_resource type="PackedScene" uid="uid://c8vkiu2kvkrsy" path="res://art/skyboxbuildings/building-giant.glb" id="1_8tsq0"]
+[ext_resource type="Texture2D" uid="uid://bax0tqx2acg75" path="res://art/skyboxbuildings/building.png" id="2_77wri"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8c6a5"]
+albedo_texture = ExtResource("2_77wri")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l8j3k"]
+points = PackedVector3Array(0, 0, 0, 212, 0, 0, 159, 241, 0, 52, 241, 0, 0, 0, -212, 212, 0, -212, 159, 241, -212, 52, 241, -212)
+
+[node name="building-giant" type="Node3D"]
+
+[node name="building-giant" parent="." instance=ExtResource("1_8tsq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48325, 0, 0)
+
+[node name="Cube_001" parent="building-giant" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8c6a5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_l8j3k")
+
+[editable path="building-giant"]
