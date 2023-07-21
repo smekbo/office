@@ -3,7 +3,7 @@ extends Node3D
 @onready var impact_scene = preload("res://entities/player/weapon_impact.tscn")
 
 @onready var ray : RayCast3D = $RayCast3D
-@onready var gun_animation : AnimationPlayer = $viewarms/AnimationPlayer
+@onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
 
 # damage variables
 @export var damage : int = 10		# base damage
@@ -69,7 +69,8 @@ func fire():
 		get_tree().root.add_child(impact)
 		impact.position = col_point
 	
-	gun_animation.play("fingerguns-burst-fire")
+	animation.stop()
+	animation.play("fingerguns-semi-auto")
 	fire_timer = fire_speed
 	ammo -= 1
 	shots_left -= 1
@@ -113,6 +114,7 @@ func start_reload():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# timers
+	
 	fire_timer = max(0, fire_timer - delta)
 	if not firing:
 		fire_cooldown = max(0, fire_cooldown - delta)
