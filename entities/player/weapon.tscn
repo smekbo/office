@@ -17,14 +17,15 @@ target_position = Vector3(0, 0, 1000)
 collision_mask = 6
 
 [node name="viewarms" parent="." instance=ExtResource("2_vl28s")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)
 
 [node name="Skeleton3D" parent="viewarms/Armature" index="0"]
 bones/18/rotation = Quaternion(-0.0155026, 0.404957, 0.85856, 0.314078)
-bones/19/rotation = Quaternion(0.326848, 0.129679, 0.158749, 0.922579)
-bones/20/rotation = Quaternion(0.124072, 0.106164, 0.0769326, 0.983573)
+bones/19/rotation = Quaternion(0.339345, 0.133562, 0.154924, 0.918153)
+bones/20/rotation = Quaternion(0.028334, 0.108913, 0.0836371, 0.990121)
 bones/21/rotation = Quaternion(-0.0204196, -0.0392725, 0.0251213, 0.998704)
 bones/23/rotation = Quaternion(0.0427378, 0.0434069, 0.0253671, 0.997821)
+bones/24/rotation = Quaternion(-0.0079422, -0.0155143, 0.148198, 0.988804)
 bones/25/rotation = Quaternion(0.0182858, -0.00113082, 0.83786, 0.545577)
 bones/26/rotation = Quaternion(0.0109816, 0.000406804, 0.644877, 0.764207)
 bones/28/rotation = Quaternion(0.0180842, -0.00105235, 0.833181, 0.552704)
