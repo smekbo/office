@@ -47,7 +47,7 @@ func _ready():
 	pass # Replace with function body.
 
 # fire a single bullet
-func _fire():
+func fire():
 	reloading = false
 	if fire_timer > 0 or ammo <= 0:
 		return
@@ -59,8 +59,11 @@ func _fire():
 		
 		# impact impulse
 		if col.is_class("RigidBody3D"):
-			col.apply_impulse((col_point - ray.global_position) * force)
-			
+			col.apply_impulse((col_point - ray.global_position).normalized() * force)
+		
+		var h_comp = col.get_node_or_null("HealthComponent")
+		if h_comp != null: h_comp.injure(damage, damage_pen)
+		
 		# impact effect
 		get_tree().root.add_child(impact)
 		impact.position = col_point
@@ -96,7 +99,7 @@ func _reload():
 	
 
 # starts the reload. does conditional checks
-func _start_reload():
+func start_reload():
 	if reserve_max == 0:
 		return
 	if reserve_max <= 0 or (reserve_max > 0 and reserve > 0):
@@ -115,7 +118,7 @@ func _process(delta):
 	
 	# reloading takes time, and can be interrupted
 	if Input.is_action_just_pressed("reload"):
-		_start_reload()
+		start_reload()
 	if reloading:
 		reload_timer += delta
 		if reload_timer >= reload_speed:
@@ -124,13 +127,13 @@ func _process(delta):
 	# automatic fire
 	if Input.is_action_pressed("fire"):
 		if ammo <= 0:
-			_start_reload()
+			start_reload()
 		elif shots == 0:
-			_fire()
+			fire()
 	# semi-auto and burst fire
 	if Input.is_action_just_pressed(("fire")):
 		if ammo <= 0:
-			_start_reload()
+			start_reload()
 		elif shots > 0 and fire_cooldown <= 0:
 			shots_left = min(ammo, shots)
 			fire_cooldown = fire_delay
@@ -141,5 +144,5 @@ func _process(delta):
 		if shots_left <= 0:
 			firing = false
 		elif fire_timer <= 0 and shots_left > 0:
-			_fire()
+			fire()
 			

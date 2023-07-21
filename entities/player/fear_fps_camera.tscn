@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bgqffqcrj76oa"]
+[gd_scene load_steps=16 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://art/protags/Hmercenary.glb" id="3_o0dom"]
+[ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://components/health_component.tscn" id="5_efvsp"]
 [ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://art/protags/viewarms.glb" id="5_uyvkk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
@@ -128,6 +129,7 @@ collision_mask = 2
 [node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
+reserve_max = -1
 
 [node name="viewarms" parent="cam_pivot/Camera3D" instance=ExtResource("5_uyvkk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)
@@ -207,6 +209,14 @@ offset_right = 993.0
 offset_bottom = 626.0
 text = "spread"
 
+[node name="Health" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 595.0
+offset_right = 121.0
+offset_bottom = 621.0
+text = "Health"
+
 [node name="crosshair" type="Control" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -256,6 +266,8 @@ offset_left = 5.5
 offset_top = 4.5
 offset_right = 10.5
 offset_bottom = 5.5
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_efvsp")]
 
 [editable path="Hmercenary"]
 [editable path="cam_pivot/Camera3D/viewarms"]
