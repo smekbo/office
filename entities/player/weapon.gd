@@ -70,7 +70,7 @@ func fire():
 		impact.position = col_point
 	
 	animation.stop()
-	animation.play("fingerguns-semi-auto")
+	animation.play("fire")
 	fire_timer = fire_speed
 	ammo -= 1
 	shots_left -= 1
