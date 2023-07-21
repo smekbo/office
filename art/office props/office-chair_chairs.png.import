@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtmvvhthqe0uf"
-path.s3tc="res://.godot/imported/chairs.png-024c5f0ecd8821e9d74463272a483286.s3tc.ctex"
+uid="uid://b8yybopgv4ji1"
+path.s3tc="res://.godot/imported/office-chair_chairs.png-19595b0034b05396faf985b333156e90.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://art/office props/chairs.png"
-dest_files=["res://.godot/imported/chairs.png-024c5f0ecd8821e9d74463272a483286.s3tc.ctex"]
+source_file="res://art/office props/office-chair_chairs.png"
+dest_files=["res://.godot/imported/office-chair_chairs.png-19595b0034b05396faf985b333156e90.s3tc.ctex"]
 
 [params]
 

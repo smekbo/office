@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var camera : Node3D = $cam_pivot
 
-@onready var gun_animation : AnimationTree = $cam_pivot/gangstarig/AnimationTree
+@onready var gun_animation : AnimationPlayer = $cam_pivot/Camera3D/viewarms/AnimationPlayer
 
 @onready var kick_raycast : RayCast3D = $cam_pivot/Camera3D/kick_raycast
 @onready var legs : Node3D = $Hmercenary
@@ -107,34 +107,26 @@ func _physics_process(delta):
 		process_camera(delta)
 		
 	if Input.is_action_pressed("fire"):
-		gun_animation["parameters/Blend2/blend_amount"] = 1
-	else :
-		gun_animation["parameters/Blend2/blend_amount"] = 0
+		gun_animation.play("fingerguns-burst-fire")
 	
 	if Input.is_action_just_pressed("kick"):
+		# kick function is triggered by animation
 		legs_animation["parameters/OneShot/request"] = 1
-
-
 	
 	# Legs animation and easing	
 	smooth_animation_input.x = move_toward(smooth_animation_input.x, input_dir.x, delta*2)
 	smooth_animation_input.y = move_toward(smooth_animation_input.y, input_dir.y, delta*2)
 	legs_animation["parameters/BlendSpace2D/blend_position"] = smooth_animation_input
-		
-#	if Input.is_action_just_pressed("use"):
-#		var col = use_ray.get_collision_point()
-#		print(col)
-#		var obj = use_ray.get_collider()
-#		if obj:
-#			obj._flip()
-#			obj._kick(col)
-#		use.emit()
 
 
 func kick():
 	var obj = kick_raycast.get_collider()
 	if obj:
-		obj._flip()
+		var col_point = kick_raycast.get_collision_point()
+		
+		# impact impulse
+		if obj.is_class("RigidBody3D"):
+			obj.apply_impulse(-(col_point - obj.global_position) * 100)
 
 func process_camera(delta):
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta

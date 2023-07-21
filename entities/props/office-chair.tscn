@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjog5xe8xidx"]
+
+[ext_resource type="PackedScene" uid="uid://c66338t5ubn6b" path="res://art/office props/office-chair.glb" id="1_7jv83"]
+[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/office props/chairs.png" id="2_xmlkw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unity"]
+albedo_texture = ExtResource("2_xmlkw")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ajr61"]
+size = Vector3(0.474751, 0.491731, 0.0932907)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_su6ho"]
+size = Vector3(0.509336, 0.562065, 0.533361)
+
+[node name="office-chair" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+
+[node name="office-chair" parent="." instance=ExtResource("1_7jv83")]
+
+[node name="Cube_010" parent="office-chair" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_unity")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00586128, 0.817189, -0.23342)
+shape = SubResource("BoxShape3D_ajr61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278704, 0)
+shape = SubResource("BoxShape3D_su6ho")
+
+[editable path="office-chair"]
