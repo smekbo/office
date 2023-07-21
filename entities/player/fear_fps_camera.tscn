@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 [gd_scene load_steps=20 format=3 uid="uid://bgqffqcrj76oa"]
-=======
-[gd_scene load_steps=15 format=3 uid="uid://bgqffqcrj76oa"]
->>>>>>> origin/main
 
 [ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://art/protags/Hmercenary.glb" id="3_o0dom"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://components/health_component.tscn" id="5_efvsp"]
-=======
 [ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://art/protags/viewarms.glb" id="5_uyvkk"]
->>>>>>> origin/main
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
 
