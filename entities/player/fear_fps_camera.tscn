@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgqffqcrj76oa"]
+[gd_scene load_steps=16 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
@@ -129,6 +129,7 @@ collision_mask = 2
 [node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
+reserve_max = -1
 
 [node name="viewarms" parent="cam_pivot/Camera3D" instance=ExtResource("5_uyvkk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)

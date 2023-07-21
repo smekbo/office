@@ -59,10 +59,10 @@ func fire():
 		
 		# impact impulse
 		if col.is_class("RigidBody3D"):
-			col.apply_impulse((col_point - ray.global_position) * force)
+			col.apply_impulse((col_point - ray.global_position).normalized() * force)
 		
-		var h_comp = col.get_node("HealthComponent")
-		if h_comp: h_comp.injure(damage, damage_pen)
+		var h_comp = col.get_node_or_null("HealthComponent")
+		if h_comp != null: h_comp.injure(damage, damage_pen)
 		
 		# impact effect
 		get_tree().root.add_child(impact)

@@ -34,6 +34,7 @@ size = Vector3(0.486135, 0.156306, 0.354735)
 [node name="keyboard" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 0.1
 sleeping = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="keyboard"]
@@ -45,6 +46,7 @@ shape = SubResource("BoxShape3D_ucqyp")
 [node name="monitor" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 0.1
 sleeping = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="monitor"]
@@ -77,6 +79,7 @@ shape = SubResource("BoxShape3D_8i4it")
 [node name="webcam" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 0.1
 sleeping = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="webcam"]
@@ -88,6 +91,7 @@ shape = SubResource("BoxShape3D_n3b6t")
 [node name="tower" type="RigidBody3D" parent="."]
 collision_layer = 2
 collision_mask = 3
+mass = 0.1
 sleeping = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tower"]
