@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
 @onready var weapon = $cam_pivot/Camera3D/weapon
+@onready var health = $HealthComponent
 var smooth_animation_input : Vector2 
 
 var mouseDelta : Vector2 = Vector2()
@@ -61,6 +62,7 @@ func _process(delta):
 	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_num >= weapon.ammo_max, " missing ", weapon.ammo_reload))
 	$Control/Refire.set_text(str("refire ", snapped(weapon.fire_timer, .01), " cooldown ", snapped(weapon.fire_cooldown, .01)))
 	$Control/Spread.set_text(str("spread ", snapped(weapon.spread, .01)))
+	$Control/Health.set_text(str("health ", snapped(health.health, 1)))
 	
 	$Control/crosshair/u_cross.position = Vector2(2, -2-(weapon.spread*2))
 	$Control/crosshair/d_cross.position = Vector2(2, 2+(weapon.spread*2))
@@ -94,6 +96,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	if Input.is_action_just_pressed("heal"):
+		health.heal(5)
+		
+	if Input.is_action_just_pressed("injure"):
+		health.injure(10, 0, false)
 	
 	if mouseDelta:
 		process_camera(delta)
