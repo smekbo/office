@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bkxfia4slx4hr" path="res://entities/props/building-large.tscn" id="8_k3rf7"]
 [ext_resource type="PackedScene" uid="uid://e80cpb5in6ry" path="res://entities/props/building-medium.tscn" id="9_caf34"]
 [ext_resource type="PackedScene" uid="uid://cxbky4fygpyrr" path="res://entities/props/building-small.tscn" id="10_8brqj"]
-[ext_resource type="PackedScene" path="res://entities/props/computer-chair.tscn" id="11_xoyfj"]
-[ext_resource type="PackedScene" path="res://entities/props/office-chair.tscn" id="12_und5l"]
+[ext_resource type="PackedScene" uid="uid://ct3hhtjpd613p" path="res://entities/props/computer-chair.tscn" id="11_xoyfj"]
+[ext_resource type="PackedScene" uid="uid://cjog5xe8xidx" path="res://entities/props/office-chair.tscn" id="12_und5l"]
 [ext_resource type="PackedScene" uid="uid://dhvrh83k4oh7a" path="res://entities/props/table_method2.tscn" id="13_w5n6e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
