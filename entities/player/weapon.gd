@@ -3,6 +3,7 @@ extends Node3D
 @onready var impact_scene = preload("res://entities/player/weapon_impact.tscn")
 
 @onready var ray : RayCast3D = $RayCast3D
+@onready var gun_animation : AnimationPlayer = $viewarms/AnimationPlayer
 
 # damage variables
 @export var damage : int = 10		# base damage
@@ -68,6 +69,7 @@ func fire():
 		get_tree().root.add_child(impact)
 		impact.position = col_point
 	
+	gun_animation.play("fingerguns-burst-fire")
 	fire_timer = fire_speed
 	ammo -= 1
 	shots_left -= 1
