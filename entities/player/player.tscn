@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bgqffqcrj76oa"]
 
-[ext_resource type="Script" path="res://entities/player/fear_fps_camera.gd" id="1_l1qma"]
+[ext_resource type="Script" path="res://entities/player/player.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://art/protags/Hmercenary.glb" id="3_o0dom"]
 [ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://components/health_component.tscn" id="5_efvsp"]
@@ -50,7 +50,7 @@ nodes/OneShot/node = SubResource("AnimationNodeOneShot_13fad")
 nodes/OneShot/position = Vector2(80, 200)
 node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"BlendSpace2D", &"OneShot", 1, &"Animation"]
 
-[node name="fear_fps_camera" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("1_l1qma")
 

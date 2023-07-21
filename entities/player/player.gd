@@ -2,8 +2,6 @@ extends CharacterBody3D
 
 @onready var camera : Node3D = $cam_pivot
 
-@onready var gun_animation : AnimationPlayer = $cam_pivot/Camera3D/viewarms/AnimationPlayer
-
 @onready var kick_raycast : RayCast3D = $cam_pivot/Camera3D/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
@@ -105,9 +103,6 @@ func _physics_process(delta):
 	
 	if mouseDelta:
 		process_camera(delta)
-		
-	if Input.is_action_pressed("fire"):
-		gun_animation.play("fingerguns-burst-fire")
 	
 	if Input.is_action_just_pressed("kick"):
 		# kick function is triggered by animation
