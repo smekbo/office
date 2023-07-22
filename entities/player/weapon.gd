@@ -1,9 +1,9 @@
 extends Node3D
 
 @onready var impact_scene = preload("res://entities/player/weapon_impact.tscn")
-
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
+@export var default_particles : GPUParticles3D
 
 # damage variables
 @export var damage : int = 10		# base damage
@@ -55,19 +55,29 @@ func fire():
 	ray.target_position = Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 100)
 	if ray.is_colliding():
 		var col : Object = ray.get_collider()
-		var col_point = ray.get_collision_point()
+		var col_point : Vector3 = ray.get_collision_point()
+		var col_normal : Vector3 = ray.get_collision_normal()
+		var dir : Vector3 = col_point - ray.global_position
+		var dir_normal : Vector3 = dir.normalized()
+		var dir_reflect : Vector3 = dir.reflect(col_normal)
 		var impact = impact_scene.instantiate()
 		
 		# impact impulse
 		if col.is_class("RigidBody3D"):
-			col.apply_impulse((col_point - ray.global_position).normalized() * force)
+			col.apply_impulse(dir_normal * force)
 		
 		var h_comp = col.get_node_or_null("HealthComponent")
 		if h_comp != null: h_comp.injure(damage, damage_pen)
 		
 		# impact effect
-		get_tree().root.add_child(impact)
-		impact.position = col_point
+		# get_tree().root.add_child(impact)
+		# impact.position = col_point
+		
+		# particles
+		var hitspark = default_particles
+		hitspark.global_position = col_point
+		hitspark.process_material.direction = dir_reflect
+		hitspark.emitting = true
 	
 	animation.stop()
 	animation.play("fire")
