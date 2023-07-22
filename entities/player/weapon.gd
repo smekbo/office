@@ -59,7 +59,7 @@ func fire():
 		var col_normal : Vector3 = ray.get_collision_normal()
 		var dir : Vector3 = col_point - ray.global_position
 		var dir_normal : Vector3 = dir.normalized()
-		var dir_reflect : Vector3 = dir.reflect(col_normal)
+		var dir_reflect : Vector3 = dir_normal.bounce(col_normal)
 		var impact = impact_scene.instantiate()
 		
 		# impact impulse
