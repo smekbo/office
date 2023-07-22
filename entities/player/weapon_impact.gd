@@ -7,7 +7,7 @@ extends Node3D
 
 @onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var dust : Node3D = $dust
-@onready var sparks : GPUParticles3D = $sparks
+@onready var sparks : Node3D = $sparks
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,9 +15,10 @@ func _ready():
 	dust.set_texture(DUST_TEXTURE)
 	
 func start(impact_location : Vector3, reflect_direction : Vector3):
-	sparks.global_position = impact_location
-	sparks.process_material.direction = reflect_direction
-	sparks.emitting = SPARKS
+	if SPARKS:
+		var new_sparks = sparks.duplicate()
+		sparks.global_position = impact_location
+		sparks.set_reflect_direction(reflect_direction)
 	
 	var new_dust_sprite : Node3D = dust.duplicate()
 	get_tree().root.add_child(new_dust_sprite)

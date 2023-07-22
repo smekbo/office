@@ -113,7 +113,7 @@ parameters/OneShot/internal_active = false
 parameters/OneShot/request = 0
 
 [node name="cam_pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92733, -0.0780326)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92733, -0.205015)
 rotation_edit_mode = 2
 
 [node name="Camera3D" type="Camera3D" parent="cam_pivot"]

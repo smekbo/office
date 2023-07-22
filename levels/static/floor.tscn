@@ -1,13 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bio537nfnpaax"]
 
-[ext_resource type="Texture2D" uid="uid://crvcvefx6nsmi" path="res://1_testing_assets/kenney_prototype-textures/PNG/Dark/texture_01.png" id="1_0usku"]
+[ext_resource type="Texture2D" uid="uid://dbxyrqx78jeih" path="res://art/VEAR texture 2/concrete tile.png" id="1_2j425"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
 size = Vector3(8, 0.25, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwpov"]
-albedo_texture = ExtResource("1_0usku")
+albedo_texture = ExtResource("1_2j425")
+metallic_specular = 0.0
 uv1_scale = Vector3(12, 8, 8)
+texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3p8p"]
 material = SubResource("StandardMaterial3D_kwpov")

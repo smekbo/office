@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbex1wqk7tb1i"]
 
-[ext_resource type="Texture2D" uid="uid://c3048hfmcbg0y" path="res://1_testing_assets/kenney_prototype-textures/PNG/Light/texture_12.png" id="1_v0632"]
+[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://art/VEAR Texture/Wall4.png" id="1_ipn6u"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_75hcw"]
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="3_yc8kr"]
 
@@ -8,8 +8,10 @@
 size = Vector3(0.25, 6, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv6xx"]
-albedo_texture = ExtResource("1_v0632")
-uv1_scale = Vector3(12, 6, 8)
+albedo_texture = ExtResource("1_ipn6u")
+metallic_specular = 0.0
+uv1_scale = Vector3(3, 2, 2)
+texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3p8p"]
 material = SubResource("StandardMaterial3D_bv6xx")
