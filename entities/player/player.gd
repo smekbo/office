@@ -61,6 +61,7 @@ func _process(delta):
 	$Control/Refire.set_text(str("refire ", snapped(weapon.fire_timer, .01), " cooldown ", snapped(weapon.fire_cooldown, .01)))
 	$Control/Spread.set_text(str("spread ", snapped(weapon.spread, .01)))
 	$Control/Health.set_text(str("health ", snapped(health.health, 1)))
+	$Control/DebugNormals.set_text(str("direction ", weapon.dir_normal, " collision ", weapon.col_normal))
 	
 	$Control/crosshair/u_cross.position = Vector2(2, -2-(weapon.spread*2))
 	$Control/crosshair/d_cross.position = Vector2(2, 2+(weapon.spread*2))

@@ -43,6 +43,9 @@ var ammo_reload : int = 0	# amount of ammo to reload
 @export var shots : int = 3
 var shots_left : int = 0
 
+var col_normal : Vector3
+var dir_normal : Vector3
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -56,10 +59,10 @@ func fire():
 	if ray.is_colliding():
 		var col : Object = ray.get_collider()
 		var col_point : Vector3 = ray.get_collision_point()
-		var col_normal : Vector3 = ray.get_collision_normal()
+		col_normal = ray.get_collision_normal()
 		var dir : Vector3 = col_point - ray.global_position
-		var dir_normal : Vector3 = dir.normalized()
-		var dir_reflect : Vector3 = dir_normal.bounce(col_normal)
+		dir_normal = dir.normalized()
+		var dir_reflect : Vector3 = dir_normal.reflect(col_normal)
 		var impact = impact_scene.instantiate()
 		
 		# impact impulse
