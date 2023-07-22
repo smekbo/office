@@ -1,104 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
-
-[sub_resource type="Animation" id="Animation_xp31t"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:mesh:material:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../CPUParticles3D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_vrcv7"]
-resource_name = "impact"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(2, 2, 2), Vector3(5, 5, 5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:mesh:material:albedo_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.556863), Color(1, 1, 1, 0.0588235), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../CPUParticles3D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nunm0"]
-_data = {
-"RESET": SubResource("Animation_xp31t"),
-"impact": SubResource("Animation_vrcv7")
-}
+[ext_resource type="PackedScene" uid="uid://i2hfue0mmal0" path="res://entities/player/dust.tscn" id="2_mic7e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjsve"]
 transparency = 1
@@ -108,28 +11,37 @@ material = SubResource("StandardMaterial3D_gjsve")
 radial_segments = 32
 rings = 16
 
-[sub_resource type="BoxMesh" id="BoxMesh_jkj4a"]
-size = Vector3(0.1, 0.1, 0.1)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v80n0"]
+lifetime_randomness = 0.3
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6cynf"]
+albedo_color = Color(0.894118, 0.509804, 0.0509804, 1)
+emission_enabled = true
+emission = Color(0.501961, 0.509804, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2nj0v"]
+material = SubResource("StandardMaterial3D_6cynf")
+size = Vector3(0.1, 0.5, 0.1)
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../MeshInstance3D")
-libraries = {
-"": SubResource("AnimationLibrary_nunm0")
-}
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 mesh = SubResource("SphereMesh_8hp4x")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+[node name="sparks" type="GPUParticles3D" parent="."]
 emitting = false
-amount = 2
+amount = 20
+lifetime = 0.5
+one_shot = true
 explosiveness = 1.0
-mesh = SubResource("BoxMesh_jkj4a")
-spread = 180.0
-gravity = Vector3(0, -9.18, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 15.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_v80n0")
+draw_pass_1 = SubResource("BoxMesh_2nj0v")
+
+[node name="dust" parent="." instance=ExtResource("2_mic7e")]

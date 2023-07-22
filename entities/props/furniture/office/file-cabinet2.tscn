@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b72dbnj475t73"]
+[gd_scene load_steps=10 format=3 uid="uid://b72dbnj475t73"]
 
 [ext_resource type="Script" path="res://kicker.gd" id="1_yjk74"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_rtoow"]
+[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="3_26ffg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkr2p"]
 albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
@@ -72,3 +74,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5573
 
 [node name="Marker3D4" type="Marker3D" parent="kicker/sides"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.52119, 0, 0)
+
+[node name="weapon_impact" parent="." instance=ExtResource("2_rtoow")]
+visible = false
+DUST_TEXTURE = ExtResource("3_26ffg")

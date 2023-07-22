@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbex1wqk7tb1i"]
+[gd_scene load_steps=7 format=3 uid="uid://dbex1wqk7tb1i"]
 
 [ext_resource type="Texture2D" uid="uid://c3048hfmcbg0y" path="res://1_testing_assets/kenney_prototype-textures/PNG/Light/texture_12.png" id="1_v0632"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_75hcw"]
+[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="3_yc8kr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
 size = Vector3(0.25, 6, 8)
@@ -24,3 +26,8 @@ shape = SubResource("BoxShape3D_0hyh6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
 mesh = SubResource("BoxMesh_h3p8p")
+
+[node name="weapon_impact" parent="." instance=ExtResource("2_75hcw")]
+visible = false
+DUST_TEXTURE = ExtResource("3_yc8kr")
+SPARKS = true
