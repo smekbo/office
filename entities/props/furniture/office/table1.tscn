@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhvrh83k4oh7a"]
+[gd_scene load_steps=7 format=3 uid="uid://dhvrh83k4oh7a"]
 
-[ext_resource type="Script" path="res://kicker.gd" id="1_2uf7t"]
 [ext_resource type="PackedScene" uid="uid://ci0knxaayxap" path="res://art/office props/office-desk.glb" id="2_c6bhy"]
 [ext_resource type="Texture2D" uid="uid://dvdst8bqyr6sr" path="res://art/office props/officdesk.png" id="3_p4d2v"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="4_d01p2"]
@@ -8,9 +7,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71m6y"]
 size = Vector3(2.03479, 0.994153, 0.870582)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_qubla"]
-size = Vector3(2.01481, 1.02028, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvl6t"]
 albedo_texture = ExtResource("3_p4d2v")
@@ -25,29 +21,6 @@ sleeping = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489411, 0)
 shape = SubResource("BoxShape3D_71m6y")
-
-[node name="kicker" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 2
-script = ExtResource("1_2uf7t")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="kicker"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.510128, 0)
-shape = SubResource("BoxShape3D_qubla")
-
-[node name="sides" type="Node3D" parent="kicker"]
-
-[node name="Marker3D" type="Marker3D" parent="kicker/sides"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.97364, 0.618635)
-
-[node name="Marker3D2" type="Marker3D" parent="kicker/sides"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97364, -0.625486)
-
-[node name="Marker3D3" type="Marker3D" parent="kicker/sides"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0.97364, 0)
-
-[node name="Marker3D4" type="Marker3D" parent="kicker/sides"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2, 0.97364, 0)
 
 [node name="office-desk" parent="." instance=ExtResource("2_c6bhy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00200844, 0)

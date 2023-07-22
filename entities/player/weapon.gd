@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
+@export var default_impact : Node3D
 @export var default_particles : GPUParticles3D
 
 # damage variables
@@ -68,6 +69,7 @@ func fire():
 		if col.is_class("RigidBody3D"):
 			col.apply_impulse(dir_normal * force)
 		
+		# health damage
 		var h_comp = col.get_node_or_null("HealthComponent")
 		if h_comp != null: h_comp.injure(damage, damage_pen)
 		
@@ -76,10 +78,10 @@ func fire():
 			impact.start(col_point, dir_reflect)
 		
 		# particles
-#		var hitspark = default_particles
-#		hitspark.global_position = col_point
-#		hitspark.process_material.direction = dir_reflect
-#		hitspark.emitting = true
+		#var hitspark = default_particles
+		#hitspark.global_position = col_point
+		#hitspark.rotation = dir_reflect
+		#hitspark.emitting = true
 	
 	animation.stop()
 	animation.play("fire")

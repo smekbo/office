@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8kitjbd6avv6"]
 
 [ext_resource type="PackedScene" uid="uid://ct3hhtjpd613p" path="res://entities/props/furniture/office/chair-roller.tscn" id="1_3lfkw"]
-[ext_resource type="PackedScene" uid="uid://dhvrh83k4oh7a" path="res://entities/props/furniture/office/table2.tscn" id="2_veb8m"]
+[ext_resource type="PackedScene" uid="uid://dhvrh83k4oh7a" path="res://entities/props/furniture/office/table1.tscn" id="2_veb8m"]
 [ext_resource type="PackedScene" uid="uid://t01wy8f8wm8k" path="res://entities/props/combined/computer/computer1-off.tscn" id="3_lby8s"]
 
 [node name="desk" type="Node3D"]

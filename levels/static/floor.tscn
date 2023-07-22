@@ -8,11 +8,15 @@ size = Vector3(8, 0.25, 8)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwpov"]
 albedo_texture = ExtResource("1_2j425")
 metallic_specular = 0.0
-uv1_scale = Vector3(12, 8, 8)
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
 texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_h3p8p"]
+lightmap_size_hint = Vector2i(84, 48)
 material = SubResource("StandardMaterial3D_kwpov")
+uv2_padding = 1.0
 size = Vector3(8, 0.25, 8)
 
 [node name="floor" type="StaticBody3D"]
