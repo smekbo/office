@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://sggrii8mh8"]
+
+[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://art/office props/computer-monitor.glb" id="1_omfhr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k63m1"]
+size = Vector3(0.588636, 0.364488, 0.0376104)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skhyd"]
+emission_enabled = true
+emission = Color(0.0431373, 0.141176, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4nxcw"]
+material = SubResource("StandardMaterial3D_skhyd")
+size = Vector2(0.485, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxb2i"]
+albedo_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bqne2"]
+size = Vector3(0.24, 0.034, 0.201)
+
+[node name="monitor" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 0.1
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414024, 0.167756)
+shape = SubResource("BoxShape3D_k63m1")
+
+[node name="computer-monitor" parent="." instance=ExtResource("1_omfhr")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.419804, 0.19214)
+mesh = SubResource("PlaneMesh_4nxcw")
+surface_material_override/0 = SubResource("StandardMaterial3D_rxb2i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000634074, 0.171951, 0.141109)
+shape = SubResource("BoxShape3D_bqne2")
