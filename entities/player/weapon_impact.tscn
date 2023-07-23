@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=12 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="2_r0kvb"]
+[ext_resource type="Texture2D" uid="uid://b65v7ido1jm8b" path="res://art/sprite/spark_flash.png" id="3_653ka"]
 [ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://art/sprite/spark2.png" id="3_oedqi"]
 
 [sub_resource type="Animation" id="Animation_btna8"]
@@ -23,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = false
-tracks/1/path = NodePath("Sprite3D:modulate:r")
+tracks/1/path = NodePath("Flash:modulate:r")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -34,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("Sprite3D:modulate:g")
+tracks/2/path = NodePath("Flash:modulate:g")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -45,7 +46,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("Sprite3D:modulate:b")
+tracks/3/path = NodePath("Flash:modulate:b")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -56,18 +57,18 @@ tracks/3/keys = {
 tracks/4/type = "bezier"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite3D:modulate:a")
+tracks/4/path = NodePath("Flash:modulate:a")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.9)
+"times": PackedFloat32Array(0, 0.2)
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("GPUParticles3D:emitting")
+tracks/5/path = NodePath("Spark:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -75,6 +76,50 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dust:modulate:r")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dust:modulate:g")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dust:modulate:b")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dust:modulate:a")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.6)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eodfg"]
@@ -112,10 +157,18 @@ size = 0.2
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
-SPRITE = ExtResource("2_r0kvb")
+FLASH = ExtResource("3_653ka")
+DUST = ExtResource("2_r0kvb")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Flash" type="Sprite3D" parent="."]
 billboard = 1
+double_sided = false
+texture_filter = 0
+texture = ExtResource("3_653ka")
+
+[node name="Dust" type="Sprite3D" parent="."]
+billboard = 1
+no_depth_test = true
 texture_filter = 0
 texture = ExtResource("2_r0kvb")
 
@@ -124,8 +177,7 @@ libraries = {
 "": SubResource("AnimationLibrary_eodfg")
 }
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-emitting = false
+[node name="Spark" type="GPUParticles3D" parent="."]
 amount = 6
 lifetime = 0.5
 one_shot = true
