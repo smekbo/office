@@ -1,29 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://wlc4s2lsffk4"]
+[gd_scene load_steps=4 format=3 uid="uid://wlc4s2lsffk4"]
 
 [ext_resource type="Script" path="res://entities/player/weapon.gd" id="1_u2h6h"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_07p3e"]
 [ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://art/protags/viewarms.glb" id="2_vl28s"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qbbur"]
-lifetime_randomness = 0.3
-direction = Vector3(0, 1, 0)
-spread = 10.0
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mikrp"]
-albedo_color = Color(0.894118, 0.509804, 0.0509804, 1)
-emission_enabled = true
-emission = Color(0.501961, 0.509804, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0mrrc"]
-material = SubResource("StandardMaterial3D_mikrp")
-size = Vector3(0.1, 0.5, 0.1)
-
-[node name="weapon" type="Node3D" node_paths=PackedStringArray("default_particles")]
+[node name="weapon" type="Node3D"]
 script = ExtResource("1_u2h6h")
 default_impact = ExtResource("2_07p3e")
-default_particles = NodePath("GPUParticles3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1000)
@@ -50,15 +33,5 @@ bones/35/rotation = Quaternion(0.145526, -0.0932409, -0.0157596, 0.984825)
 
 [node name="AnimationPlayer" parent="viewarms" index="1"]
 autoplay = "fingerguns-pose-static"
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-emitting = false
-amount = 20
-lifetime = 0.5
-one_shot = true
-explosiveness = 1.0
-transform_align = 2
-process_material = SubResource("ParticleProcessMaterial_qbbur")
-draw_pass_1 = SubResource("BoxMesh_0mrrc")
 
 [editable path="viewarms"]
