@@ -2,22 +2,29 @@ extends Node3D
 
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
-@export var default_impact : Node3D
+@export var default_impact : PackedScene
 @export var default_particles : GPUParticles3D
 
 # damage variables
+@export_group("Damage")
 @export var damage : int = 10		# base damage
 @export var damage_pen : int = 3	# how much the damage penetrates armor
 @export var force : float = 2.5		# how much impulse force is applied on hit
 
 # firing variables
+@export_group("Firing")
 var firing : bool = false		# is this weapon firing? used for burst
 @export var fire_speed : float = 0.1	# time between shots; "rounds per minute"
 @export var fire_delay: float = 1	# time before you can pull the trigger again; ignored for automatic weapons
 var fire_timer : float = 0	# firing timer
 var fire_cooldown : float = 0	# firing delay timer
+# number of shots fired before firing cooldown happens (each trigger pull)
+# 0 or lower for automatic, 1 for semi, 2+ for burst
+@export var shots : int = 3
+var shots_left : int = 0
 
 # spread variables
+@export_group("Spread")
 var spread : float = 0		# our current spread
 @export var spread_min : float = 0	# minimum spread value
 @export var spread_max : float = 3	# maximum spread value
@@ -25,23 +32,20 @@ var spread : float = 0		# our current spread
 @export var spread_dec : float = 0.05	# how much the spread decreases to minimum each second
 @export var spread_scalar : float = 1	# the spread scalar; "accuracy"
 
-# reload variables
-var reloading : bool = false	# is this weapon reloading?
-@export var reload_num : int = 1	# number of shots attempted to load per reload. if less than mag size, will do "progressive" reloads
-@export var reload_speed : float = 0.1	# how fast in seconds does this weapon reload (TODO: make this animation-driven)
-var reload_timer : float = 0	# reload timer
-
 # ammo variables
+@export_group("Ammo")
 @export var ammo : int = 5		# current ammo
 @export var ammo_max : int = 15	# mag capacity
 var ammo_reload : int = 0	# amount of ammo to reload
 @export var reserve : int = 23	# current reserves
 @export var reserve_max : int = 60	# reserve capacity; if -1, infinite ammo
 
-# number of shots fired before firing cooldown happens (each trigger pull)
-# 0 or lower for automatic, 1 for semi, 2+ for burst
-@export var shots : int = 3
-var shots_left : int = 0
+# reload variables
+@export_group("Reloading")
+var reloading : bool = false	# is this weapon reloading?
+@export var reload_num : int = 1	# number of shots attempted to load per reload. if less than mag size, will do "progressive" reloads
+@export var reload_speed : float = 0.1	# how fast in seconds does this weapon reload (TODO: make this animation-driven)
+var reload_timer : float = 0	# reload timer
 
 var col_normal : Vector3
 var dir_normal : Vector3
@@ -63,7 +67,7 @@ func fire():
 		var dir : Vector3 = col_point - ray.global_position
 		dir_normal = dir.normalized()
 		var dir_reflect : Vector3 = dir_normal.reflect(col_normal)
-		var impact : WeaponImpact = col.find_child("weapon_impact")
+		var impact : WeaponImpact = col.get_node_or_null("weapon_impact")
 		
 		# impact impulse
 		if col.is_class("RigidBody3D"):
@@ -75,7 +79,12 @@ func fire():
 		
 		# impact effect
 		if impact:
-			impact.start(col_point, dir_reflect)
+			impact.start(col_point, col_normal)
+		else:
+			var new_impact = default_impact.instantiate()
+			get_tree().get_root().add_child(new_impact)
+			new_impact.global_position = col_point
+			new_impact.start(col_point, col_normal)
 		
 		# particles
 		#var hitspark = default_particles

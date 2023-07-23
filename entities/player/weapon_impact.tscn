@@ -1,24 +1,121 @@
-[gd_scene load_steps=6 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=8 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
-[ext_resource type="PackedScene" uid="uid://c60yjv3w3ubgy" path="res://entities/player/sparks.tscn" id="2_3tt7p"]
-[ext_resource type="PackedScene" uid="uid://i2hfue0mmal0" path="res://entities/player/dust.tscn" id="2_mic7e"]
+[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="2_r0kvb"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjsve"]
-transparency = 1
+[sub_resource type="Animation" id="Animation_btna8"]
+resource_name = "emit"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Sprite3D:modulate:r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Sprite3D:modulate:g")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("Sprite3D:modulate:b")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprite3D:modulate:a")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GPUParticles3D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="SphereMesh" id="SphereMesh_8hp4x"]
-material = SubResource("StandardMaterial3D_gjsve")
-radial_segments = 32
-rings = 16
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eodfg"]
+_data = {
+"emit": SubResource("Animation_btna8")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gcr1"]
+lifetime_randomness = 0.3
+direction = Vector3(0, 1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh4ow"]
+albedo_color = Color(0.894118, 0.509804, 0.0509804, 1)
+emission_enabled = true
+emission = Color(0.501961, 0.509804, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5gx0"]
+material = SubResource("StandardMaterial3D_nh4ow")
+size = Vector3(0.1, 0.5, 0.1)
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
+SPRITE = ExtResource("2_r0kvb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-mesh = SubResource("SphereMesh_8hp4x")
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_r0kvb")
 
-[node name="sparks" parent="." instance=ExtResource("2_3tt7p")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eodfg")
+}
 
-[node name="dust" parent="." instance=ExtResource("2_mic7e")]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_8gcr1")
+draw_pass_1 = SubResource("BoxMesh_d5gx0")
