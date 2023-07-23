@@ -3,34 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="1_6eqmj"]
 [ext_resource type="Script" path="res://entities/player/dust.gd" id="2_hoyye"]
 
-[sub_resource type="Animation" id="Animation_abqw4"]
-resource_name = "emit"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.8, 0.0104558, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_euq4h"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -122,6 +94,34 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0)
 }
 
+[sub_resource type="Animation" id="Animation_abqw4"]
+resource_name = "emit"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.8, 0.0104558, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nulfy"]
 _data = {
 "RESET": SubResource("Animation_euq4h"),
@@ -133,6 +133,7 @@ script = ExtResource("2_hoyye")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
+texture_filter = 0
 texture = ExtResource("1_6eqmj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
