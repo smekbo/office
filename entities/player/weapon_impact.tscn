@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=11 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="2_r0kvb"]
+[ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://art/sprite/spark2.png" id="3_oedqi"]
 
 [sub_resource type="Animation" id="Animation_btna8"]
 resource_name = "emit"
@@ -81,21 +82,33 @@ _data = {
 "emit": SubResource("Animation_btna8")
 }
 
+[sub_resource type="Curve" id="Curve_e7cv7"]
+_data = [Vector2(0.00326797, 0.726316), 0.0, 0.0, 0, 0, Vector2(0.147059, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_jpjvv"]
+curve = SubResource("Curve_e7cv7")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8gcr1"]
 lifetime_randomness = 0.3
+particle_flag_align_y = true
 direction = Vector3(0, 1, 0)
-spread = 10.0
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
+spread = 15.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+linear_accel_max = 10.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_jpjvv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh4ow"]
-albedo_color = Color(0.894118, 0.509804, 0.0509804, 1)
-emission_enabled = true
-emission = Color(0.501961, 0.509804, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixypf"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("3_oedqi")
 
-[sub_resource type="BoxMesh" id="BoxMesh_d5gx0"]
-material = SubResource("StandardMaterial3D_nh4ow")
-size = Vector3(0.1, 0.5, 0.1)
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d3o1f"]
+material = SubResource("StandardMaterial3D_ixypf")
+size = 0.2
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
@@ -112,10 +125,11 @@ libraries = {
 }
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 20
+emitting = false
+amount = 6
 lifetime = 0.5
 one_shot = true
-explosiveness = 1.0
+explosiveness = 0.7
 transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_8gcr1")
-draw_pass_1 = SubResource("BoxMesh_d5gx0")
+draw_pass_1 = SubResource("RibbonTrailMesh_d3o1f")
