@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqahoyv0yj25f"
-path="res://.godot/imported/floor concrete 4.png-aff54508f85514e932eb9217cc7a9e61.ctex"
+uid="uid://b2gjfnmu25foq"
+path="res://.godot/imported/hall-clean-rivets.png-8f656ee93a6c5bae556fd20ed965c804.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/VEAR Texture/floor concrete 4.png"
-dest_files=["res://.godot/imported/floor concrete 4.png-aff54508f85514e932eb9217cc7a9e61.ctex"]
+source_file="res://levels/static/textures/wall/hall-clean-rivets.png"
+dest_files=["res://.godot/imported/hall-clean-rivets.png-8f656ee93a6c5bae556fd20ed965c804.ctex"]
 
 [params]
 

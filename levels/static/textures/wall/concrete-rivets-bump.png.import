@@ -2,26 +2,27 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv11s6o068wkx"
-path="res://.godot/imported/Wall Pale.png-a0c26217f120bd039984bb830aff4e98.ctex"
+uid="uid://bwblrumt4rcpi"
+path.s3tc="res://.godot/imported/concrete-rivets-bump.png-0e582ac956148847b8bb000789b38026.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://art/VEAR texture 2/Wall Pale.png"
-dest_files=["res://.godot/imported/Wall Pale.png-a0c26217f120bd039984bb830aff4e98.ctex"]
+source_file="res://levels/static/textures/wall/concrete-rivets-bump.png"
+dest_files=["res://.godot/imported/concrete-rivets-bump.png-0e582ac956148847b8bb000789b38026.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

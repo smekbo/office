@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qqho7j6fpmom"
-path="res://.godot/imported/concrete tile Rough.png-b816404d55c6cf772d6fea1faaa859aa.ctex"
+uid="uid://bnt801ilsg2o1"
+path="res://.godot/imported/floor concrete 4broe2.png-c659039c9992cc75e39dbaba535a87d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/VEAR texture 2/concrete tile Rough.png"
-dest_files=["res://.godot/imported/concrete tile Rough.png-b816404d55c6cf772d6fea1faaa859aa.ctex"]
+source_file="res://archive/VEAR Texture/floor concrete 4broe2.png"
+dest_files=["res://.godot/imported/floor concrete 4broe2.png-c659039c9992cc75e39dbaba535a87d2.ctex"]
 
 [params]
 

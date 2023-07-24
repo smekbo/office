@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3aalpp6q64m3"
-path="res://.godot/imported/Tile.png-5191d640ea41afc1bc14e7826d8e83df.ctex"
+uid="uid://b43lf3j0e5xtn"
+path="res://.godot/imported/hall-clean.png-89904e88fc419b6c6b12746b631d3640.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/VEAR texture 2/Tile.png"
-dest_files=["res://.godot/imported/Tile.png-5191d640ea41afc1bc14e7826d8e83df.ctex"]
+source_file="res://levels/static/textures/wall/hall-clean.png"
+dest_files=["res://.godot/imported/hall-clean.png-89904e88fc419b6c6b12746b631d3640.ctex"]
 
 [params]
 

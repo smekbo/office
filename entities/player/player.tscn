@@ -127,10 +127,10 @@ collision_mask = 2
 [node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.100314, 0)
 force = 5.0
+shots = 0
+reserve_max = -1
 reload_num = 15
 reload_speed = 2.0
-reserve_max = -1
-shots = 0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

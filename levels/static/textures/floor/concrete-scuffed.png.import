@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8x2drvyfynp2"
-path="res://.godot/imported/concrete tile base.png-d4a7a5a9ba6425263da582a4d36c8d13.ctex"
+uid="uid://qqho7j6fpmom"
+path="res://.godot/imported/concrete-scuffed.png-dcd5e1ad30a7e0c813b266aa20051af0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/VEAR texture 2/concrete tile base.png"
-dest_files=["res://.godot/imported/concrete tile base.png-d4a7a5a9ba6425263da582a4d36c8d13.ctex"]
+source_file="res://levels/static/textures/floor/concrete-scuffed.png"
+dest_files=["res://.godot/imported/concrete-scuffed.png-dcd5e1ad30a7e0c813b266aa20051af0.ctex"]
 
 [params]
 

@@ -15,7 +15,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-	dust.texture = DUST
+	#dust.texture = DUST
 	
 func start(impact_location : Vector3, spark_direction : Vector3 = Vector3(0,0,1)):
 	#if SPARKS:
@@ -28,3 +28,4 @@ func start(impact_location : Vector3, spark_direction : Vector3 = Vector3(0,0,1)
 	show()
 	animator.play("emit")
 	sparks.process_material.direction = spark_direction
+	dust.process_material.direction = spark_direction

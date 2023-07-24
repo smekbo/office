@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=19 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="2_r0kvb"]
@@ -7,6 +7,7 @@
 
 [sub_resource type="Animation" id="Animation_btna8"]
 resource_name = "emit"
+length = 10.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,7 +15,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(7.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -77,49 +78,17 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/6/type = "bezier"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dust:modulate:r")
+tracks/6/path = NodePath("Dust:emitting")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Dust:modulate:g")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dust:modulate:b")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
-}
-tracks/9/type = "bezier"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Dust:modulate:a")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.6)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eodfg"]
@@ -155,20 +124,64 @@ albedo_texture = ExtResource("3_oedqi")
 material = SubResource("StandardMaterial3D_ixypf")
 size = 0.2
 
+[sub_resource type="Curve" id="Curve_j2whq"]
+min_value = -5.0
+max_value = 5.0
+_data = [Vector2(0, 0.68421), 0.0, 0.0, 0, 0, Vector2(0.169935, -2.89474), 0.0, 0.0, 0, 0, Vector2(1, -5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c54hi"]
+curve = SubResource("Curve_j2whq")
+
+[sub_resource type="Curve" id="Curve_ycobr"]
+max_value = 2.0
+_data = [Vector2(0, 1.6), 0.0, 0.4, 0, 1, Vector2(1, 2), 0.4, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_gny3v"]
+curve = SubResource("Curve_ycobr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ny3yx"]
+lifetime_randomness = 0.5
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.05
+initial_velocity_max = 0.5
+linear_accel_curve = SubResource("CurveTexture_c54hi")
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_gny3v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doy0c"]
+transparency = 1
+disable_ambient_light = true
+albedo_color = Color(1, 1, 1, 0.290196)
+albedo_texture = ExtResource("2_r0kvb")
+backlight_enabled = true
+backlight = Color(0.631373, 0.631373, 0.631373, 1)
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rb3je"]
+material = SubResource("StandardMaterial3D_doy0c")
+orientation = 2
+
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
 FLASH = ExtResource("3_653ka")
 DUST = ExtResource("2_r0kvb")
 
 [node name="Flash" type="Sprite3D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
 billboard = 1
 double_sided = false
 texture_filter = 0
 texture = ExtResource("3_653ka")
 
-[node name="Dust" type="Sprite3D" parent="."]
+[node name="OldDust" type="Sprite3D" parent="."]
+visible = false
 billboard = 1
-no_depth_test = true
 texture_filter = 0
 texture = ExtResource("2_r0kvb")
 
@@ -185,3 +198,11 @@ explosiveness = 0.7
 transform_align = 2
 process_material = SubResource("ParticleProcessMaterial_8gcr1")
 draw_pass_1 = SubResource("RibbonTrailMesh_d3o1f")
+
+[node name="Dust" type="GPUParticles3D" parent="."]
+amount = 3
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ny3yx")
+draw_pass_1 = SubResource("PlaneMesh_rb3je")
