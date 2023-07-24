@@ -1,19 +1,21 @@
 class_name WeaponImpact
 extends Node3D
 
-@export var SPRITE : CompressedTexture2D 
+@export var FLASH : CompressedTexture2D
+@export var DUST : CompressedTexture2D 
 @export var SPARKS : bool
 @export var DECAL : Decal
 
 #@onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var animator : AnimationPlayer = $AnimationPlayer
-@onready var dust : Node3D = $Sprite3D
-@onready var sparks : Node3D = $GPUParticles3D
+@onready var dust : Node3D = $Dust
+@onready var sparks : Node3D = $Spark
+@onready var flash : Node3D = $Flash
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-	dust.texture = SPRITE
+	#dust.texture = DUST
 	
 func start(impact_location : Vector3, spark_direction : Vector3 = Vector3(0,0,1)):
 	#if SPARKS:
@@ -26,3 +28,4 @@ func start(impact_location : Vector3, spark_direction : Vector3 = Vector3(0,0,1)
 	show()
 	animator.play("emit")
 	sparks.process_material.direction = spark_direction
+	dust.process_material.direction = spark_direction

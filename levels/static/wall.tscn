@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbex1wqk7tb1i"]
+[gd_scene load_steps=6 format=3 uid="uid://dbex1wqk7tb1i"]
 
-[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://art/VEAR Texture/Wall4.png" id="1_ipn6u"]
+[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://archive/VEAR Texture/Wall4.png" id="1_sa3rq"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_75hcw"]
-[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="3_yc8kr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
 size = Vector3(0.25, 6, 8)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv6xx"]
-albedo_texture = ExtResource("1_ipn6u")
+albedo_texture = ExtResource("1_sa3rq")
 metallic_specular = 0.0
 uv1_scale = Vector3(3, 2, 2)
 texture_filter = 0
@@ -31,5 +30,4 @@ mesh = SubResource("BoxMesh_h3p8p")
 
 [node name="weapon_impact" parent="." instance=ExtResource("2_75hcw")]
 visible = false
-DUST_TEXTURE = ExtResource("3_yc8kr")
 SPARKS = true

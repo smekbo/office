@@ -3,7 +3,6 @@ extends Node3D
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
 @export var default_impact : PackedScene
-@export var default_particles : GPUParticles3D
 
 # damage variables
 @export_group("Damage")
@@ -85,12 +84,6 @@ func fire():
 			get_tree().get_root().add_child(new_impact)
 			new_impact.global_position = col_point
 			new_impact.start(col_point, col_normal)
-		
-		# particles
-		#var hitspark = default_particles
-		#hitspark.global_position = col_point
-		#hitspark.rotation = dir_reflect
-		#hitspark.emitting = true
 	
 	animation.stop()
 	animation.play("fire")
