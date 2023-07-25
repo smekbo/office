@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvmotqkv2o1rc"]
+[gd_scene load_steps=8 format=3 uid="uid://bvmotqkv2o1rc"]
 
-[ext_resource type="Script" path="res://bullet_hole.gd" id="1_d0jqe"]
-[ext_resource type="Texture2D" uid="uid://dxea42ux7k2s4" path="res://art/VEAR HOLE/bullet Hot.png" id="2_6wuly"]
-[ext_resource type="Texture2D" uid="uid://bofsbo32j5gsi" path="res://art/VEAR HOLE/bullet generic4 more internal values.png" id="3_0ku4s"]
-[ext_resource type="Texture2D" uid="uid://dysb8yduob1wk" path="res://art/VEAR HOLE/bullet Hot glow.png" id="4_12fdk"]
-[ext_resource type="Texture2D" uid="uid://cay8ork8qsjad" path="res://art/VEAR HOLE/bullet Hot glow emission.png" id="5_3t0ig"]
+[ext_resource type="Texture2D" uid="uid://dxea42ux7k2s4" path="res://art/VEAR HOLE/bullet Hot.png" id="1_2o7a7"]
+[ext_resource type="Texture2D" uid="uid://bofsbo32j5gsi" path="res://art/VEAR HOLE/bullet generic4 more internal values.png" id="2_3dgd5"]
+[ext_resource type="Texture2D" uid="uid://dysb8yduob1wk" path="res://art/VEAR HOLE/bullet Hot glow.png" id="3_cx4c1"]
+[ext_resource type="Texture2D" uid="uid://cay8ork8qsjad" path="res://art/VEAR HOLE/bullet Hot glow emission.png" id="4_jyks5"]
 
 [sub_resource type="Animation" id="Animation_7bc3l"]
 length = 0.001
@@ -63,21 +62,19 @@ _data = {
 "cool_down": SubResource("Animation_6g8ch")
 }
 
-[node name="bullet_hole" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-script = ExtResource("1_d0jqe")
-
-[node name="hole" type="Decal" parent="."]
+[node name="hole" type="Decal"]
 size = Vector3(0.25, 0.25, 0.25)
-texture_albedo = ExtResource("2_6wuly")
-texture_normal = ExtResource("3_0ku4s")
+texture_albedo = ExtResource("1_2o7a7")
+texture_normal = ExtResource("2_3dgd5")
 
 [node name="hot_rim" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 size = Vector3(0.25, 0.25, 0.25)
-texture_albedo = ExtResource("4_12fdk")
-texture_emission = ExtResource("5_3t0ig")
+texture_albedo = ExtResource("3_cx4c1")
+texture_emission = ExtResource("4_jyks5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_tf3qf")
 }
