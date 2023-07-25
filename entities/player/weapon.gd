@@ -78,12 +78,12 @@ func fire():
 		
 		# impact effect
 		if impact:
-			impact.start(col_point, col_normal)
+			impact.start(col, col_point, col_normal)
 		else:
 			var new_impact = default_impact.instantiate()
 			get_tree().get_root().add_child(new_impact)
 			new_impact.global_position = col_point
-			new_impact.start(col_point, col_normal)
+			new_impact.start(col, col_point, col_normal)
 	
 	animation.stop()
 	animation.play("fire")

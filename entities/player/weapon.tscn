@@ -7,6 +7,8 @@
 [node name="weapon" type="Node3D"]
 script = ExtResource("1_u2h6h")
 default_impact = ExtResource("2_07p3e")
+ammo = 100
+ammo_max = 100
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1000)
