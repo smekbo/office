@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=20 format=3 uid="uid://b3r0paotiofsf"]
 
-[ext_resource type="PackedScene" uid="uid://l8mxhe5738hh" path="res://levels/static/box.tscn" id="1_0xdnh"]
+[ext_resource type="PackedScene" path="res://levels/static/box.tscn" id="1_0xdnh"]
 [ext_resource type="Material" uid="uid://d3aljmbnjh8h3" path="res://levels/static/materials/concrete-tile-mat.tres" id="2_lc3dt"]
 [ext_resource type="Texture2D" uid="uid://cv11s6o068wkx" path="res://levels/static/textures/wall/hall-pale.png" id="3_ai7v0"]
 [ext_resource type="Material" uid="uid://damjktw77vjuv" path="res://levels/static/materials/ceiling-drop.tres" id="3_ewhqg"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c8kitjbd6avv6" path="res://entities/props/clusters/office-desk1-off.tscn" id="9_jxule"]
 [ext_resource type="PackedScene" uid="uid://cxbky4fygpyrr" path="res://entities/props/buildings/building-small.tscn" id="10_8brqj"]
 [ext_resource type="PackedScene" uid="uid://b72dbnj475t73" path="res://entities/props/furniture/office/file-cabinet2.tscn" id="10_ep5rw"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="14_ervo5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlr5o"]
 albedo_texture = ExtResource("3_ai7v0")
@@ -181,3 +182,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326865, 1.1727, -9.61135)
 
 [node name="file_cabinet2" parent="." instance=ExtResource("10_ep5rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.326865, 1.1727, -8.65824)
+
+[node name="weapon_impact" parent="." instance=ExtResource("14_ervo5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.04835, 1.96524, -0.25)

@@ -4,7 +4,7 @@ extends Node3D
 @export var FLASH : CompressedTexture2D
 @export var DUST : CompressedTexture2D 
 @export var SPARKS : bool
-@export var DECAL : Decal
+@onready var DECAL : Node3D = $bullet_hole
 
 #@onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var animator : AnimationPlayer = $AnimationPlayer
