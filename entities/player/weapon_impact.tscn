@@ -111,6 +111,7 @@ libraries = {
 }
 
 [node name="Spark" type="GPUParticles3D" parent="."]
+visible = false
 amount = 6
 lifetime = 0.5
 one_shot = true
@@ -120,6 +121,7 @@ process_material = SubResource("ParticleProcessMaterial_8gcr1")
 draw_pass_1 = SubResource("RibbonTrailMesh_d3o1f")
 
 [node name="Dust" type="GPUParticles3D" parent="."]
+visible = false
 amount = 3
 lifetime = 5.0
 one_shot = true

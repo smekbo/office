@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvmotqkv2o1rc"]
+[gd_scene load_steps=8 format=3 uid="uid://bvmotqkv2o1rc"]
 
 [ext_resource type="Texture2D" uid="uid://dxea42ux7k2s4" path="res://art/VEAR HOLE/bullet Hot.png" id="1_2o7a7"]
+[ext_resource type="Texture2D" uid="uid://dyb4d1sk7qya2" path="res://art/VEAR HOLE/NormalMap.png" id="2_p4akc"]
 [ext_resource type="Script" path="res://entities/player/hole.gd" id="3_gjhwm"]
 [ext_resource type="Texture2D" uid="uid://cay8ork8qsjad" path="res://art/VEAR HOLE/bullet Hot glow emission.png" id="3_rble0"]
 
@@ -58,6 +59,7 @@ _data = {
 [node name="hole" type="Decal"]
 size = Vector3(0.25, 0.25, 0.25)
 texture_albedo = ExtResource("1_2o7a7")
+texture_normal = ExtResource("2_p4akc")
 texture_emission = ExtResource("3_rble0")
 script = ExtResource("3_gjhwm")
 
