@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=19 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/player/weapon_impact.gd" id="1_k64vb"]
 [ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="2_r0kvb"]
-[ext_resource type="Texture2D" uid="uid://b65v7ido1jm8b" path="res://art/sprite/spark_flash.png" id="3_653ka"]
 [ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://art/sprite/spark2.png" id="3_oedqi"]
 [ext_resource type="PackedScene" uid="uid://bvmotqkv2o1rc" path="res://entities/player/hole.tscn" id="4_kvr54"]
 
@@ -101,8 +100,6 @@ orientation = 2
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
-FLASH = ExtResource("3_653ka")
-DUST = ExtResource("2_r0kvb")
 DECAL = ExtResource("4_kvr54")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -111,7 +108,6 @@ libraries = {
 }
 
 [node name="Spark" type="GPUParticles3D" parent="."]
-visible = false
 amount = 6
 lifetime = 0.5
 one_shot = true
@@ -121,7 +117,6 @@ process_material = SubResource("ParticleProcessMaterial_8gcr1")
 draw_pass_1 = SubResource("RibbonTrailMesh_d3o1f")
 
 [node name="Dust" type="GPUParticles3D" parent="."]
-visible = false
 amount = 3
 lifetime = 5.0
 one_shot = true

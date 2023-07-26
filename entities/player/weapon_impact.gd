@@ -1,9 +1,8 @@
 class_name WeaponImpact
 extends Node3D
 
-@export var FLASH : PackedScene
-@export var DUST : PackedScene
 @export var SPARKS : bool
+@export var DUST : Resource
 @export var DECAL : PackedScene
 
 #@onready var anim : AnimationPlayer = $AnimationPlayer
