@@ -119,10 +119,12 @@ func kick():
 	var obj = kick_raycast.get_collider()
 	if obj:
 		var col_point = kick_raycast.get_collision_point()
+		var hit_dir = col_point - kick_raycast.global_position
+		var impulse_dir = (hit_dir * Vector3(1,0,1)).normalized()
 		
 		# impact impulse
 		if obj.is_class("RigidBody3D"):
-			obj.apply_impulse(-(col_point - obj.global_position) * 100)
+			obj.apply_impulse(impulse_dir * 5)
 
 func process_camera(delta):
 	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
