@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhvrh83k4oh7a"]
 
-[ext_resource type="PackedScene" uid="uid://ci0knxaayxap" path="res://art/office props/office-desk.glb" id="2_c6bhy"]
-[ext_resource type="Texture2D" uid="uid://dvdst8bqyr6sr" path="res://art/office props/officdesk.png" id="3_p4d2v"]
+[ext_resource type="PackedScene" uid="uid://ci0knxaayxap" path="res://art/props/office/office-desk.glb" id="2_c6bhy"]
+[ext_resource type="Texture2D" uid="uid://dvdst8bqyr6sr" path="res://art/props/office/officdesk.png" id="3_p4d2v"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="4_d01p2"]
-[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="5_qayl0"]
+[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust/debug-dust-single.png" id="5_qayl0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71m6y"]
 size = Vector3(2.03479, 0.994153, 0.870582)

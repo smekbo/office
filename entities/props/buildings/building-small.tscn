@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxbky4fygpyrr"]
 
-[ext_resource type="Texture2D" uid="uid://bax0tqx2acg75" path="res://art/skyboxbuildings/building.png" id="2_8xxj3"]
-[ext_resource type="PackedScene" uid="uid://nhk801548vdf" path="res://art/skyboxbuildings/building-small.glb" id="3_7lo8y"]
+[ext_resource type="Texture2D" uid="uid://bax0tqx2acg75" path="res://art/static/skyboxbuildings/building.png" id="2_8xxj3"]
+[ext_resource type="PackedScene" uid="uid://nhk801548vdf" path="res://art/static/skyboxbuildings/building-small.glb" id="3_7lo8y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8q3b"]
 albedo_texture = ExtResource("2_8xxj3")

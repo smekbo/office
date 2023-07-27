@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cjog5xe8xidx"]
 
-[ext_resource type="PackedScene" uid="uid://c66338t5ubn6b" path="res://art/office props/office-chair.glb" id="1_7jv83"]
-[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/office props/chairs.png" id="2_xmlkw"]
+[ext_resource type="PackedScene" uid="uid://c66338t5ubn6b" path="res://art/props/office/office-chair.glb" id="1_7jv83"]
+[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/props/office/chairs.png" id="2_xmlkw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_unity"]
 albedo_texture = ExtResource("2_xmlkw")

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d3aljmbnjh8h3"]
 
-[ext_resource type="Texture2D" uid="uid://bqahoyv0yj25f" path="res://archive/VEAR Texture/floor concrete 4.png" id="1_o6gel"]
+[ext_resource type="Texture2D" uid="uid://bqahoyv0yj25f" path="res://1_archive/VEAR Texture/floor concrete 4.png" id="1_o6gel"]
 
 [resource]
 albedo_texture = ExtResource("1_o6gel")

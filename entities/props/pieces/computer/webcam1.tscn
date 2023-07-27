@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dmv6vp2gjkw3p"]
 
-[ext_resource type="PackedScene" uid="uid://dg3d12u4ec47j" path="res://art/office props/computer-webcam.glb" id="1_q0l8k"]
+[ext_resource type="PackedScene" uid="uid://dg3d12u4ec47j" path="res://art/props/office/computer-webcam.glb" id="1_q0l8k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n3b6t"]
 size = Vector3(0.095825, 0.0969576, 0.0887268)

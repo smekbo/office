@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c8jul7hnn66yv"]
 
-[ext_resource type="PackedScene" uid="uid://b0vtqx6ilwt1f" path="res://art/office props/computer-keyboard.glb" id="1_wpoeb"]
+[ext_resource type="PackedScene" uid="uid://b0vtqx6ilwt1f" path="res://art/props/office/computer-keyboard.glb" id="1_wpoeb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ucqyp"]
 size = Vector3(0.493312, 0.0526284, 0.184956)
