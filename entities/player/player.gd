@@ -9,14 +9,15 @@ extends CharacterBody3D
 @onready var health = $HealthComponent
 var smooth_animation_input : Vector2 
 
-var mouseDelta : Vector2 = Vector2()
-var minLookAngle : float = -90.0
-var maxLookAngle : float = 90.0
-var lookSensitivity : float = 10.0
+var mouse_delta : Vector2 = Vector2()
+var lookangle_min : float = -90.0
+var lookangle_max : float = 90.0
+var look_sensitivity : float = 10.0
 
-var slomoActive : bool = false
+var slomoing : bool = false
 var slomo : float = 10.0
-var slomoMax : float = 10.0
+@export var slomo_max : float = 10.0
+@export var kick_strength : float = 5.0
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -29,32 +30,32 @@ func _init():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		mouseDelta = event.relative
+		mouse_delta = event.relative
 
 func _process(delta):
 	
 	# autostops when out
 	if slomo <= 0:
-		slomoActive = false
+		slomoing = false
 		Engine.time_scale = 1
 	
 	# sets engine timescale
 	if Input.is_action_just_pressed("slomo"):
-		if slomoActive == false:
+		if slomoing == false:
 			if slomo > 2:
 				Engine.time_scale = 0.2
-				slomoActive = true
+				slomoing = true
 		else:
 			Engine.time_scale = 1
-			slomoActive = false
+			slomoing = false
 	
 	# slomo resource bar; goes up/down depending on use, 
-	if slomoActive == true:
+	if slomoing == true:
 		slomo = max(slomo - (delta * (1 / Engine.time_scale)), 0)
-	elif slomoActive == false:
-		slomo = min(slomo + delta, slomoMax)
+	elif slomoing == false:
+		slomo = min(slomo + delta, slomo_max)
 		
-	$Control/Slomo.set_text(str("slomo ", snapped(slomo, .01), "s ", "ts ", Engine.time_scale, " ", slomoActive))
+	$Control/Slomo.set_text(str("slomo ", snapped(slomo, .01), "s ", "ts ", Engine.time_scale, " ", slomoing))
 	$Control/Reload.set_text(str("reloading ", weapon.reloading, " ", snapped(weapon.reload_timer, .01), "s"))
 	$Control/Ammo.set_text(str("ammo ", weapon.ammo, " / ", weapon.ammo_max, " reserve ", weapon.reserve, " / ", weapon.reserve_max))
 	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_num >= weapon.ammo_max, " missing ", weapon.ammo_reload))
@@ -102,7 +103,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("injure"):
 		health.injure(10, 0, false)
 	
-	if mouseDelta:
+	if mouse_delta:
 		process_camera(delta)
 	
 	if Input.is_action_just_pressed("kick"):
@@ -124,16 +125,16 @@ func kick():
 		
 		# impact impulse
 		if obj.is_class("RigidBody3D"):
-			obj.apply_impulse(impulse_dir * 5)
+			obj.apply_impulse(impulse_dir * kick_strength)
 
 func process_camera(delta):
-	camera.rotation_degrees.x -= mouseDelta.y * lookSensitivity * delta
+	camera.rotation_degrees.x -= mouse_delta.y * look_sensitivity * delta
 
 	# Should clamp this value, but this code isn't working right ATM
-	#camera.rotation_degrees.x = clamp(rotation_degrees.x, minLookAngle, maxLookAngle)
+	#camera.rotation_degrees.x = clamp(rotation_degrees.x, lookangle_min, lookangle_max)
 
 	# rotate the player along their y-axis
-	rotation_degrees.y -= mouseDelta.x * lookSensitivity * delta
+	rotation_degrees.y -= mouse_delta.x * look_sensitivity * delta
 	
 	
-	mouseDelta = Vector2()
+	mouse_delta = Vector2()
