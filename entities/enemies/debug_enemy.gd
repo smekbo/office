@@ -15,5 +15,5 @@ func _physics_process(delta):
 	nav_agent.velocity = velocity_next
 	
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	velocity = safe_velocity
+	velocity = velocity.move_toward(safe_velocity, 0.25)
 	move_and_slide()

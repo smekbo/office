@@ -10,6 +10,8 @@ material = SubResource("StandardMaterial3D_llewg")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
 [node name="debug_enemy" type="CharacterBody3D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_46vso")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
