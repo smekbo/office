@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://t01wy8f8wm8k"]
 
-[ext_resource type="PackedScene" uid="uid://b0vtqx6ilwt1f" path="res://art/office props/computer-keyboard.glb" id="1_h0xva"]
+[ext_resource type="PackedScene" uid="uid://b0vtqx6ilwt1f" path="res://art/props/office/computer-keyboard.glb" id="1_h0xva"]
 [ext_resource type="PackedScene" uid="uid://sggrii8mh8" path="res://entities/props/pieces/computer/monitor1-off.tscn" id="2_rkf3j"]
-[ext_resource type="PackedScene" uid="uid://4aj66ce14obs" path="res://art/office props/computer-mouse.glb" id="3_ew1yu"]
+[ext_resource type="PackedScene" uid="uid://4aj66ce14obs" path="res://art/props/office/computer-mouse.glb" id="3_ew1yu"]
 [ext_resource type="PackedScene" uid="uid://bvwfpvs68cxbn" path="res://entities/props/pieces/computer/tower1.tscn" id="5_as634"]
 [ext_resource type="PackedScene" uid="uid://dmv6vp2gjkw3p" path="res://entities/props/pieces/computer/webcam1.tscn" id="5_s54i5"]
 

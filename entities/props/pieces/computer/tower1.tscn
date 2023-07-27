@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvwfpvs68cxbn"]
 
-[ext_resource type="PackedScene" uid="uid://k788hx3yqb16" path="res://art/office props/computer-tower.glb" id="1_aa0vh"]
+[ext_resource type="PackedScene" uid="uid://k788hx3yqb16" path="res://art/props/office/computer-tower.glb" id="1_aa0vh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_exioi"]
 size = Vector3(0.486135, 0.156306, 0.354735)

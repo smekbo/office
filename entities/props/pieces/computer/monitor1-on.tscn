@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cnmi7lc33g0j4"]
 
-[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://art/office props/computer-monitor.glb" id="1_4h13k"]
+[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://art/props/office/computer-monitor.glb" id="1_4h13k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skhyd"]
 emission_enabled = true

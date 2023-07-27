@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c8kitjbd6avv6" path="res://entities/props/clusters/office-desk1-off.tscn" id="9_jxule"]
 [ext_resource type="PackedScene" uid="uid://cxbky4fygpyrr" path="res://entities/props/buildings/building-small.tscn" id="10_8brqj"]
 [ext_resource type="PackedScene" uid="uid://b72dbnj475t73" path="res://entities/props/furniture/office/file-cabinet2.tscn" id="10_ep5rw"]
-[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="14_ervo5"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/vfx/weapon_impact.tscn" id="14_ervo5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlr5o"]
 albedo_texture = ExtResource("3_ai7v0")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://sggrii8mh8"]
 
-[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://art/office props/computer-monitor.glb" id="1_omfhr"]
+[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://art/props/office/computer-monitor.glb" id="1_omfhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k63m1"]
 size = Vector3(0.588636, 0.364488, 0.0376104)

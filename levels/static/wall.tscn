@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbex1wqk7tb1i"]
 
-[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://archive/VEAR Texture/Wall4.png" id="1_sa3rq"]
+[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://1_archive/VEAR Texture/Wall4.png" id="1_sa3rq"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="2_75hcw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://ct3hhtjpd613p"]
 
-[ext_resource type="PackedScene" uid="uid://c8dc56o3n57lw" path="res://art/office props/computer-chair.glb" id="1_wutjf"]
-[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/office props/chairs.png" id="2_gpop2"]
+[ext_resource type="PackedScene" uid="uid://c8dc56o3n57lw" path="res://art/props/office/computer-chair.glb" id="1_wutjf"]
+[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/props/office/chairs.png" id="2_gpop2"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/player/weapon_impact.tscn" id="3_e6iv7"]
-[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust_single.png" id="4_p6uca"]
+[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust/debug-dust-single.png" id="4_p6uca"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0pmmq"]
 friction = 0.3
