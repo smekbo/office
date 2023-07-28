@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://c7yp7hdyymyoa"
-path="res://.godot/imported/building-medium.glb-de28f7195302d55b162186b3dd97135b.scn"
+path="res://.godot/imported/building-medium.glb-7bbe3f7ae57c8f4f666791d06c99e104.scn"
 
 [deps]
 
-source_file="res://art/static/skyboxbuildings/building-medium.glb"
-dest_files=["res://.godot/imported/building-medium.glb-de28f7195302d55b162186b3dd97135b.scn"]
+source_file="res://art/staticprop/skyboxbuildings/building-medium.glb"
+dest_files=["res://.godot/imported/building-medium.glb-7bbe3f7ae57c8f4f666791d06c99e104.scn"]
 
 [params]
 

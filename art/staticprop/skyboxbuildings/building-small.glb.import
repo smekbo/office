@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://da410w66cjhbh"
-path="res://.godot/imported/building-large.glb-8454e9e744d7b777c36f1e0b6962fe65.scn"
+uid="uid://nhk801548vdf"
+path="res://.godot/imported/building-small.glb-32553199afdb6919c7cc9070d4cf564a.scn"
 
 [deps]
 
-source_file="res://art/static/skyboxbuildings/building-large.glb"
-dest_files=["res://.godot/imported/building-large.glb-8454e9e744d7b777c36f1e0b6962fe65.scn"]
+source_file="res://art/staticprop/skyboxbuildings/building-small.glb"
+dest_files=["res://.godot/imported/building-small.glb-32553199afdb6919c7cc9070d4cf564a.scn"]
 
 [params]
 
@@ -28,12 +28,5 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"Material": {
-"use_external/enabled": true,
-"use_external/path": ""
-}
-}
-}
+_subresources={}
 gltf/embedded_image_handling=1

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bnatsyvlh03rc"
-path="res://.godot/imported/buildings.blend-7d08087c4f63968e3916f079a5761749.scn"
+path="res://.godot/imported/buildings.blend-cf0af6cf4c955a847b886ecec7656753.scn"
 
 [deps]
 
-source_file="res://art/static/skyboxbuildings/buildings.blend"
-dest_files=["res://.godot/imported/buildings.blend-7d08087c4f63968e3916f079a5761749.scn"]
+source_file="res://art/staticprop/skyboxbuildings/buildings.blend"
+dest_files=["res://.godot/imported/buildings.blend-cf0af6cf4c955a847b886ecec7656753.scn"]
 
 [params]
 

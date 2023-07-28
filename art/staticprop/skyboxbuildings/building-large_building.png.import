@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvsbh6umdkln6"
-path.s3tc="res://.godot/imported/building-medium_building.png-9ae5aee5d11315de560466c102f083d5.s3tc.ctex"
+uid="uid://cch2piihpn0s0"
+path.s3tc="res://.godot/imported/building-large_building.png-df6e3c163fb2da583bb0337172e9570d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://art/static/skyboxbuildings/building-medium_building.png"
-dest_files=["res://.godot/imported/building-medium_building.png-9ae5aee5d11315de560466c102f083d5.s3tc.ctex"]
+source_file="res://art/staticprop/skyboxbuildings/building-large_building.png"
+dest_files=["res://.godot/imported/building-large_building.png-df6e3c163fb2da583bb0337172e9570d.s3tc.ctex"]
 
 [params]
 
