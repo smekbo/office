@@ -1829,6 +1829,15 @@ _subresources={
 "slice_99/start_frame": 0,
 "slices/amount": null
 }
+},
+"nodes": {
+"PATH:metarig/Skeleton3D": {
+"retarget/bone_map": null
+},
+"PATH:metarig/Skeleton3D/OBJ0000185_001": {
+"physics/body_type": 1,
+"physics/shape_type": 2
+}
 }
 }
 gltf/embedded_image_handling=1

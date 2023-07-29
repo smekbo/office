@@ -1,22 +1,42 @@
 extends CharacterBody3D
 
-@onready var nav_agent = $NavigationAgent3D
+@onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
+@onready var animator : AnimationPlayer = $workrobot/AnimationPlayer
+@onready var skeleton : Skeleton3D = $workrobot/metarig/Skeleton3D
+@onready var health = $HealthComponent
+@onready var health_bar : Label = $Control/Health
 @export var target : CharacterBody3D
 @export var move_speed = 1.0
 
 func _physics_process(delta):
+	var velocity_next = Vector3.ZERO
+	var loc = global_transform.origin
+	
 	if target:
 		nav_agent.target_position = target.global_transform.origin
-	
-	var loc = global_transform.origin
-	var loc_next = nav_agent.get_next_path_position()
-	var velocity_next = (loc_next - loc).normalized() * move_speed
+		var loc_next = nav_agent.get_next_path_position()
+		velocity_next = (loc_next - loc).normalized() * move_speed
+		look_at(loc_next)
+	else:
+		nav_agent.target_position = loc
 	
 	nav_agent.velocity = velocity_next
-	
-	look_at(loc_next)
+	move_and_slide()
 	
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	velocity = velocity.move_toward(safe_velocity, 0.25)
+	if health.alive:
+		velocity = velocity.move_toward(safe_velocity, 0.25)
+	else:
+		velocity = Vector3.ZERO
 	velocity.y = -9.8
 	move_and_slide()
+
+func _on_health_component_died():
+	print("Robot died")
+	target = null
+	nav_agent.velocity = Vector3.ZERO
+	animator.stop()
+	skeleton.physical_bones_start_simulation()
+
+func _on_health_component_took_damage():
+	health_bar.set_text(str("Enemy Health: ", health.health))

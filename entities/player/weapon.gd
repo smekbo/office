@@ -77,13 +77,14 @@ func fire():
 		if h_comp != null: h_comp.injure(damage, damage_pen)
 		
 		# impact effect
-		if impact:
-			impact.start(col, col_point, col_normal)
-		else:
-			var new_impact = default_impact.instantiate()
-			get_tree().get_root().add_child(new_impact)
-			new_impact.global_position = col_point
-			new_impact.start(col, col_point, col_normal)
+		if not col.is_class("CharacterBody3D"):
+			if impact:
+				impact.start(col, col_point, col_normal)
+			else:
+				var new_impact = default_impact.instantiate()
+				get_tree().get_root().add_child(new_impact)
+				new_impact.global_position = col_point
+				new_impact.start(col, col_point, col_normal)
 	
 	animation.stop()
 	animation.play("fire")

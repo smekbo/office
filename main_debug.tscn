@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://b3r0paotiofsf"]
 
-[ext_resource type="PackedScene" path="res://levels/static/box.tscn" id="1_0xdnh"]
+[ext_resource type="PackedScene" uid="uid://l8mxhe5738hh" path="res://levels/static/box.tscn" id="1_0xdnh"]
 [ext_resource type="Material" uid="uid://d3aljmbnjh8h3" path="res://levels/static/materials/concrete-tile-mat.tres" id="2_lc3dt"]
 [ext_resource type="Texture2D" uid="uid://cv11s6o068wkx" path="res://levels/static/textures/wall/hall-pale.png" id="3_ai7v0"]
 [ext_resource type="Material" uid="uid://damjktw77vjuv" path="res://levels/static/materials/ceiling-drop.tres" id="3_ewhqg"]
@@ -75,7 +75,7 @@ spot_range = 14.2519
 spot_angle = 28.1421
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.945544, 0.111725, -0.30572, -0.0385573, 0.894186, 0.446032, 0.323204, 0.43353, -0.841184, -1.03217, 3.70415, -11.8668)
+transform = Transform3D(-0.305562, 0.414432, -0.85725, -0.0385573, 0.894186, 0.446032, 0.951391, 0.169343, -0.25725, 1.74728, 3.70415, -11.3304)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
