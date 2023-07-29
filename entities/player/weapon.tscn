@@ -12,7 +12,7 @@ ammo_max = 100
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 1000)
-collision_mask = 6
+collision_mask = 14
 
 [node name="viewarms" parent="." instance=ExtResource("2_vl28s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)

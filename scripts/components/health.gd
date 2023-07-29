@@ -1,5 +1,8 @@
 extends Node
 
+signal died
+signal took_damage
+
 var health = 100
 @export var health_max = 100
 @export var armor = 5
@@ -12,7 +15,9 @@ func injure(damage, penetration = 0, ignore = false):
 	if not ignore: damage_taken -= (armor - penetration)
 	
 	# apply damage
-	health = max(0, health - damage_taken)
+	if damage_taken > 0:
+		health = max(0, health - damage_taken)
+		took_damage.emit()
 	if health <= 0: die()
 
 func heal(healing):
@@ -22,11 +27,11 @@ func heal(healing):
 # you fuckin DIE
 func die():
 	alive = false
+	died.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
