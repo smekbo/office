@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d28g38bg4fk5e"]
+[gd_scene load_steps=8 format=3 uid="uid://d28g38bg4fk5e"]
 
 [ext_resource type="Script" path="res://entities/enemies/debug_enemy.gd" id="1_46vso"]
+[ext_resource type="PackedScene" uid="uid://d3u7emkcijevm" path="res://art/characters/robot/workrobot.glb" id="2_31vh1"]
+[ext_resource type="Texture2D" uid="uid://d1bktw7rnsep1" path="res://art/characters/robot/workrobot.png" id="3_b5yxb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llewg"]
 
@@ -9,11 +11,19 @@ material = SubResource("StandardMaterial3D_llewg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8og36"]
+albedo_texture = ExtResource("3_b5yxb")
+metallic_specular = 0.0
+texture_filter = 0
+
 [node name="debug_enemy" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_46vso")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_58fu2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -25,4 +35,31 @@ avoidance_enabled = true
 radius = 1.0
 debug_enabled = true
 
+[node name="workrobot" parent="." instance=ExtResource("2_31vh1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="workrobot/metarig" index="0"]
+bones/0/position = Vector3(-5.88911e-09, 0.877744, -0.0552)
+bones/0/rotation = Quaternion(0.152554, 0.00755487, 0.0488816, 0.987057)
+bones/1/rotation = Quaternion(0.00481409, 6.28201e-10, 7.93608e-10, 0.999988)
+bones/2/rotation = Quaternion(-0.0688291, 0.0139841, 0.0343949, 0.996937)
+bones/5/rotation = Quaternion(-0.305265, 0.832798, -0.414872, 0.202836)
+bones/6/rotation = Quaternion(0.288055, -0.0477152, -0.00104115, 0.956424)
+bones/13/rotation = Quaternion(-0.13821, -0.507623, 0.754273, 0.392796)
+bones/14/rotation = Quaternion(0.215174, 0.0339391, 0.00648553, 0.975964)
+bones/20/rotation = Quaternion(0.770242, 0.0546946, -0.0470313, 0.633659)
+bones/21/rotation = Quaternion(0.541207, 0.0621505, 0.0291429, 0.838083)
+bones/22/rotation = Quaternion(-0.703493, -0.0605083, -0.00240373, 0.708118)
+bones/23/rotation = Quaternion(0.998297, -0.0404778, -0.00399946, 0.041814)
+bones/24/rotation = Quaternion(0.0293391, -0.00633812, -0.0347629, 0.998945)
+bones/25/rotation = Quaternion(-0.658947, 0.0429217, -0.00677914, 0.750934)
+
+[node name="OBJ0000185_001" parent="workrobot/metarig/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8og36")
+
+[node name="AnimationPlayer" parent="workrobot" index="1"]
+autoplay = "walk"
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+
+[editable path="workrobot"]
