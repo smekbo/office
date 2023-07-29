@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1bktw7rnsep1"
-path.s3tc="res://.godot/imported/workrobot.png-43ff3bf732ba49a7ca14a48f51b13294.s3tc.ctex"
+uid="uid://xwul203e7vjf"
+path.s3tc="res://.godot/imported/workrobot_workrobot.png-f3836b9b840e8c0706df5d6030cfa82b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://art/characters/robot/workrobot.png"
-dest_files=["res://.godot/imported/workrobot.png-43ff3bf732ba49a7ca14a48f51b13294.s3tc.ctex"]
+source_file="res://art/characters/robot/workrobot_workrobot.png"
+dest_files=["res://.godot/imported/workrobot_workrobot.png-f3836b9b840e8c0706df5d6030cfa82b.s3tc.ctex"]
 
 [params]
 
