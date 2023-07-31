@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var animator : AnimationPlayer = $workrobot/AnimationPlayer
+@onready var animation_tree : AnimationTree = $workrobot/AnimationTree
 @onready var skeleton : Skeleton3D = $workrobot/metarig/Skeleton3D
 @onready var health = $HealthComponent
 @onready var health_bar : Label = $Control/Health
@@ -29,6 +30,10 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	else:
 		velocity = Vector3.ZERO
 	velocity.y = -9.8
+	
+	# animation
+	animation_tree["parameters/BlendSpace1D/blend_position"] = velocity.y + velocity.x
+	
 	move_and_slide()
 
 func _on_health_component_died():
