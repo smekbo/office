@@ -22,7 +22,7 @@ func _physics_process(delta):
 		var loc_next = nav_agent.get_next_path_position()
 		velocity_next = (loc_next - loc).normalized() * move_speed
 		
-		look_at(loc_next)
+		look_at(loc_next*Vector3(1,0,1))
 		if nav_agent.distance_to_target() < 2 and swipe_timer <= 0:
 			animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			swipe_timer = animator.get_animation("attack-r-hand-chop").length

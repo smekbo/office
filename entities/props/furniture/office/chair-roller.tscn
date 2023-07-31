@@ -23,8 +23,8 @@ texture_filter = 0
 [node name="computer-chair" type="Node3D"]
 
 [node name="wheels" type="RigidBody3D" parent="."]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 4
+collision_mask = 15
 mass = 3.0
 physics_material_override = SubResource("PhysicsMaterial_0pmmq")
 
