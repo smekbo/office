@@ -8,8 +8,12 @@ extends CharacterBody3D
 @onready var health_bar : Label = $Control/Health
 @export var target : CharacterBody3D
 @export var move_speed = 1.0
+@export var turn_speed = 0.1
+var swipe_timer : float = 1.0
 
 func _physics_process(delta):
+	swipe_timer = max(swipe_timer - delta, 0)
+	
 	var velocity_next = Vector3.ZERO
 	var loc = global_transform.origin
 	
@@ -17,7 +21,11 @@ func _physics_process(delta):
 		nav_agent.target_position = target.global_transform.origin
 		var loc_next = nav_agent.get_next_path_position()
 		velocity_next = (loc_next - loc).normalized() * move_speed
+		
 		look_at(loc_next)
+		if nav_agent.distance_to_target() < 2 and swipe_timer <= 0:
+			animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			swipe_timer = animator.get_animation("attack-r-hand-chop").length
 	else:
 		nav_agent.target_position = loc
 	
