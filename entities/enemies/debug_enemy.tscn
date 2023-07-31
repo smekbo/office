@@ -124,12 +124,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_g4coc")
 
 [node name="Physical Bone spine" type="PhysicalBone3D" parent="workrobot/metarig/Skeleton3D" index="2"]
-transform = Transform3D(1, -1.42798e-09, 2.14945e-10, -2.72228e-14, -0.100113, -0.994976, 7.10543e-15, 0.994976, -0.100113, 1.47876e-12, 1.09897, -0.00879999)
+transform = Transform3D(1, -1.42798e-09, 3.24565e-10, -2.72228e-14, -0.100113, -0.994976, 7.10543e-15, 0.994976, -0.100113, 1.47876e-12, 1.09897, -0.00879999)
 collision_layer = 8
 collision_mask = 7
 joint_type = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95135e-11, 2.54263e-08, 0.0839052)
-body_offset = Transform3D(1, -1.42798e-09, 2.14943e-10, -2.66454e-14, 1.49012e-08, -1, 7.10543e-15, 1, 5.21541e-08, 1.47871e-12, 0.0839052, -2.98023e-08)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.87112e-11, 2.54263e-08, 0.0839052)
+body_offset = Transform3D(1, -1.42798e-09, 3.24563e-10, -2.66454e-14, 1.49012e-08, -1, 7.10543e-15, 1, 5.21541e-08, 1.47871e-12, 0.0839052, -2.98023e-08)
 bone_name = "spine"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 20.0
@@ -143,12 +143,12 @@ transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_p2n1o")
 
 [node name="Physical Bone chest" type="PhysicalBone3D" parent="workrobot/metarig/Skeleton3D" index="3"]
-transform = Transform3D(-1, 4.1296e-09, -4.44089e-16, 5.39794e-11, -0.0343097, -0.999411, -1.13687e-13, -0.999411, 0.0343097, 5.24997e-12, 1.34267, -0.00589877)
+transform = Transform3D(-1, 5.44823e-09, -4.44089e-16, 6.38751e-11, -0.0343097, -0.999411, -9.9476e-14, -0.999411, 0.0343097, 1.00583e-11, 1.34267, -0.00589877)
 collision_layer = 8
 collision_mask = 7
 joint_type = 3
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25481e-12, 1.20708e-06, 0.160305)
-body_offset = Transform3D(-1, 4.12959e-09, -4.44089e-16, 5.39462e-11, 0.00282974, -0.999996, 1.89715e-12, -0.999996, -0.00282972, 5.2499e-12, 0.160304, 0.000454824)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00648e-11, 1.20708e-06, 0.160305)
+body_offset = Transform3D(-1, 5.44822e-09, -4.44089e-16, 6.38347e-11, 0.00282974, -0.999996, 2.27374e-12, -0.999996, -0.00282972, 1.00583e-11, 0.160304, 0.000454824)
 bone_name = "chest"
 joint_constraints/angular_limit_enabled = true
 joint_constraints/angular_limit_upper = 20.0
