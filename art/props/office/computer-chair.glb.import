@@ -32,7 +32,7 @@ _subresources={
 "materials": {
 "Material": {
 "use_external/enabled": true,
-"use_external/path": ""
+"use_external/path": "res://art/props/office/computer-chair.tres"
 }
 }
 }

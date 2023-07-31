@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dry3d2du43s1h"
-path.s3tc="res://.godot/imported/computer-mouse_computer.png-cba76489158d5ebb867eb730e26d6a28.s3tc.ctex"
+path.s3tc="res://.godot/imported/computer-mouse.png-d1eaf16822fa0f81cb695836376134a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://art/props/office/computer-mouse_computer.png"
-dest_files=["res://.godot/imported/computer-mouse_computer.png-cba76489158d5ebb867eb730e26d6a28.s3tc.ctex"]
+source_file="res://art/props/office/computer-mouse.png"
+dest_files=["res://.godot/imported/computer-mouse.png-d1eaf16822fa0f81cb695836376134a9.s3tc.ctex"]
 
 [params]
 

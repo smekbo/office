@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct3hhtjpd613p"]
+[gd_scene load_steps=6 format=3 uid="uid://ct3hhtjpd613p"]
 
 [ext_resource type="PackedScene" uid="uid://c8dc56o3n57lw" path="res://art/props/office/computer-chair.glb" id="1_wutjf"]
-[ext_resource type="Texture2D" uid="uid://dtmvvhthqe0uf" path="res://art/props/office/chairs.png" id="2_gpop2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0pmmq"]
 friction = 0.3
@@ -14,11 +13,6 @@ size = Vector3(0.623185, 0.146623, 0.57553)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_63brn"]
 size = Vector3(0.576901, 0.658454, 0.130282)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abk6s"]
-albedo_texture = ExtResource("2_gpop2")
-metallic_specular = 0.0
-texture_filter = 0
 
 [node name="computer-chair" type="Node3D"]
 
@@ -41,8 +35,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.974931, -0.326303)
 shape = SubResource("BoxShape3D_63brn")
 
 [node name="computer-chair" parent="wheels" instance=ExtResource("1_wutjf")]
-
-[node name="Cube_002" parent="wheels/computer-chair" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_abk6s")
 
 [editable path="wheels/computer-chair"]

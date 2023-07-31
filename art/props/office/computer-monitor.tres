@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fyc7hal1pe05"]
+
+[ext_resource type="Texture2D" uid="uid://bb6u4tg004bdr" path="res://art/props/office/computer-monitor.png" id="1_l3kxn"]
+
+[resource]
+albedo_texture = ExtResource("1_l3kxn")
+metallic_specular = 0.0
+texture_filter = 0

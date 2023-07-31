@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://de6dr6i1mf5ac"
-path.s3tc="res://.godot/imported/computer-webcam_computer.png-b5701024887c961911d1112495dffbe5.s3tc.ctex"
+path.s3tc="res://.godot/imported/computer-webcam.png-ec76c2c389baabd642a78499d7822aef.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://art/props/office/computer-webcam_computer.png"
-dest_files=["res://.godot/imported/computer-webcam_computer.png-b5701024887c961911d1112495dffbe5.s3tc.ctex"]
+source_file="res://art/props/office/computer-webcam.png"
+dest_files=["res://.godot/imported/computer-webcam.png-ec76c2c389baabd642a78499d7822aef.s3tc.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsb83vsrytgx1"
-path.s3tc="res://.godot/imported/computer-tower_computer.png-aa5b2fc58091f7415fd53f2384990d84.s3tc.ctex"
+uid="uid://bb6u4tg004bdr"
+path.s3tc="res://.godot/imported/computer-monitor.png-b753e8d03a53f9804bf6bf37edd0b7a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://art/props/office/computer-tower_computer.png"
-dest_files=["res://.godot/imported/computer-tower_computer.png-aa5b2fc58091f7415fd53f2384990d84.s3tc.ctex"]
+source_file="res://art/props/office/computer-monitor.png"
+dest_files=["res://.godot/imported/computer-monitor.png-b753e8d03a53f9804bf6bf37edd0b7a9.s3tc.ctex"]
 
 [params]
 

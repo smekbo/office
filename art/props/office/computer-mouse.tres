@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://i6lgckl1x420"]
+
+[ext_resource type="Texture2D" uid="uid://dry3d2du43s1h" path="res://art/props/office/computer-mouse.png" id="1_gjuqm"]
+
+[resource]
+albedo_texture = ExtResource("1_gjuqm")
+metallic_specular = 0.0
+texture_filter = 0

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs83najwxlfhq"
-path.s3tc="res://.godot/imported/computer-chair_chairs.png-7122146b0659a833e31bc7a4e4e7efad.s3tc.ctex"
+uid="uid://cm8u51a15816r"
+path.s3tc="res://.godot/imported/computer-keyboard.png-bc55e31076bf6f99d003d2426d752ba3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://art/props/office/computer-chair_chairs.png"
-dest_files=["res://.godot/imported/computer-chair_chairs.png-7122146b0659a833e31bc7a4e4e7efad.s3tc.ctex"]
+source_file="res://art/props/office/computer-keyboard.png"
+dest_files=["res://.godot/imported/computer-keyboard.png-bc55e31076bf6f99d003d2426d752ba3.s3tc.ctex"]
 
 [params]
 
