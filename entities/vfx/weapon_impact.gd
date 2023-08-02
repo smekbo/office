@@ -3,19 +3,31 @@ extends Node3D
 
 @export var sparking : bool
 @export var spark_chance : float = 1.0
+@export var dusting : bool
 @export var dust : Resource
 @export var dust_chance : float = 1.0
 @export var decal : PackedScene
 
+@export_group("Spark Overrides")
+@export var spark_override : Mesh
+@export var spark_process_override : ParticleProcessMaterial
+@export var spark_lifetime : float
+@export var spark_amount : int
+@export var spark_explosiveness : float
+
 #@onready var anim : AnimationPlayer = $AnimationPlayer
 @onready var animator : AnimationPlayer = $AnimationPlayer
 @onready var dust_node : Node3D = $Dust
-@onready var sparks : Node3D = $Spark
+@onready var sparks : GPUParticles3D = $Spark
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-	#dust.texture = DUST
+	if spark_override: sparks.draw_pass_1 = spark_override
+	if spark_process_override: sparks.process_material = spark_process_override
+	if spark_lifetime: sparks.lifetime = spark_lifetime
+	if spark_explosiveness: sparks.explosiveness = spark_explosiveness
+	if spark_amount: sparks.amount = spark_amount
 	
 func start(object : PhysicsBody3D, location : Vector3, normal : Vector3 = Vector3(0,0,1)):
 	# set impact position to location and start impact scene
@@ -29,10 +41,10 @@ func start(object : PhysicsBody3D, location : Vector3, normal : Vector3 = Vector
 	
 	# randomize if dust/sparks are visible
 	var spark_roll = randf()
-	if spark_chance <= spark_roll: 
+	if sparking and spark_chance >= spark_roll: 
 		sparks.visible = false
 	var dust_roll = randf()
-	if dust_chance <= dust_roll: 
+	if dusting and dust_chance >= dust_roll: 
 		dust_node.visible = false
 	
 	# apply hit decal
