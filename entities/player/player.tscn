@@ -264,5 +264,8 @@ offset_right = 10.5
 offset_bottom = 5.5
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_efvsp")]
+armor = 0
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 
 [editable path="Hmercenary"]

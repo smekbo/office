@@ -154,7 +154,7 @@ transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 4, 0, 32, 0, -2.18557e-08, 14.
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
 
 [node name="debug_enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.680177, -10.666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 1.54347, -10.666)
 target = NodePath("../player")
 
 [node name="Paper" type="GPUParticles3D" parent="."]

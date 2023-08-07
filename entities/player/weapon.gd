@@ -74,7 +74,9 @@ func fire():
 		
 		# health damage
 		var h_comp = col.get_node_or_null("HealthComponent")
-		if h_comp != null: h_comp.injure(damage, damage_pen)
+		if h_comp != null: 
+			if h_comp.alive == false: ray.add_exception(col)
+			else: h_comp.injure(damage, damage_pen)
 		
 		# impact effect
 		if not col.is_class("CharacterBody3D"):

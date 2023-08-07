@@ -35,7 +35,7 @@ func start(object : PhysicsBody3D, location : Vector3, normal : Vector3 = Vector
 	show()
 	animator.play("emit")
 	
-	#set spark and dust practicle directions to the collision normal
+	#set spark and dust particle directions to the collision normal
 	sparks.process_material.direction = normal
 	dust_node.process_material.direction = normal
 	

@@ -99,6 +99,7 @@ injure={
 3d_physics/layer_3="prop"
 3d_physics/layer_4="enemy"
 3d_physics/layer_5="dust / fog"
+3d_physics/layer_32="dead"
 
 [rendering]
 

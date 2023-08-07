@@ -32,6 +32,9 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_delta = event.relative
 
+func _ready():
+	$Control/Health.set_text(str("health ", snapped(health.health, 1)))
+
 func _process(delta):
 	
 	# autostops when out
@@ -138,3 +141,6 @@ func process_camera(delta):
 	
 	
 	mouse_delta = Vector2()
+
+func _on_health_component_died():
+	pass # Replace with function body.

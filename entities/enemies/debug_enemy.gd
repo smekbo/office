@@ -6,6 +6,8 @@ extends CharacterBody3D
 @onready var skeleton : Skeleton3D = $workrobot/metarig/Skeleton3D
 @onready var health = $HealthComponent
 @onready var health_bar : Label = $Control/Health
+@onready var ray : RayCast3D = $RayCast3D
+
 @export var target : CharacterBody3D
 @export var move_speed = 1.0
 @export var turn_speed = 0.1
@@ -25,6 +27,9 @@ func _physics_process(delta):
 		look_at(Vector3(loc_next.x, position.y, loc_next.z))
 		if nav_agent.distance_to_target() < 2 and swipe_timer <= 0:
 			animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+			if ray.is_colliding():
+				var player = ray.get_collider()
+				player.health.injure(10)
 			swipe_timer = animator.get_animation("attack-r-hand-chop").length
 	else:
 		nav_agent.target_position = loc
@@ -46,6 +51,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 func _on_health_component_died():
 	print("Robot died")
+	collision_layer = 32
 	target = null
 	nav_agent.velocity = Vector3.ZERO
 	animator.stop()
