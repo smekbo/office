@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=20 format=3 uid="uid://b3r0paotiofsf"]
 
 [ext_resource type="PackedScene" uid="uid://l8mxhe5738hh" path="res://levels/static/box.tscn" id="1_0xdnh"]
 [ext_resource type="Material" uid="uid://d3aljmbnjh8h3" path="res://levels/static/materials/concrete-tile-mat.tres" id="2_lc3dt"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/player.tscn" id="8_s0vle"]
 [ext_resource type="PackedScene" uid="uid://c8kitjbd6avv6" path="res://entities/props/clusters/office-desk1-off.tscn" id="9_jxule"]
 [ext_resource type="PackedScene" uid="uid://b72dbnj475t73" path="res://entities/props/furniture/office/file-cabinet2.tscn" id="10_ep5rw"]
+[ext_resource type="PlaneMesh" uid="uid://c5527hrtp75yj" path="res://art/sprite/vfx/paper-curve-mesh.tres" id="12_tcaov"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/vfx/weapon_impact.tscn" id="14_ervo5"]
 [ext_resource type="PackedScene" uid="uid://d28g38bg4fk5e" path="res://entities/enemies/debug_enemy.tscn" id="15_t0snf"]
 
@@ -42,6 +43,13 @@ uv1_scale = Vector3(32, 2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e0b7e"]
 albedo_texture = ExtResource("4_fgkia")
 uv1_scale = Vector3(8, 2, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxtr3"]
+direction = Vector3(1, 1, 0)
+spread = 70.09
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+collision_mode = 2
 
 [node name="fear_fps_main" type="Node3D"]
 
@@ -146,5 +154,15 @@ transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 4, 0, 32, 0, -2.18557e-08, 14.
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
 
 [node name="debug_enemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.680177, -10.666)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 1.54347, -10.666)
 target = NodePath("../player")
+
+[node name="Paper" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0094, 2.03687, -4.6739)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 0.3
+collision_base_size = 0.5
+process_material = SubResource("ParticleProcessMaterial_kxtr3")
+draw_pass_1 = ExtResource("12_tcaov")

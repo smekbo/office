@@ -1,0 +1,8 @@
+[gd_resource type="PlaneMesh" load_steps=2 format=3 uid="uid://c5527hrtp75yj"]
+
+[ext_resource type="Material" uid="uid://cwxbeuq31s504" path="res://art/sprite/vfx/paper-curve-mat.tres" id="1_jd11d"]
+
+[resource]
+material = ExtResource("1_jd11d")
+size = Vector2(0.2, 0.2)
+orientation = 2

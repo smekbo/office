@@ -1,9 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://crnjqovoto4t8"]
+[gd_scene load_steps=23 format=3 uid="uid://crnjqovoto4t8"]
 
 [ext_resource type="Script" path="res://entities/vfx/weapon_impact.gd" id="1_k64vb"]
+[ext_resource type="PlaneMesh" uid="uid://c5527hrtp75yj" path="res://art/sprite/vfx/paper-curve-mesh.tres" id="3_hq4io"]
 [ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://art/sprite/spark/spark2.png" id="3_oedqi"]
 [ext_resource type="PackedScene" uid="uid://bvmotqkv2o1rc" path="res://entities/vfx/hole.tscn" id="4_kvr54"]
 [ext_resource type="Texture2D" uid="uid://1etnlg2amxpk" path="res://art/sprite/dust/smoke1.png" id="4_nsx5i"]
+
+[sub_resource type="Curve" id="Curve_6hvg7"]
+max_value = 30.0
+_data = [Vector2(0, 0), 0.0, 42.0, 0, 0]
+point_count = 1
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_g7o0i"]
+curve = SubResource("Curve_6hvg7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sspsl"]
+gravity = Vector3(0, -5, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+damping_min = 1.0
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_g7o0i")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
 [sub_resource type="Animation" id="Animation_btna8"]
 resource_name = "emit"
@@ -21,6 +42,30 @@ tracks/0/keys = {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Spark:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Dust:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eodfg"]
@@ -100,9 +145,14 @@ orientation = 2
 
 [node name="weapon_impact" type="Node3D"]
 script = ExtResource("1_k64vb")
-spark_chance = 0.99
-dust_chance = 0.99
+spark_chance = 0.0
+dust_chance = 0.0
 decal = ExtResource("4_kvr54")
+spark_override = ExtResource("3_hq4io")
+spark_process_override = SubResource("ParticleProcessMaterial_sspsl")
+spark_lifetime = 5.0
+spark_amount = 15
+spark_explosiveness = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
