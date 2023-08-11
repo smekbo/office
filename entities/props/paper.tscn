@@ -1,0 +1,151 @@
+[gd_scene load_steps=33 format=3 uid="uid://d1ha8f5kayla6"]
+
+[ext_resource type="Texture2D" uid="uid://brfse2y6q0j61" path="res://art/props/paper/paper 16/0001.png" id="1_h6avx"]
+[ext_resource type="Texture2D" uid="uid://kygwk22i4wv7" path="res://art/props/paper/paper 16/0002.png" id="2_ibymt"]
+[ext_resource type="Texture2D" uid="uid://cimm3i18fatpy" path="res://art/props/paper/paper 16/0003.png" id="3_ufjs5"]
+[ext_resource type="Texture2D" uid="uid://dgalldkb3klah" path="res://art/props/paper/paper 16/0004.png" id="4_4po46"]
+[ext_resource type="Texture2D" uid="uid://cq0xowvmkf25n" path="res://art/props/paper/paper 16/0005.png" id="5_hnibi"]
+[ext_resource type="Texture2D" uid="uid://dehinqfgclnl" path="res://art/props/paper/paper 16/0006.png" id="6_ckc4m"]
+[ext_resource type="Texture2D" uid="uid://bglwyt1x80nym" path="res://art/props/paper/paper 16/0007.png" id="7_gbqcg"]
+[ext_resource type="Texture2D" uid="uid://cbbr4mgauo58l" path="res://art/props/paper/paper 16/0008.png" id="8_nxuwo"]
+[ext_resource type="Texture2D" uid="uid://dywtpcu8f0gmv" path="res://art/props/paper/paper 16/0009.png" id="9_6lnm0"]
+[ext_resource type="Texture2D" uid="uid://cfr2vak7r27vc" path="res://art/props/paper/paper 16/0010.png" id="10_2xlka"]
+[ext_resource type="Texture2D" uid="uid://b1k6vhmoonc6u" path="res://art/props/paper/paper 16/0011.png" id="11_yvq4a"]
+[ext_resource type="Texture2D" uid="uid://cw1clpjlvbscu" path="res://art/props/paper/paper 16/0012.png" id="12_6gok3"]
+[ext_resource type="Texture2D" uid="uid://24wxktstx4gd" path="res://art/props/paper/paper 16/0013.png" id="13_ms4eg"]
+[ext_resource type="Texture2D" uid="uid://2gscf3f6t0c6" path="res://art/props/paper/paper 16/0014.png" id="14_jew30"]
+[ext_resource type="Texture2D" uid="uid://kciafh5ahou2" path="res://art/props/paper/paper 16/0015.png" id="15_ay15c"]
+[ext_resource type="Texture2D" uid="uid://da8dw0sdwf4pw" path="res://art/props/paper/paper 16/0016.png" id="16_pd83f"]
+[ext_resource type="Texture2D" uid="uid://caf77jb7f5ujh" path="res://art/props/paper/paper 16/0017.png" id="17_2v864"]
+[ext_resource type="Texture2D" uid="uid://dbp8rfj4rll54" path="res://art/props/paper/paper 16/0018.png" id="18_8cn22"]
+[ext_resource type="Texture2D" uid="uid://oj7udytaxexe" path="res://art/props/paper/paper 16/0019.png" id="19_sp6pk"]
+[ext_resource type="Texture2D" uid="uid://c6nx5p7cxqwu7" path="res://art/props/paper/paper 16/0020.png" id="20_673tg"]
+[ext_resource type="Texture2D" uid="uid://dbix8rixdnpcy" path="res://art/props/paper/paper 16/0021.png" id="21_3jaoe"]
+[ext_resource type="Texture2D" uid="uid://3j3nw02tqp4e" path="res://art/props/paper/paper 16/0022.png" id="22_j1lse"]
+[ext_resource type="Texture2D" uid="uid://cquip6p6624jb" path="res://art/props/paper/paper 16/0023.png" id="23_vxfiy"]
+[ext_resource type="Texture2D" uid="uid://d0dnikopb068i" path="res://art/props/paper/paper 16/0024.png" id="24_h8dtx"]
+[ext_resource type="Texture2D" uid="uid://dl7bhgpyjyg3o" path="res://art/props/paper/paper 16/0025.png" id="25_kktu3"]
+[ext_resource type="Texture2D" uid="uid://nmni3wraxtc1" path="res://art/props/paper/paper 16/0026.png" id="26_sse3v"]
+[ext_resource type="Texture2D" uid="uid://bcrd8fjswi87r" path="res://art/props/paper/paper 16/0027.png" id="27_lrxwl"]
+[ext_resource type="Texture2D" uid="uid://cvv7sbnh1eddg" path="res://art/props/paper/paper 16/0028.png" id="28_t68l4"]
+[ext_resource type="Texture2D" uid="uid://wx081b66v60q" path="res://art/props/paper/paper 16/0029.png" id="29_1dibh"]
+[ext_resource type="Texture2D" uid="uid://b7mbe7jbv07ns" path="res://art/props/paper/paper 16/0030.png" id="30_b2j6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_80pln"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_h6avx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ibymt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ufjs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4po46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hnibi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ckc4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gbqcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nxuwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6lnm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2xlka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yvq4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6gok3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ms4eg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jew30")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ay15c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pd83f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_2v864")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_8cn22")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_sp6pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_673tg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_3jaoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j1lse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_vxfiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_h8dtx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_kktu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_sse3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_lrxwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_t68l4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_1dibh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_b2j6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6a4y2"]
+
+[node name="paper" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+mass = 0.01
+gravity_scale = 0.05
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+shaded = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_80pln")
+autoplay = "default"
+frame = 4
+frame_progress = 0.766355
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_6a4y2")
