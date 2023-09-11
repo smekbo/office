@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqbb88p4orgfa"
-path.s3tc="res://.godot/imported/assasin.png-e9511fd4758a9788db5415481be10bad.s3tc.ctex"
+uid="uid://bf7yw6x14o854"
+path.s3tc="res://.godot/imported/volkerpistol.png-c82f197657e5b45556fa15a2ac4f1b60.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/characters/assassins/assasin.png"
-dest_files=["res://.godot/imported/assasin.png-e9511fd4758a9788db5415481be10bad.s3tc.ctex"]
+source_file="res://art/props/pistol/volkerpistol.png"
+dest_files=["res://.godot/imported/volkerpistol.png-c82f197657e5b45556fa15a2ac4f1b60.s3tc.ctex"]
 
 [params]
 

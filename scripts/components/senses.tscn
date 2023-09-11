@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ncslnll5lr4"]
+
+[ext_resource type="Script" path="res://scripts/components/senses.gd" id="1_2uslm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_uai5u"]
+
+[node name="Senses" type="Node3D"]
+script = ExtResource("1_2uslm")
+
+[node name="Hearing" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 32768
+
+[node name="HearingSphere" type="CollisionShape3D" parent="Hearing"]
+shape = SubResource("SphereShape3D_uai5u")
+
+[connection signal="area_entered" from="Hearing" to="." method="_on_hearing_area_entered"]
+[connection signal="area_exited" from="Hearing" to="." method="_on_hearing_area_exited"]

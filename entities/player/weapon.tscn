@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://wlc4s2lsffk4"]
+[gd_scene load_steps=6 format=3 uid="uid://wlc4s2lsffk4"]
 
 [ext_resource type="Script" path="res://entities/player/weapon.gd" id="1_u2h6h"]
 [ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/vfx/weapon_impact.tscn" id="2_07p3e"]
 [ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://art/player/viewarms.glb" id="2_vl28s"]
+[ext_resource type="Script" path="res://entities/player/SoundRadius.gd" id="4_rfu55"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8wqp6"]
+size = Vector3(0.1, 0.1, 0.1)
 
 [node name="weapon" type="Node3D"]
 script = ExtResource("1_u2h6h")
@@ -35,5 +39,13 @@ bones/35/rotation = Quaternion(0.145526, -0.0932409, -0.0157596, 0.984825)
 
 [node name="AnimationPlayer" parent="viewarms" index="1"]
 autoplay = "fingerguns-pose-static"
+
+[node name="SoundRadius" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("4_rfu55")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundRadius"]
+shape = SubResource("BoxShape3D_8wqp6")
 
 [editable path="viewarms"]

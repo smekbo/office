@@ -21,19 +21,18 @@ func _physics_process(delta):
 	
 	if target:
 		nav_agent.target_position = target.global_transform.origin
-		var loc_next = nav_agent.get_next_path_position()
-		velocity_next = (loc_next - loc).normalized() * move_speed
-		
-		look_at(Vector3(loc_next.x, position.y, loc_next.z))
 		if nav_agent.distance_to_target() < 2 and swipe_timer <= 0:
 			animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 			if ray.is_colliding():
 				var player = ray.get_collider()
 				player.health.injure(10)
 			swipe_timer = animator.get_animation("attack-r-hand-chop").length
-	else:
-		nav_agent.target_position = loc
+	#else:
+	#	nav_agent.target_position = loc
+	var loc_next = nav_agent.get_next_path_position()
+	velocity_next = (loc_next - loc).normalized() * move_speed
 	
+	if global_transform.origin != loc_next: look_at(Vector3(loc_next.x, position.y, loc_next.z))
 	nav_agent.velocity = velocity_next
 	move_and_slide()
 	
@@ -59,3 +58,7 @@ func _on_health_component_died():
 
 func _on_health_component_took_damage():
 	health_bar.set_text(str("Enemy Health: ", health.health))
+
+func _on_senses_heard(location):
+	print("Debug: Signal heard, setting new target location")
+	nav_agent.target_position = location

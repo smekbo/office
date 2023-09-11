@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
+@onready var sound_col : Area3D = $SoundRadius
 @export var default_impact : PackedScene
 
 # damage variables
@@ -49,9 +50,11 @@ var reload_timer : float = 0	# reload timer
 var col_normal : Vector3
 var dir_normal : Vector3
 
+signal made_sound(location: Vector3)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # fire a single bullet
 func fire():
@@ -94,6 +97,7 @@ func fire():
 	ammo -= 1
 	shots_left -= 1
 	spread = min(spread_max, spread + spread_inc)
+	sound_col.emit_signal("sound_made", sound_col.global_transform.origin)
 
 # reload
 func _reload():
@@ -169,3 +173,5 @@ func _process(delta):
 		elif fire_timer <= 0 and shots_left > 0:
 			fire()
 			
+func _physics_process(delta):
+	sound_col.visible = false
