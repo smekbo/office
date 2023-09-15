@@ -1,7 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b72dbnj475t73"]
-
-[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://entities/vfx/weapon_impact.tscn" id="2_rtoow"]
-[ext_resource type="Texture2D" uid="uid://dy8ka86pv04y1" path="res://art/sprite/dust/debug-dust-single.png" id="3_26ffg"]
+[gd_scene load_steps=6 format=3 uid="uid://b72dbnj475t73"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkr2p"]
 albedo_color = Color(0.305882, 0.305882, 0.305882, 1)
@@ -20,9 +17,6 @@ size = Vector3(1.5, 2, 0.75)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xquu2"]
 points = PackedVector3Array(-0.75, -1, -0.375, -0.75, -1, 0.375, -0.75, 1, -0.375, 0.75, -1, -0.375, 0.75, -1, 0.375, -0.75, 1, 0.375, 0.75, 1, -0.375, 0.75, 1, 0.375)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ss0fn"]
-size = Vector3(1.50668, 2.00603, 0.760125)
 
 [node name="file_cabinet" type="RigidBody3D"]
 collision_layer = 2

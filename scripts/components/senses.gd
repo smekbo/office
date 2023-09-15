@@ -1,8 +1,11 @@
 extends Node
 
 signal heard(location: Vector3)
+signal saw(player: Object)
 
 @onready var hearing_area = $Hearing
+@onready var vision_area = $Vision
+@onready var vision_ray = $Vision/VisionRay
 
 func _ready():
 	pass
@@ -17,3 +20,18 @@ func _on_hearing_area_entered(area):
 func _on_hearing_area_exited(area):
 	area.disconnect("sound_made", heard_sound)
 	pass # Replace with function body.
+
+func _physics_process(delta):
+	# 
+	var overlapping = vision_area.get_overlapping_bodies()
+	if overlapping:
+		# print_debug("Debug: Player is in vision cone")
+		var player = overlapping[0]
+		vision_ray.target_position = vision_ray.to_local(player.global_transform.origin)
+		print_debug(str("Debug: Player is ", player))
+		var collided : Object = vision_ray.get_collider()
+		if collided:
+			var is_player = collided.get_collision_layer_value(1)
+			print_debug("Debug: Player is visible")
+			if is_player:
+				emit_signal("saw", collided)

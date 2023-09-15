@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1ncslnll5lr4"]
+[gd_scene load_steps=4 format=3 uid="uid://d1ncslnll5lr4"]
 
 [ext_resource type="Script" path="res://scripts/components/senses.gd" id="1_2uslm"]
+[ext_resource type="Shape3D" uid="uid://ci1w8g4rrpphg" path="res://scripts/components/visioncone.tres" id="2_m5uo2"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_uai5u"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_egbxv"]
+size = Vector3(7.36304, 3.77376, 9.67022)
 
 [node name="Senses" type="Node3D"]
 script = ExtResource("1_2uslm")
@@ -11,8 +13,20 @@ script = ExtResource("1_2uslm")
 collision_layer = 0
 collision_mask = 32768
 
-[node name="HearingSphere" type="CollisionShape3D" parent="Hearing"]
-shape = SubResource("SphereShape3D_uai5u")
+[node name="HearingRadius" type="CollisionShape3D" parent="Hearing"]
+shape = SubResource("BoxShape3D_egbxv")
+
+[node name="Vision" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="VisionField" type="CollisionShape3D" parent="Vision"]
+transform = Transform3D(1, 4.29378e-06, 2.7787e-05, -4.29378e-06, 1, 6.39009e-05, -2.7787e-05, -6.39009e-05, 1, -0.00173563, 0.00297892, 0.00387675)
+shape = ExtResource("2_m5uo2")
+
+[node name="VisionRay" type="RayCast3D" parent="Vision"]
+target_position = Vector3(0, 0, 500)
+collision_mask = 7
+debug_shape_custom_color = Color(0.647059, 0, 0, 1)
 
 [connection signal="area_entered" from="Hearing" to="." method="_on_hearing_area_entered"]
 [connection signal="area_exited" from="Hearing" to="." method="_on_hearing_area_exited"]

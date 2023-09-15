@@ -62,3 +62,7 @@ func _on_health_component_took_damage():
 func _on_senses_heard(location):
 	print("Debug: Signal heard, setting new target location")
 	nav_agent.target_position = location
+
+func _on_senses_saw(player):
+	print("Debug: Player seen, setting new target location")
+	nav_agent.target_position = player.global_transform.origin
