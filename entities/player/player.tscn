@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bgqffqcrj76oa"]
+[gd_scene load_steps=20 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_l1qma"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
 [ext_resource type="Texture2D" uid="uid://dft8dx0il33hh" path="res://art/player/Hmercenary_hmerc.png" id="3_kb2yu"]
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://art/player/Hmercenary.glb" id="3_o0dom"]
+[ext_resource type="Texture2D" uid="uid://da16cgkalgvao" path="res://art/ui/ui_blood_3.png" id="5_21y5o"]
 [ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://scripts/components/health_component.tscn" id="5_efvsp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
@@ -53,6 +54,26 @@ nodes/BlendSpace2D/position = Vector2(-180, 100)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_13fad")
 nodes/OneShot/position = Vector2(80, 200)
 node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"BlendSpace2D", &"OneShot", 1, &"Animation"]
+
+[sub_resource type="Animation" id="Animation_mbtta"]
+resource_name = "hurt_screen"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6uaw"]
+_data = {
+"hurt_screen": SubResource("Animation_mbtta")
+}
 
 [node name="player" type="CharacterBody3D"]
 collision_mask = 2
@@ -263,9 +284,22 @@ offset_top = 4.5
 offset_right = 10.5
 offset_bottom = 5.5
 
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 647.0
+texture = ExtResource("5_21y5o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
+libraries = {
+"": SubResource("AnimationLibrary_l6uaw")
+}
+
 [node name="HealthComponent" parent="." instance=ExtResource("5_efvsp")]
 armor = 0
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
 
 [editable path="Hmercenary"]
