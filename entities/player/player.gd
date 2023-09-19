@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
 @onready var weapon = $cam_pivot/Camera3D/weapon
 @onready var health = $HealthComponent
+@onready var ui_animation : AnimationPlayer = $Control/AnimationPlayer
 var smooth_animation_input : Vector2 
 
 var mouse_delta : Vector2 = Vector2()
@@ -144,3 +145,7 @@ func process_camera(delta):
 
 func _on_health_component_died():
 	pass # Replace with function body.
+
+func _on_health_component_took_damage():
+	ui_animation.stop()
+	ui_animation.play("hurt_screen")
