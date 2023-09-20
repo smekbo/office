@@ -19,18 +19,22 @@ func _physics_process(delta):
 	var velocity_next = Vector3.ZERO
 	var loc = global_transform.origin
 	
-	if target:
-		nav_agent.target_position = target.global_transform.origin
-		if nav_agent.distance_to_target() < 2 and swipe_timer <= 0:
-			animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-			if ray.is_colliding():
-				var player = ray.get_collider()
-				player.health.injure(10)
-			swipe_timer = animator.get_animation("attack-r-hand-chop").length
-	#else:
-	#	nav_agent.target_position = loc
 	var loc_next = nav_agent.get_next_path_position()
 	velocity_next = (loc_next - loc).normalized() * move_speed
+	
+	if target:
+		var distance = (target.global_transform.origin - global_transform.origin).length()
+		# nav_agent.target_position = target.global_transform.origin
+		if distance < 1.5:
+			velocity_next = Vector3.ZERO
+			if swipe_timer <= 0:
+				animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+				if ray.is_colliding():
+					var player = ray.get_collider()
+					player.health.injure(10)
+				swipe_timer = animator.get_animation("attack-r-hand-chop").length
+	else:
+		nav_agent.target_position = loc
 	
 	if global_transform.origin != loc_next: look_at(Vector3(loc_next.x, position.y, loc_next.z))
 	nav_agent.velocity = velocity_next
@@ -43,8 +47,9 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		velocity = Vector3.ZERO
 	velocity.y = -9.8
 	
-	# animation
-	animation_tree["parameters/BlendSpace1D/blend_position"] = velocity.y + velocity.x
+	# walk blend
+	var blendval = max(min(1, abs(velocity.x) + abs(velocity.z)), 0)
+	animation_tree["parameters/BlendSpace1D/blend_position"] = velocity.x + velocity.z
 	
 	move_and_slide()
 
@@ -58,6 +63,7 @@ func _on_health_component_died():
 
 func _on_health_component_took_damage():
 	health_bar.set_text(str("Enemy Health: ", health.health))
+	
 
 func _on_senses_heard(location):
 	nav_agent.target_position = location
