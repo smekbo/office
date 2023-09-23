@@ -45,7 +45,6 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		velocity = velocity.move_toward(safe_velocity, 0.25)
 	else:
 		velocity = Vector3.ZERO
-	velocity.y = -9.8
 	
 	# walk blend
 	var blendval = max(min(1, abs(velocity.x) + abs(velocity.z)), 0)
