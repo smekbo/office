@@ -119,6 +119,7 @@ func _physics_process(delta):
 	smooth_animation_input.y = move_toward(smooth_animation_input.y, input_dir.y, delta*2)
 	legs_animation["parameters/BlendSpace2D/blend_position"] = smooth_animation_input
 
+#demonstrating
 
 func kick():
 	var obj = kick_raycast.get_collider()
