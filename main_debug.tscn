@@ -65,7 +65,24 @@ light_energy = 0.341
 shadow_enabled = true
 
 [node name="SpotLight3D" type="SpotLight3D" parent="lighting"]
-transform = Transform3D(-0.55251, 0.352848, -0.755136, -0.0385573, 0.894186, 0.446032, 0.832614, 0.275553, -0.480442, 6.63345, 3.70415, -16.4393)
+transform = Transform3D(-0.658939, -0.358314, 0.66137, -0.0385573, 0.894186, 0.446032, -0.751208, 0.268407, -0.60303, 13.7174, 3.70415, -16.4393)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_cull_mask = 4294967291
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_reverse_cull_face = true
+shadow_blur = 0.0
+distance_fade_begin = 93.62
+distance_fade_shadow = 304.27
+distance_fade_length = 4096.0
+spot_range = 14.2519
+spot_angle = 28.1421
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="lighting"]
+transform = Transform3D(-0.96711, -0.145702, 0.208494, -0.0385573, 0.894186, 0.446032, -0.25142, 0.423323, -0.870394, 17.6687, 3.70415, -14.6513)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -126,11 +143,11 @@ material_override = ExtResource("3_ewhqg")
 [node name="wall" type="Node3D" parent="NavigationRegion3D/room_1"]
 
 [node name="Box3D" parent="NavigationRegion3D/room_1/wall" instance=ExtResource("1_0xdnh")]
-transform = Transform3D(32, 0, 0, 0, 4, 0, 0, 0, 0.5, 14.8217, 2.15548, 0)
+transform = Transform3D(32, 0, 0, 0, 5.67557, 0, 0, 0, 0.5, 14.8217, 2.37002, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
 
 [node name="Box3D3" parent="NavigationRegion3D/room_1/wall" instance=ExtResource("1_0xdnh")]
-transform = Transform3D(32, 0, 0, 0, 4, 0, 0, 0, 0.5, 14.8217, 2.18546, -17.5167)
+transform = Transform3D(32, 0, 0, 0, 5.56254, 0, 0, 0, 0.5, 14.8217, 2.18546, -17.5167)
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
 
 [node name="Box3D5" parent="NavigationRegion3D/room_1/wall" instance=ExtResource("1_0xdnh")]
@@ -138,12 +155,25 @@ transform = Transform3D(11.4594, 0, 0, 0, 4, 0, 0, 0, 0.5, 6.31258, 2.19303, -12
 surface_material_override/0 = SubResource("StandardMaterial3D_e0b7e")
 
 [node name="Box3D2" parent="NavigationRegion3D/room_1/wall" instance=ExtResource("1_0xdnh")]
-transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 4, 0, 32, 0, -2.18557e-08, -1.35813, 2.18546, -15.8603)
+transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 5.93912, 0, 32, 0, -2.18557e-08, -1.35813, 2.18546, -15.8603)
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
 
 [node name="Box3D4" parent="NavigationRegion3D/room_1/wall" instance=ExtResource("1_0xdnh")]
-transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 4, 0, 32, 0, -2.18557e-08, 23.9088, 2.18546, -15.8603)
+transform = Transform3D(-1.39876e-06, 0, -0.5, 0, 6.42395, 0, 32, 0, -2.18557e-08, 23.9088, 2.18546, -15.8603)
 surface_material_override/0 = SubResource("StandardMaterial3D_rlr5o")
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9727, -0.286147, -11.3691)
+end_position = Vector3(0, -1.3, 0)
 
 [node name="debug_enemy" parent="." instance=ExtResource("15_t0snf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -2.96512)
+
+[node name="debug_enemy2" parent="." instance=ExtResource("15_t0snf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -5.66881)
+
+[node name="debug_enemy3" parent="." instance=ExtResource("15_t0snf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19859, 0.261063, -2.96512)
+
+[node name="debug_enemy4" parent="." instance=ExtResource("15_t0snf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -4.35226)
