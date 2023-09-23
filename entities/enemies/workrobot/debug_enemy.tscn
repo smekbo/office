@@ -1,15 +1,15 @@
 [gd_scene load_steps=33 format=3 uid="uid://d28g38bg4fk5e"]
 
-[ext_resource type="Script" path="res://entities/enemies/debug_enemy.gd" id="1_46vso"]
-[ext_resource type="PackedScene" uid="uid://d3u7emkcijevm" path="res://art/characters/robot/workrobot.glb" id="2_31vh1"]
-[ext_resource type="Texture2D" uid="uid://d1bktw7rnsep1" path="res://art/characters/robot/workrobot.png" id="3_b5yxb"]
-[ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://scripts/components/health_component.tscn" id="4_upwrq"]
-[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/components/senses.tscn" id="5_ycvtj"]
+[ext_resource type="Script" path="res://entities/enemies/workrobot/debug_enemy.gd" id="1_2ehql"]
+[ext_resource type="PackedScene" uid="uid://d3u7emkcijevm" path="res://art/characters/robot/workrobot.glb" id="2_y7l0p"]
+[ext_resource type="Texture2D" uid="uid://d1bktw7rnsep1" path="res://art/characters/robot/workrobot.png" id="3_wunoe"]
+[ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://scripts/components/health_component.tscn" id="4_3w1uc"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/components/senses.tscn" id="5_3grxu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g17dp"]
-albedo_texture = ExtResource("3_b5yxb")
+albedo_texture = ExtResource("3_wunoe")
 metallic_specular = 0.0
 texture_filter = 0
 
@@ -75,7 +75,7 @@ height = 0.54954
 radius = 0.057421
 height = 0.480366
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k74do"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t731x"]
 animation = &"attack-r-hand-chop"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1lo87"]
@@ -105,26 +105,27 @@ point_count = 2
 
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3c52c"]
 filter_enabled = true
-filters = ["metarig/Skeleton3D:chest", "metarig/Skeleton3D:forearm.L", "metarig/Skeleton3D:forearm.R", "metarig/Skeleton3D:hand.R", "metarig/Skeleton3D:neck", "metarig/Skeleton3D:spine", "metarig/Skeleton3D:upper_arm.L", "metarig/Skeleton3D:upper_arm.R"]
+filters = ["..", "metarig/Skeleton3D:chest", "metarig/Skeleton3D:forearm.L", "metarig/Skeleton3D:forearm.R", "metarig/Skeleton3D:hand.R", "metarig/Skeleton3D:neck", "metarig/Skeleton3D:spine", "metarig/Skeleton3D:upper_arm.L", "metarig/Skeleton3D:upper_arm.R"]
 fadein_time = 0.2
 fadein_curve = SubResource("Curve_w2wjn")
 fadeout_time = 0.2
 fadeout_curve = SubResource("Curve_15fh4")
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_neha0"]
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_k74do")
-"nodes/Animation 2/position" = Vector2(-220.64, 283.45)
+graph_offset = Vector2(-1016.3, 84.3411)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_t731x")
+nodes/Animation/position = Vector2(-240, 280)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_01h7g")
 nodes/BlendSpace1D/position = Vector2(-220, 100)
 nodes/output/position = Vector2(300, 140)
 nodes/swipe/node = SubResource("AnimationNodeOneShot_3c52c")
 nodes/swipe/position = Vector2(60, 120)
-node_connections = [&"output", 0, &"swipe", &"swipe", 0, &"BlendSpace1D", &"swipe", 1, &"Animation 2"]
+node_connections = [&"output", 0, &"swipe", &"swipe", 0, &"BlendSpace1D", &"swipe", 1, &"Animation"]
 
 [node name="debug_enemy" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_46vso")
+script = ExtResource("1_2ehql")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -135,7 +136,7 @@ path_height_offset = 0.1
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="workrobot" parent="." instance=ExtResource("2_31vh1")]
+[node name="workrobot" parent="." instance=ExtResource("2_y7l0p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="workrobot/metarig" index="0"]
@@ -347,7 +348,6 @@ joint_constraints/angular_limit_relaxation = 1.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="workrobot/metarig/Skeleton3D/Physical Bone upper_arm_R"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_xsyxr")
-
 [node name="Physical Bone forearm_R" type="PhysicalBone3D" parent="workrobot/metarig/Skeleton3D" index="11"]
 transform = Transform3D(-0.990226, 0.111028, 0.0280299, 0.0823766, 0.515668, 0.855104, 0.0785538, 0.848076, -0.519263, -0.264085, 0.907645, 0.22057)
 collision_layer = 8
@@ -470,15 +470,15 @@ autoplay = "walk"
 tree_root = SubResource("AnimationNodeBlendTree_neha0")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/BlendSpace1D/blend_position = 1.0
+parameters/BlendSpace1D/blend_position = 0.0
 parameters/swipe/active = false
 parameters/swipe/internal_active = false
 parameters/swipe/request = 0
 
-[node name="HealthComponent" parent="." instance=ExtResource("4_upwrq")]
+[node name="HealthComponent" parent="." instance=ExtResource("4_3w1uc")]
 armor = 0
 
-[node name="Senses" parent="." instance=ExtResource("5_ycvtj")]
+[node name="Senses" parent="." instance=ExtResource("5_3grxu")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 1.11612, 0)
 
 [node name="Control" type="Control" parent="."]

@@ -18,7 +18,6 @@ func _physics_process(delta):
 	
 	var velocity_next = Vector3.ZERO
 	var loc = global_transform.origin
-	
 	var loc_next = nav_agent.get_next_path_position()
 	velocity_next = (loc_next - loc).normalized() * move_speed
 	
@@ -45,7 +44,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		velocity = velocity.move_toward(safe_velocity, 0.25)
 	else:
 		velocity = Vector3.ZERO
-	
+		
 	# walk blend
 	var blendval = max(min(1, abs(velocity.x) + abs(velocity.z)), 0)
 	animation_tree["parameters/BlendSpace1D/blend_position"] = velocity.x + velocity.z
@@ -70,3 +69,8 @@ func _on_senses_heard(location):
 func _on_senses_saw(player):
 	if target != player: target = player
 	nav_agent.target_position = player.global_transform.origin
+
+func attack():
+	if ray.is_colliding():
+		var player = ray.get_collider()
+		player.health.injure(10)

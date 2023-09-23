@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://damjktw77vjuv" path="res://levels/static/materials/ceiling-drop.tres" id="3_ewhqg"]
 [ext_resource type="Texture2D" uid="uid://df1o36xlwgpcq" path="res://levels/static/textures/wall/hall-blue.png" id="4_fgkia"]
 [ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/player.tscn" id="8_s0vle"]
-[ext_resource type="PackedScene" uid="uid://d28g38bg4fk5e" path="res://entities/enemies/debug_enemy.tscn" id="15_t0snf"]
+[ext_resource type="PackedScene" uid="uid://d28g38bg4fk5e" path="res://entities/enemies/workrobot/debug_enemy.tscn" id="15_t0snf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
 sky_top_color = Color(1, 0.85098, 0.827451, 1)
@@ -43,7 +43,7 @@ uv1_scale = Vector3(8, 2, 1)
 [node name="fear_fps_main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("8_s0vle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9027, 0.121578, -2.18199)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85532, 0.121578, -2.63643)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vafh1")
@@ -167,13 +167,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9727, -0.286147, -11.3691)
 end_position = Vector3(0, -1.3, 0)
 
 [node name="debug_enemy" parent="." instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -2.96512)
+transform = Transform3D(-0.999813, 0, 0.0193371, 0, 1, 0, -0.0193371, 0, -0.999813, 5.09922, 0.261063, -10.7446)
 
 [node name="debug_enemy2" parent="." instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -5.66881)
+transform = Transform3D(-0.999813, 0, 0.0193371, 0, 1, 0, -0.0193371, 0, -0.999813, 4.04537, 0.261063, -11.3571)
 
 [node name="debug_enemy3" parent="." instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19859, 0.261063, -2.96512)
+transform = Transform3D(-0.999813, 0, 0.0193371, 0, 1, 0, -0.0193371, 0, -0.999813, 6.31652, 0.261063, -10.7211)
 
 [node name="debug_enemy4" parent="." instance=ExtResource("15_t0snf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.41612, 0.261063, -4.35226)
+transform = Transform3D(-0.999813, 0, 0.0193371, 0, 1, 0, -0.0193371, 0, -0.999813, 7.57892, 0.261063, -11.0977)
