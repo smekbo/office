@@ -1,51 +1,79 @@
 extends Node3D
+class_name Weapon
+
+## Class / scene for all player weapons.
 
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
 @onready var sound_col : Area3D = $SoundRadius
 @export var default_impact : PackedScene
 
-# damage variables
+# Variables related to damage.
 @export_group("Damage")
-@export var damage : int = 10		# base damage
-@export var damage_pen : int = 3	# how much the damage penetrates armor
-@export var force : float = 2.5		# how much impulse force is applied on hit
+## Base weapon damage.
+@export var damage : int = 10
+## Damage penetration, expressed as a percentage ([code]penetration / 100[/code]).
+@export var penetration : int = 3
+## How much impulse force is applied on hit to objects.
+@export var force : float = 2.5
 
-# firing variables
+## Variables related to firing.
 @export_group("Firing")
-var firing : bool = false		# is this weapon firing? used for burst
-@export var fire_speed : float = 0.1	# time between shots; "rounds per minute"
-@export var fire_delay: float = 1	# time before you can pull the trigger again; ignored for automatic weapons
-var fire_timer : float = 0	# firing timer
-var fire_cooldown : float = 0	# firing delay timer
-# number of shots fired before firing cooldown happens (each trigger pull)
-# 0 or lower for automatic, 1 for semi, 2+ for burst
+## Is this weapon firing? Used in burst-fire weapons.
+var firing : bool = false
+## Time in seconds between shots. 
+## To get RPM, use the following formula: [cose](1 / fire_speed) * 60[/code].
+@export var fire_speed : float = 0.1
+## Time before you can pull the trigger again; ignored for automatic weapons.
+@export var fire_delay: float = 1
+## Firing timer.
+var fire_timer : float = 0
+## Fire delay timer.
+var fire_cooldown : float = 0
+## Number of shots fired before firing cooldown happens (each trigger pull).
+## 0 or lower for automatic, 1 for semi, 2+ for burst.
 @export var shots : int = 3
+## Number of shots left in the current burst.
 var shots_left : int = 0
 
-# spread variables
+## Variables related to spread.
 @export_group("Spread")
-var spread : float = 0		# our current spread
-@export var spread_min : float = 0	# minimum spread value
-@export var spread_max : float = 3	# maximum spread value
-@export var spread_inc : float = 0.1	# how much the spread increases per shot
-@export var spread_dec : float = 0.05	# how much the spread decreases to minimum each second
-@export var spread_scalar : float = 1	# the spread scalar; "accuracy"
+## Current spread.
+var spread : float = 0
+## Minimum spread value (0 or greater).
+@export var spread_min : float = 0
+## Maximum spread value (0 or greater).
+@export var spread_max : float = 3
+## How much the spread increases per shot.
+@export var spread_inc : float = 0.1
+## How much the spread decreases each second; "resting" time.
+@export var spread_dec : float = 0.05
+## The spread scalar; "accuracy".
+@export var spread_scalar : float = 1
 
-# ammo variables
+## Variables related to ammo
 @export_group("Ammo")
-@export var ammo : int = 5		# current ammo
-@export var ammo_max : int = 15	# mag capacity
-var ammo_reload : int = 0	# amount of ammo to reload
-@export var reserve : int = 23	# current reserves
-@export var reserve_max : int = 60	# reserve capacity; if -1, infinite ammo
+## Current ammo.
+@export var ammo : int = 5
+## Magazine capacity.
+@export var ammo_max : int = 15
+## Current reserves.
+@export var reserve : int = 23
+## Reserve capacity; if -1, infinite ammo.
+@export var reserve_max : int = 60
+## Amount of ammo left to reload; used in progressive reloads.
+var ammo_reload : int = 0
 
-# reload variables
+## Variables related to reloading
 @export_group("Reloading")
-var reloading : bool = false	# is this weapon reloading?
-@export var reload_num : int = 1	# number of shots attempted to load per reload. if less than mag size, will do "progressive" reloads
-@export var reload_speed : float = 0.1	# how fast in seconds does this weapon reload (TODO: make this animation-driven)
-var reload_timer : float = 0	# reload timer
+## Number of shots attempted to load per reload. If less than [param ammo_max], will perform "progressive" reloads (like a tube-fed shotgun).
+@export var reload_num : int = 1
+## How fast in seconds does this weapon reload (TODO: make this animation-driven)
+@export var reload_speed : float = 0.1
+## Reload timer.
+var reload_timer : float = 0
+## Is this weapon reloading?
+var reloading : bool = false
 
 var col_normal : Vector3
 var dir_normal : Vector3
@@ -75,11 +103,13 @@ func fire():
 		if col.is_class("RigidBody3D"):
 			col.apply_impulse(dir_normal * force)
 		
+		var h_comp = col.get("health")
+		
 		# health damage
-		var h_comp = col.get_node_or_null("HealthComponent")
 		if h_comp != null: 
-			if h_comp.alive == false: ray.add_exception(col)
-			else: h_comp.injure(damage, damage_pen)
+			if h_comp.alive == false: 
+				ray.add_exception(col)
+			else: h_comp.injure(damage, penetration)
 		
 		# impact effect
 		if not col.is_class("CharacterBody3D"):

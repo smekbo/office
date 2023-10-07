@@ -1,12 +1,12 @@
 extends CharacterBody3D
 
-@onready var camera : Node3D = $cam_pivot
+@export var health : Resource
 
+@onready var camera : Node3D = $cam_pivot
 @onready var kick_raycast : RayCast3D = $cam_pivot/Camera3D/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
 @onready var weapon = $cam_pivot/Camera3D/weapon
-@onready var health = $HealthComponent
 @onready var ui_animation : AnimationPlayer = $Control/AnimationPlayer
 var smooth_animation_input : Vector2 
 
@@ -34,7 +34,11 @@ func _input(event):
 		mouse_delta = event.relative
 
 func _ready():
-	$Control/Health.set_text(str("health ", snapped(health.health, 1)))
+	health._ready()
+	$Control/Health.set_text(str("health ", snapped(health.health, 1), " armor ", snapped(health.armor, 1)))
+	health.connect("injured", _on_health_injured)
+	health.connect("healed", _on_health_healed)
+	health.connect("died", _on_health_died)
 
 func _process(delta):
 	
@@ -65,7 +69,7 @@ func _process(delta):
 	$Control/Ammo2.set_text(str("progressive ", not weapon.reload_num >= weapon.ammo_max, " missing ", weapon.ammo_reload))
 	$Control/Refire.set_text(str("refire ", snapped(weapon.fire_timer, .01), " cooldown ", snapped(weapon.fire_cooldown, .01)))
 	$Control/Spread.set_text(str("spread ", snapped(weapon.spread, .01)))
-	$Control/Health.set_text(str("health ", snapped(health.health, 1)))
+	$Control/Health.set_text(str("health ", snapped(health.health, 1), " armor ", snapped(health.armor, 1)))
 	$Control/DebugNormals.set_text(str("direction ", weapon.dir_normal, " collision ", weapon.col_normal))
 	
 	$Control/crosshair/u_cross.position = Vector2(2, -2-(weapon.spread*2))
@@ -144,9 +148,12 @@ func process_camera(delta):
 	
 	mouse_delta = Vector2()
 
-func _on_health_component_died():
-	pass # Replace with function body.
-
-func _on_health_component_took_damage():
+func _on_health_injured(amount, source):
 	ui_animation.stop()
 	ui_animation.play("hurt_screen")
+
+func _on_health_healed(amount, source):
+	pass
+
+func _on_health_died(killer):
+	pass

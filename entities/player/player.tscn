@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_l1qma"]
+[ext_resource type="Resource" uid="uid://cnlahc7n2hwm" path="res://entities/player/PlayerHealth.tres" id="2_sj02o"]
 [ext_resource type="PackedScene" uid="uid://wlc4s2lsffk4" path="res://entities/player/weapon.tscn" id="3_4olqu"]
 [ext_resource type="Texture2D" uid="uid://dft8dx0il33hh" path="res://art/player/Hmercenary_hmerc.png" id="3_kb2yu"]
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://art/player/Hmercenary.glb" id="3_o0dom"]
 [ext_resource type="Texture2D" uid="uid://da16cgkalgvao" path="res://art/ui/ui_blood_3.png" id="5_21y5o"]
-[ext_resource type="PackedScene" uid="uid://dul7urrhl15ea" path="res://scripts/components/health_component.tscn" id="5_efvsp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
 
@@ -79,6 +79,7 @@ _data = {
 [node name="player" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("1_l1qma")
+health = ExtResource("2_sj02o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -159,8 +160,7 @@ collision_mask = 6
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.100314, 0)
 force = 5.0
 shots = 0
-reserve_max = -1
-reload_num = 15
+reload_num = 100
 reload_speed = 2.0
 
 [node name="Control" type="Control" parent="."]
@@ -296,11 +296,5 @@ texture = ExtResource("5_21y5o")
 libraries = {
 "": SubResource("AnimationLibrary_l6uaw")
 }
-
-[node name="HealthComponent" parent="." instance=ExtResource("5_efvsp")]
-armor = 0
-
-[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
-[connection signal="took_damage" from="HealthComponent" to="." method="_on_health_component_took_damage"]
 
 [editable path="Hmercenary"]
