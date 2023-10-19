@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx3y8taqkicib"
-path.s3tc="res://.godot/imported/Squarehead.png-724a7f2dc153032925e9568b59230235.s3tc.ctex"
+path.s3tc="res://.godot/imported/Squarehead.png-e821143a0b55dc2f45c4b5aeb938f093.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://art/characters/security/Squarehead.png"
-dest_files=["res://.godot/imported/Squarehead.png-724a7f2dc153032925e9568b59230235.s3tc.ctex"]
+source_file="res://entities/enemies/workrobot/Squarehead.png"
+dest_files=["res://.godot/imported/Squarehead.png-e821143a0b55dc2f45c4b5aeb938f093.s3tc.ctex"]
 
 [params]
 

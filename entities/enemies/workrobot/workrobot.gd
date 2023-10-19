@@ -7,8 +7,13 @@ extends CharacterBody3D
 @onready var health_bar : Label = $Control/Health
 @onready var ray : RayCast3D = $RayCast3D
 
+## The health component for this enemy. Governs health, armor, injury, and healing.
 @export var health : Resource
-@export var target : CharacterBody3D
+## The amount of time (in [param seconds]) that this NPC will continue tracking a target it can't see.
+@export var intuition : float = 3.0
+var intuition_timer : float = 0.0
+var target : CharacterBody3D
+## NPC's move speed in units/s
 @export var move_speed = 1.0
 @export var turn_speed = 0.1
 var swipe_timer : float = 1.0
@@ -21,7 +26,9 @@ func _ready():
 	health.connect("died", _on_health_died)
 
 func _physics_process(delta):
+	# timers
 	swipe_timer = max(swipe_timer - delta, 0)
+	intuition_timer = max(intuition_timer - delta, 0)
 	
 	var velocity_next = Vector3.ZERO
 	var loc = global_transform.origin
@@ -30,22 +37,23 @@ func _physics_process(delta):
 	
 	if target:
 		var distance = (target.global_transform.origin - global_transform.origin).length()
-		# nav_agent.target_position = target.global_transform.origin
+		nav_agent.target_position = target.global_transform.origin
 		if distance < 1.5:
 			velocity_next = Vector3.ZERO
 			if swipe_timer <= 0:
 				animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 				if ray.is_colliding():
 					var player = ray.get_collider()
-					player.health.injure(10)
 				swipe_timer = animator.get_animation("attack-r-hand-chop").length
-	else:
-		nav_agent.target_position = loc
 	
-	if global_transform.origin != loc_next: look_at(Vector3(loc_next.x, position.y, loc_next.z))
+	if global_transform.origin != loc_next: 
+		look_at(Vector3(loc_next.x, position.y, loc_next.z))
 	nav_agent.velocity = velocity_next
 	move_and_slide()
 	
+	# conditionals to alter NPC behavior
+	if intuition_timer <= 0: target = null
+
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	if health.alive:
 		velocity = velocity.move_toward(safe_velocity, 0.25)
@@ -78,6 +86,7 @@ func _on_senses_heard(location):
 func _on_senses_saw(player):
 	if target != player: target = player
 	nav_agent.target_position = player.global_transform.origin
+	intuition_timer = intuition
 
 func attack():
 	if ray.is_colliding():
