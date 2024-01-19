@@ -4,7 +4,7 @@ class_name Weapon
 ## Class / scene for all player weapons.
 
 @onready var ray : RayCast3D = $RayCast3D
-@onready var animation : AnimationPlayer = $viewarms/AnimationPlayer
+@onready var animation : AnimationPlayer = $"viewmodel-pistol/AnimationPlayer"
 @onready var sound_col : Area3D = $SoundRadius
 @export var default_impact : PackedScene
 

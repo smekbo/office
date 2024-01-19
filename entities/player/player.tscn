@@ -89,9 +89,9 @@ shape = SubResource("CapsuleShape3D_kl5tv")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.02871, 0.00629519)
 
 [node name="Skeleton3D" parent="Hmercenary/metarig" index="0"]
-bones/4/rotation = Quaternion(0.00873904, -0.137109, 0.990433, 0.0129228)
+bones/4/rotation = Quaternion(-0.00873904, 0.137109, -0.990433, -0.0129228)
 bones/4/scale = Vector3(0, 0, 0)
-bones/6/rotation = Quaternion(0.701319, 0.128465, 0.57177, 0.405866)
+bones/6/rotation = Quaternion(-0.701319, -0.128465, -0.57177, -0.405866)
 bones/6/scale = Vector3(0, 0, 0)
 bones/7/position = Vector3(-2.19655, -1.61037, 22.8066)
 bones/7/rotation = Quaternion(0.0140584, 0.021578, -0.999218, -0.0300139)
@@ -111,7 +111,7 @@ bones/11/scale = Vector3(0, 0, 0)
 bones/12/position = Vector3(-0.730561, -7.22183, 21.6544)
 bones/12/rotation = Quaternion(0.0103495, 0.13913, -0.9902, -0.00634012)
 bones/12/scale = Vector3(0, 0, 0)
-bones/14/rotation = Quaternion(0.701319, -0.128465, -0.57177, 0.405866)
+bones/14/rotation = Quaternion(-0.701319, 0.128465, 0.57177, -0.405866)
 bones/14/scale = Vector3(0, 0, 0)
 bones/15/position = Vector3(2.19655, -1.61037, 22.8066)
 bones/15/rotation = Quaternion(0.0140584, -0.021578, 0.999218, -0.0300139)
@@ -131,6 +131,10 @@ bones/19/scale = Vector3(0, 0, 0)
 bones/20/position = Vector3(0.730561, -7.22183, 21.6544)
 bones/20/rotation = Quaternion(0.0103495, -0.13913, 0.9902, -0.00634012)
 bones/20/scale = Vector3(0, 0, 0)
+bones/21/rotation = Quaternion(0.993191, 0.013469, -0.0033103, 0.115666)
+bones/23/rotation = Quaternion(-0.604893, -0.0158916, 0.00789961, 0.796109)
+bones/24/rotation = Quaternion(0.993191, -0.013469, 0.0033103, 0.115666)
+bones/26/rotation = Quaternion(-0.604893, 0.0158916, -0.00789961, 0.796109)
 
 [node name="OBJ0000185_001" parent="Hmercenary/metarig/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_8hymg")
@@ -157,11 +161,17 @@ target_position = Vector3(0, -3, 0)
 collision_mask = 6
 
 [node name="weapon" parent="cam_pivot/Camera3D" instance=ExtResource("3_4olqu")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.100314, 0)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.731843, 0.176275)
 force = 5.0
 shots = 0
 reload_num = 100
 reload_speed = 2.0
+
+[node name="RayCast3D" parent="cam_pivot/Camera3D/weapon" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45658, 0)
+
+[node name="viewmodel-pistol" parent="cam_pivot/Camera3D/weapon" index="1"]
+transform = Transform3D(1, 2.11685e-08, 1.4912e-09, -2.11685e-08, 0.990124, 0.140193, 1.4912e-09, -0.140193, 0.990124, -0.0575105, 0.107976, 0.15389)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -298,3 +308,6 @@ libraries = {
 }
 
 [editable path="Hmercenary"]
+[editable path="cam_pivot/Camera3D/weapon"]
+[editable path="cam_pivot/Camera3D/weapon/viewmodel-pistol"]
+[editable path="cam_pivot/Camera3D/weapon/viewarms"]
