@@ -82,6 +82,7 @@ signal made_sound(location: Vector3)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	animation.play("idle_pose")
 	pass
 
 # fire a single bullet
@@ -122,7 +123,7 @@ func fire():
 				new_impact.start(col, col_point, col_normal)
 	
 	animation.stop()
-	animation.play("fire")
+	animation.play("fire_2")
 	fire_timer = fire_speed
 	ammo -= 1
 	shots_left -= 1
@@ -162,6 +163,9 @@ func start_reload():
 		var missing = ammo_max - ammo
 		ammo_reload = min(reserve, missing)
 		reloading = true
+		animation.play("reload_2")
+		reload_speed = animation.current_animation_length
+		
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
