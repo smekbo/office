@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d21cwuke2l0y2"]
+
+[ext_resource type="Texture2D" uid="uid://beuftok43iybf" path="res://art/weapons/volkerpistol.png" id="1_s7y1q"]
+
+[resource]
+albedo_texture = ExtResource("1_s7y1q")
+metallic_specular = 0.0
+texture_filter = 0
