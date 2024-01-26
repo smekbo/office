@@ -1,11 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctt64a6xxbamg"]
+[gd_scene load_steps=18 format=3 uid="uid://ctt64a6xxbamg"]
 
 [ext_resource type="Script" path="res://entities/enemies/workrobot/workrobot-blend.gd" id="1_og3fy"]
 [ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://entities/enemies/workrobot/workrobot-model.tscn" id="2_br7vh"]
 [ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://entities/enemies/workrobot/WorkrobotHealth.tres" id="2_d5wim"]
+[ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://art/characters/robot/animations/workrobot_library.res" id="4_j5qk4"]
 [ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/resources/senses.tscn" id="6_5k8up"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ps7f"]
+animation = &"workrobot_library/abrupt_poweroff"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t731x"]
+animation = &"workrobot_library/attack-r-hand-chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fqf08"]
+animation = &"workrobot_library/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kkwih"]
+animation = &"workrobot_library/walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ifjba"]
+animation = &"workrobot_library/walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_01h7g"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_fqf08")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_kkwih")
+blend_point_1/pos = 0.6
+blend_point_2/node = SubResource("AnimationNodeAnimation_ifjba")
+blend_point_2/pos = -0.6
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_d2177"]
+
+[sub_resource type="Curve" id="Curve_dumbx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2miwo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3c52c"]
+filter_enabled = true
+filters = ["..", "metarig/Skeleton3D:chest", "metarig/Skeleton3D:forearm.L", "metarig/Skeleton3D:forearm.R", "metarig/Skeleton3D:hand.R", "metarig/Skeleton3D:neck", "metarig/Skeleton3D:spine", "metarig/Skeleton3D:upper_arm.L", "metarig/Skeleton3D:upper_arm.R"]
+fadein_time = 0.2
+fadein_curve = SubResource("Curve_dumbx")
+fadeout_time = 0.2
+fadeout_curve = SubResource("Curve_2miwo")
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cbttx"]
+graph_offset = Vector2(-885.022, 34.2478)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_t731x")
+nodes/Animation/position = Vector2(-240, 180)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0ps7f")
+"nodes/Animation 2/position" = Vector2(-120, 360)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_01h7g")
+nodes/BlendSpace1D/position = Vector2(-240, 40)
+nodes/die/node = SubResource("AnimationNodeOneShot_d2177")
+nodes/die/position = Vector2(220, 220)
+nodes/output/position = Vector2(400, 220)
+nodes/swipe/node = SubResource("AnimationNodeOneShot_3c52c")
+nodes/swipe/position = Vector2(60, 40)
+node_connections = [&"die", 0, &"swipe", &"die", 1, &"Animation 2", &"output", 0, &"die", &"swipe", 0, &"BlendSpace1D", &"swipe", 1, &"Animation"]
 
 [node name="workrobot" type="CharacterBody3D"]
 collision_layer = 8
@@ -23,7 +80,25 @@ avoidance_enabled = true
 debug_enabled = true
 
 [node name="workrobot-model" parent="." instance=ExtResource("2_br7vh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="workrobot-model"]
+libraries = {
+"workrobot_library": ExtResource("4_j5qk4")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="workrobot-model"]
+libraries = {
+"workrobot_library": ExtResource("4_j5qk4")
+}
+tree_root = SubResource("AnimationNodeBlendTree_cbttx")
+anim_player = NodePath("../AnimationPlayer2")
+parameters/BlendSpace1D/blend_position = 0.0
+parameters/die/active = false
+parameters/die/internal_active = false
+parameters/die/request = 0
+parameters/swipe/active = false
+parameters/swipe/internal_active = false
+parameters/swipe/request = 0
 
 [node name="Senses" parent="." instance=ExtResource("6_5k8up")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.11612, 0)

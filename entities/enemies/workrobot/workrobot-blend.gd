@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
-@onready var animator : AnimationPlayer = $"workrobot-model"/AnimationPlayer
-@onready var animation_tree : AnimationTree = $"workrobot-model"/AnimationTree
+@onready var animator : AnimationPlayer = $"workrobot-model/AnimationPlayer"
+@onready var animation_tree : AnimationTree = $"workrobot-model/AnimationTree"
 @onready var skeleton : Skeleton3D = $"workrobot-model"/metarig/Skeleton3D
 @onready var health_bar : Label = $Control/Health
 @onready var ray : RayCast3D = $RayCast3D
@@ -78,8 +78,7 @@ func _on_health_died(_killer):
 	collision_layer = 32
 	target = null
 	nav_agent.velocity = Vector3.ZERO
-	animator.stop()
-	skeleton.physical_bones_start_simulation()
+	animation_tree.set("parameters/die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _on_senses_heard(location):
 	nav_agent.target_position = location
@@ -88,6 +87,10 @@ func _on_senses_saw(player):
 	if target != player: target = player
 	nav_agent.target_position = player.global_transform.origin
 	intuition_timer = intuition
+
+func _ragdoll():
+	print("ragdoll")
+	skeleton.physical_bones_start_simulation()
 
 func attack():
 	if ray.is_colliding():
