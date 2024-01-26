@@ -22,7 +22,7 @@ func _on_hearing_area_exited(area):
 	# disconnect sound from hearing when exiting area
 	area.disconnect("sound_made", heard_sound)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# does all the vision processing
 	# start with overlapping bodies (anything in layer 1)
 	var overlapping = vision_area.get_overlapping_bodies()

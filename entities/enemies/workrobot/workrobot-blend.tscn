@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctt64a6xxbamg"]
+
+[ext_resource type="Script" path="res://entities/enemies/workrobot/workrobot-blend.gd" id="1_og3fy"]
+[ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://entities/enemies/workrobot/workrobot-model.tscn" id="2_br7vh"]
+[ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://entities/enemies/workrobot/WorkrobotHealth.tres" id="2_d5wim"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/resources/senses.tscn" id="6_5k8up"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
+
+[node name="workrobot" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_og3fy")
+health = ExtResource("2_d5wim")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jqdnr")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="workrobot-model" parent="." instance=ExtResource("2_br7vh")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Senses" parent="." instance=ExtResource("6_5k8up")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.11612, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Health"
+metadata/_edit_use_anchors_ = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37221, 0)
+target_position = Vector3(0, 0, 1)
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="heard" from="Senses" to="." method="_on_senses_heard"]
+[connection signal="saw" from="Senses" to="." method="_on_senses_saw"]

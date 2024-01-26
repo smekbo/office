@@ -97,7 +97,7 @@ func fire():
 		col_normal = ray.get_collision_normal()
 		var dir : Vector3 = col_point - ray.global_position
 		dir_normal = dir.normalized()
-		var dir_reflect : Vector3 = dir_normal.reflect(col_normal)
+		var _dir_reflect : Vector3 = dir_normal.reflect(col_normal)
 		var impact : WeaponImpact = col.get_node_or_null("weapon_impact")
 		
 		# impact impulse
@@ -207,5 +207,5 @@ func _process(delta):
 		elif fire_timer <= 0 and shots_left > 0:
 			fire()
 			
-func _physics_process(delta):
+func _physics_process(_delta):
 	sound_col.visible = false

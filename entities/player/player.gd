@@ -148,12 +148,12 @@ func process_camera(delta):
 	
 	mouse_delta = Vector2()
 
-func _on_health_injured(amount, source):
+func _on_health_injured(_amount, _source):
 	ui_animation.stop()
 	ui_animation.play("hurt_screen")
 
-func _on_health_healed(amount, source):
+func _on_health_healed(_amount, _source):
 	pass
 
-func _on_health_died(killer):
+func _on_health_died(_killer):
 	pass

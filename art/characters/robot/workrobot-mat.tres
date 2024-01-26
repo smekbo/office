@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bv3qbogjogddg"]
+
+[ext_resource type="Texture2D" uid="uid://d1bktw7rnsep1" path="res://art/characters/robot/workrobot.png" id="1_rq51f"]
+
+[resource]
+albedo_texture = ExtResource("1_rq51f")
+metallic_specular = 0.0
+texture_filter = 0
