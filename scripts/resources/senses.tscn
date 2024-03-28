@@ -18,6 +18,7 @@ shape = SubResource("BoxShape3D_egbxv")
 
 [node name="Vision" type="Area3D" parent="."]
 collision_layer = 0
+collision_mask = 2
 
 [node name="VisionField" type="CollisionShape3D" parent="Vision"]
 transform = Transform3D(1, 4.29378e-06, 2.7787e-05, -4.29378e-06, 1, 6.39009e-05, -2.7787e-05, -6.39009e-05, 1, -0.00173563, 0.00297892, 0.00387675)

@@ -33,7 +33,7 @@ func _physics_process(_delta):
 		vision_ray.target_position = vision_ray.to_local(player.global_transform.origin)
 		var collided : Object = vision_ray.get_collider()
 		if collided:
-			var is_player = collided.get_collision_layer_value(1)
+			var is_player = collided.get_collision_layer_value(2)
 			# if the raycast hits the player, send the "saw something" signal
 			if is_player:
 				emit_signal("saw", collided)

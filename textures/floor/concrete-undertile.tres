@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dumtijkq15pio"]
+
+[ext_resource type="Texture2D" uid="uid://gwl42fq3brit" path="res://textures/floor/concrete-undertile.png" id="1_np0y1"]
+
+[resource]
+albedo_texture = ExtResource("1_np0y1")
+metallic_specular = 0.0
+texture_filter = 2

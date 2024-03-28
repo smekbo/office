@@ -15,6 +15,14 @@ run/main_scene="res://main_debug.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="office"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
+
 [importer_defaults]
 
 2d_array_texture={
@@ -94,8 +102,8 @@ injure={
 
 [layer_names]
 
-3d_physics/layer_1="player"
-3d_physics/layer_2="static"
+3d_physics/layer_1="static"
+3d_physics/layer_2="player"
 3d_physics/layer_3="prop"
 3d_physics/layer_4="enemy"
 3d_physics/layer_5="dust / fog"

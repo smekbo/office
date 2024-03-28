@@ -15,7 +15,7 @@ albedo_texture = ExtResource("3_kb2yu")
 metallic_specular = 0.0
 texture_filter = 0
 
-[sub_resource type="Animation" id="Animation_c6dfd"]
+[sub_resource type="Animation" id="Animation_jvp42"]
 resource_name = "jog"
 length = 0.7
 loop_mode = 1
@@ -384,7 +384,7 @@ tracks/51/interp = 1
 tracks/51/loop_wrap = true
 tracks/51/keys = PackedFloat32Array(0, 1, -0.063512, 0, 0, 0.997981)
 
-[sub_resource type="Animation" id="Animation_7dgt4"]
+[sub_resource type="Animation" id="Animation_sf2c3"]
 resource_name = "RESET"
 length = 0.0333333
 tracks/0/type = "rotation_3d"
@@ -752,7 +752,7 @@ tracks/51/interp = 1
 tracks/51/loop_wrap = true
 tracks/51/keys = PackedFloat32Array(0, 1, -0.063512, 0, 0, 0.997981)
 
-[sub_resource type="Animation" id="Animation_hokcy"]
+[sub_resource type="Animation" id="Animation_11t0p"]
 resource_name = "strafe"
 length = 0.733333
 loop_mode = 1
@@ -1121,12 +1121,12 @@ tracks/51/interp = 1
 tracks/51/loop_wrap = true
 tracks/51/keys = PackedFloat32Array(0, 1, -0.063512, 0, 0, 0.997981)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fbiqu"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08asg"]
 _data = {
-"RESET": SubResource("Animation_7dgt4"),
-"jog": SubResource("Animation_c6dfd"),
+"RESET": SubResource("Animation_sf2c3"),
+"jog": SubResource("Animation_jvp42"),
 "kick": ExtResource("5_fjivk"),
-"strafe": SubResource("Animation_hokcy")
+"strafe": SubResource("Animation_11t0p")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwe3y"]
@@ -1260,7 +1260,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8hymg")
 
 [node name="AnimationTree" type="AnimationTree" parent="Hmercenary"]
 libraries = {
-"": SubResource("AnimationLibrary_fbiqu")
+"": SubResource("AnimationLibrary_08asg")
 }
 tree_root = SubResource("AnimationNodeBlendTree_jlid4")
 anim_player = NodePath("../AnimationPlayer")

@@ -21,7 +21,7 @@ reserve_max = -1
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50797, 0)
 target_position = Vector3(0, 0, 1000)
-collision_mask = 14
+collision_mask = 13
 
 [node name="viewmodel-pistol" parent="." instance=ExtResource("3_2wel5")]
 
