@@ -288,7 +288,7 @@ health = SubResource("Resource_ea8bf")
 [node name="FuncGodotMap" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.73184, 2.86891, -4.8319)
 script = ExtResource("9_4g7vc")
-local_map_file = "res://levels/maps/qodot_test.map"
+local_map_file = "res://maps/qodot_test.map"
 map_settings = ExtResource("10_tju6r")
 
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="FuncGodotMap"]
