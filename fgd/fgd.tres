@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=8 format=3 uid="uid://6lr4o8a3nxr3"]
+
+[ext_resource type="Resource" uid="uid://nayxb8n7see2" path="res://addons/func_godot/fgd/phong_base.tres" id="1_mlsp3"]
+[ext_resource type="Resource" uid="uid://bdji3873bg32h" path="res://addons/func_godot/fgd/worldspawn.tres" id="2_yrstn"]
+[ext_resource type="Resource" uid="uid://cxy7jnh6d7msn" path="res://addons/func_godot/fgd/func_detail.tres" id="3_0n2oo"]
+[ext_resource type="Resource" uid="uid://ch3e0dix85uhb" path="res://addons/func_godot/fgd/func_detail_illusionary.tres" id="4_lcm6s"]
+[ext_resource type="Resource" uid="uid://dg5x44cc7flew" path="res://addons/func_godot/fgd/func_illusionary.tres" id="5_13c2y"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="6_mb4sr"]
+[ext_resource type="Resource" uid="uid://bki6ynue7us3h" path="res://entities/actor_workrobot.tres" id="6_ytn7r"]
+
+[resource]
+script = ExtResource("6_mb4sr")
+export_file = false
+model_key_word_supported = true
+fgd_name = "FuncGodot"
+base_fgd_files = Array[Resource]([])
+entity_definitions = Array[Resource]([ExtResource("1_mlsp3"), ExtResource("2_yrstn"), ExtResource("3_0n2oo"), ExtResource("4_lcm6s"), ExtResource("5_13c2y"), ExtResource("6_ytn7r")])
