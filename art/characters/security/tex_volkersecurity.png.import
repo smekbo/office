@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx3y8taqkicib"
-path.s3tc="res://.godot/imported/Squarehead.png-e821143a0b55dc2f45c4b5aeb938f093.s3tc.ctex"
+uid="uid://dnikvoq42jrh2"
+path.s3tc="res://.godot/imported/tex_volkersecurity.png-61a80be10ba0930633b807f29b91e6c7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/enemies/workrobot/Squarehead.png"
-dest_files=["res://.godot/imported/Squarehead.png-e821143a0b55dc2f45c4b5aeb938f093.s3tc.ctex"]
+source_file="res://art/characters/security/tex_volkersecurity.png"
+dest_files=["res://.godot/imported/tex_volkersecurity.png-61a80be10ba0930633b807f29b91e6c7.s3tc.ctex"]
 
 [params]
 

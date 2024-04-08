@@ -4,7 +4,6 @@
 {
 "mapversion" "220"
 "classname" "worldspawn"
-"_tb_mod" "textures"
 "_tb_textures" "textures;textures\ceiling;textures\floor;textures\wall"
 // brush 0
 {

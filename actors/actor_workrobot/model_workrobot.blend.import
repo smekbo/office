@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2kewhoax7svu"
-path="res://.godot/imported/workrobot.blend-78fc6a3eee52845abb8802a6cde6bc46.scn"
+path="res://.godot/imported/model_workrobot.blend-e8f84e160fbcde455bd7473010a361fd.scn"
 
 [deps]
 
-source_file="res://art/characters/robot/workrobot.blend"
-dest_files=["res://.godot/imported/workrobot.blend-78fc6a3eee52845abb8802a6cde6bc46.scn"]
+source_file="res://actors/actor_workrobot/model_workrobot.blend"
+dest_files=["res://.godot/imported/model_workrobot.blend-e8f84e160fbcde455bd7473010a361fd.scn"]
 
 [params]
 

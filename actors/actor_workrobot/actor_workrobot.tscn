@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://ctt64a6xxbamg"]
 
-[ext_resource type="Script" path="res://entities/enemies/workrobot/workrobot-blend.gd" id="1_og3fy"]
-[ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://entities/enemies/workrobot/workrobot-model.tscn" id="2_br7vh"]
-[ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://entities/enemies/workrobot/WorkrobotHealth.tres" id="2_d5wim"]
-[ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://art/characters/robot/animations/workrobot_library.res" id="4_j5qk4"]
-[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/resources/senses.tscn" id="6_5k8up"]
+[ext_resource type="Script" path="res://actors/actor_workrobot/actor_workrobot.gd" id="1_ryun6"]
+[ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://actors/actor_workrobot/res_workrobot_health.tres" id="2_n5g00"]
+[ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://actors/actor_workrobot/model_workrobot.tscn" id="3_vhtk2"]
+[ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://actors/actor_workrobot/anim_lib_workrobot.res" id="4_7dw65"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/resources/senses.tscn" id="5_vydcu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
@@ -67,8 +67,8 @@ node_connections = [&"die", 0, &"swipe", &"die", 1, &"Animation 2", &"output", 0
 [node name="workrobot" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_og3fy")
-health = ExtResource("2_d5wim")
+script = ExtResource("1_ryun6")
+health = ExtResource("2_n5g00")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -79,16 +79,16 @@ path_height_offset = 0.1
 avoidance_enabled = true
 debug_enabled = true
 
-[node name="workrobot-model" parent="." instance=ExtResource("2_br7vh")]
+[node name="workrobot-model" parent="." instance=ExtResource("3_vhtk2")]
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="workrobot-model"]
 libraries = {
-"workrobot_library": ExtResource("4_j5qk4")
+"workrobot_library": ExtResource("4_7dw65")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="workrobot-model"]
 libraries = {
-"workrobot_library": ExtResource("4_j5qk4")
+"workrobot_library": ExtResource("4_7dw65")
 }
 tree_root = SubResource("AnimationNodeBlendTree_cbttx")
 anim_player = NodePath("../AnimationPlayer2")
@@ -100,7 +100,7 @@ parameters/swipe/active = false
 parameters/swipe/internal_active = false
 parameters/swipe/request = 0
 
-[node name="Senses" parent="." instance=ExtResource("6_5k8up")]
+[node name="Senses" parent="." instance=ExtResource("5_vydcu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.11612, 0)
 
 [node name="Control" type="Control" parent="."]

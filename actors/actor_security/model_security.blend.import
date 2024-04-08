@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ch8g4o323566o"
-path="res://.godot/imported/Squaremaskrig.blend-d980f6bcbd62f20387d515ff64231544.scn"
+path="res://.godot/imported/model_security.blend-3719e3ead94db461d56db14ac977ddcb.scn"
 
 [deps]
 
-source_file="res://art/characters/security/Squaremaskrig.blend"
-dest_files=["res://.godot/imported/Squaremaskrig.blend-d980f6bcbd62f20387d515ff64231544.scn"]
+source_file="res://actors/actor_security/model_security.blend"
+dest_files=["res://.godot/imported/model_security.blend-3719e3ead94db461d56db14ac977ddcb.scn"]
 
 [params]
 
@@ -22,6 +22,7 @@ meshes/generate_lods=true
 meshes/create_shadow_meshes=true
 meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
@@ -29,6 +30,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/naming_version=0
 gltf/embedded_image_handling=1
 blender/nodes/visible=0
 blender/nodes/punctual_lights=true
