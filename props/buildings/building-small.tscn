@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxbky4fygpyrr"]
+
+[ext_resource type="Texture2D" uid="uid://bax0tqx2acg75" path="res://props/skyboxbuildings/building.png" id="2_8xxj3"]
+[ext_resource type="PackedScene" uid="uid://nhk801548vdf" path="res://props/skyboxbuildings/building-small.glb" id="3_7lo8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8q3b"]
+albedo_texture = ExtResource("2_8xxj3")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kjdqk"]
+size = Vector3(76.5273, 19.2113, 31.3333)
+
+[node name="building-small" type="Node3D"]
+
+[node name="building-small" parent="." instance=ExtResource("3_7lo8y")]
+
+[node name="Cube_003" parent="building-small" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_y8q3b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2612, 9.55047, -15.6309)
+shape = SubResource("BoxShape3D_kjdqk")
+
+[editable path="building-small"]

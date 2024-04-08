@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dj8l3r5iathwd"]
+
+[ext_resource type="Texture2D" uid="uid://de6dr6i1mf5ac" path="res://props/office/computer-webcam.png" id="1_qs1yk"]
+
+[resource]
+albedo_texture = ExtResource("1_qs1yk")
+metallic_specular = 0.0
+texture_filter = 0

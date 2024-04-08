@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://actors/actor_workrobot/res_workrobot_health.tres" id="2_n5g00"]
 [ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://actors/actor_workrobot/model_workrobot.tscn" id="3_vhtk2"]
 [ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://actors/actor_workrobot/anim_lib_workrobot.res" id="4_7dw65"]
-[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://scripts/resources/senses.tscn" id="5_vydcu"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://actors/common/comp_senses.tscn" id="5_71ru3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
@@ -100,7 +100,7 @@ parameters/swipe/active = false
 parameters/swipe/internal_active = false
 parameters/swipe/request = 0
 
-[node name="Senses" parent="." instance=ExtResource("5_vydcu")]
+[node name="Senses" parent="." instance=ExtResource("5_71ru3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.11612, 0)
 
 [node name="Control" type="Control" parent="."]

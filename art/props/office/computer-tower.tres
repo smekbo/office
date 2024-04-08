@@ -1,8 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://fit7kiqppvlq"]
-
-[ext_resource type="Texture2D" uid="uid://dsb83vsrytgx1" path="res://art/props/office/computer-tower.png" id="1_23cmr"]
-
-[resource]
-albedo_texture = ExtResource("1_23cmr")
-metallic_specular = 0.0
-texture_filter = 0

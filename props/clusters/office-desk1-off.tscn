@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8kitjbd6avv6"]
+
+[ext_resource type="PackedScene" uid="uid://ct3hhtjpd613p" path="res://props/furniture/office/chair-roller.tscn" id="1_3lfkw"]
+[ext_resource type="PackedScene" uid="uid://dhvrh83k4oh7a" path="res://props/furniture/office/table1.tscn" id="2_veb8m"]
+[ext_resource type="PackedScene" uid="uid://t01wy8f8wm8k" path="res://props/combined/computer/computer1-off.tscn" id="3_lby8s"]
+
+[node name="desk" type="Node3D"]
+
+[node name="computer-chair" parent="." instance=ExtResource("1_3lfkw")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.15915, 0.121115, -0.514296)
+
+[node name="table3" parent="." instance=ExtResource("2_veb8m")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.065753, 0.121115, -0.0980163)
+
+[node name="computer" parent="." instance=ExtResource("3_lby8s")]
+transform = Transform3D(0.442899, 0, -0.896571, 0, 1, 0, 0.896571, 0, 0.442899, 0.158765, 1.10306, -0.474762)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsuo51m3xejxp"]
+
+[ext_resource type="PackedScene" uid="uid://4aj66ce14obs" path="res://props/office/computer-mouse.glb" id="1_ej7xd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i4it"]
+size = Vector3(0.0777665, 0.0526284, 0.136229)
+
+[node name="mouse" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385688, 0.0255026, 0.489459)
+shape = SubResource("BoxShape3D_8i4it")
+
+[node name="computer-mouse" parent="." instance=ExtResource("1_ej7xd")]

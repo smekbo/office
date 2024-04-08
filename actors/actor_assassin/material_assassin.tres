@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxl3ha6y15ind"]
+
+[ext_resource type="Texture2D" uid="uid://bqbb88p4orgfa" path="res://actors/actor_assassin/tex_assassin.png" id="1_khhop"]
+
+[resource]
+albedo_texture = ExtResource("1_khhop")
+metallic_specular = 0.0
+texture_filter = 0

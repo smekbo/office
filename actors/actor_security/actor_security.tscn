@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://40a6rrkr3t8y"]
-
-[ext_resource type="PackedScene" uid="uid://c41f2xl8wy4w8" path="res://actors/actor_security/model_security.tscn" id="1_a36r6"]
-
-[node name="actor_security" type="Node3D"]
-
-[node name="model_security" parent="." instance=ExtResource("1_a36r6")]

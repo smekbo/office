@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b3r0paotiofsf"]
 
-[ext_resource type="Script" path="res://scripts/components/health.gd" id="8_jvgko"]
-[ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://entities/player/player.tscn" id="8_s0vle"]
+[ext_resource type="Script" path="res://actors/common/script_health.gd" id="8_jvgko"]
+[ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://actors/player/player.tscn" id="8_s0vle"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="9_4g7vc"]
 [ext_resource type="PackedScene" uid="uid://ctt64a6xxbamg" path="res://actors/actor_workrobot/actor_workrobot.tscn" id="9_r42y2"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="10_tju6r"]

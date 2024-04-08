@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvwfpvs68cxbn"]
+
+[ext_resource type="PackedScene" uid="uid://k788hx3yqb16" path="res://props/office/computer-tower.glb" id="1_aa0vh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exioi"]
+size = Vector3(0.486135, 0.156306, 0.354735)
+
+[node name="tower" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 0.1
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0806977, 0.101615)
+shape = SubResource("BoxShape3D_exioi")
+
+[node name="computer-tower" parent="." instance=ExtResource("1_aa0vh")]

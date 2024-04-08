@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnmi7lc33g0j4"]
+
+[ext_resource type="PackedScene" uid="uid://odgnmoj6kbwx" path="res://props/office/computer-monitor.glb" id="1_4h13k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_skhyd"]
+emission_enabled = true
+emission = Color(0.0431373, 0.141176, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4nxcw"]
+material = SubResource("StandardMaterial3D_skhyd")
+size = Vector2(0.485, 0.26)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfv2q"]
+emission_enabled = true
+emission = Color(0, 0.643137, 0.407843, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jnlog"]
+size = Vector3(0.588636, 0.364488, 0.0376104)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ecye"]
+size = Vector3(0.24, 0.034, 0.201)
+
+[node name="monitor" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 3
+mass = 0.3
+sleeping = true
+
+[node name="computer-monitor" parent="." instance=ExtResource("1_4h13k")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.419804, 0.19214)
+mesh = SubResource("PlaneMesh_4nxcw")
+surface_material_override/0 = SubResource("StandardMaterial3D_dfv2q")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.401053, 0.204191)
+light_color = Color(0.486275, 0.901961, 0.360784, 1)
+light_energy = 8.0
+light_specular = 0.0
+distance_fade_enabled = true
+spot_range = 5.89051
+spot_angle = 78.3155
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.414024, 0.167756)
+shape = SubResource("BoxShape3D_jnlog")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000634074, 0.171951, 0.141109)
+shape = SubResource("BoxShape3D_7ecye")

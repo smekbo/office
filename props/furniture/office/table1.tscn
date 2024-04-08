@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhvrh83k4oh7a"]
+
+[ext_resource type="PackedScene" uid="uid://ci0knxaayxap" path="res://props/office/office-desk.glb" id="2_c6bhy"]
+[ext_resource type="Texture2D" uid="uid://dvdst8bqyr6sr" path="res://props/office/officdesk.png" id="3_p4d2v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71m6y"]
+size = Vector3(2.03479, 0.994153, 0.870582)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tvl6t"]
+albedo_texture = ExtResource("3_p4d2v")
+metallic_specular = 0.0
+texture_filter = 0
+
+[node name="table" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 7
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489411, 0)
+shape = SubResource("BoxShape3D_71m6y")
+
+[node name="office-desk" parent="." instance=ExtResource("2_c6bhy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00200844, 0)
+
+[node name="Cube_004" parent="office-desk" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tvl6t")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 1.0
+
+[editable path="office-desk"]

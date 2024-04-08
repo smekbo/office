@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bio537nfnpaax"]
+
+[ext_resource type="Material" uid="uid://d3aljmbnjh8h3" path="res://scenes/static/materials/concrete-tile-mat.tres" id="1_2e6pa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3p8p"]
+lightmap_size_hint = Vector2i(84, 48)
+material = ExtResource("1_2e6pa")
+uv2_padding = 1.0
+size = Vector3(8, 0.25, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
+size = Vector3(8, 0.25, 8)
+
+[node name="floor" type="StaticBody3D"]
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00388527, -4)
+mesh = SubResource("BoxMesh_h3p8p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.00388527, -4)
+shape = SubResource("BoxShape3D_0hyh6")

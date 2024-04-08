@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://t01wy8f8wm8k"]
+
+[ext_resource type="PackedScene" uid="uid://b0vtqx6ilwt1f" path="res://props/office/computer-keyboard.glb" id="1_h0xva"]
+[ext_resource type="PackedScene" uid="uid://sggrii8mh8" path="res://props/pieces/computer/monitor1-off.tscn" id="2_rkf3j"]
+[ext_resource type="PackedScene" uid="uid://4aj66ce14obs" path="res://props/office/computer-mouse.glb" id="3_ew1yu"]
+[ext_resource type="PackedScene" uid="uid://bvwfpvs68cxbn" path="res://props/pieces/computer/tower1.tscn" id="5_as634"]
+[ext_resource type="PackedScene" uid="uid://dmv6vp2gjkw3p" path="res://props/pieces/computer/webcam1.tscn" id="5_s54i5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ucqyp"]
+size = Vector3(0.493312, 0.0526284, 0.184956)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8i4it"]
+size = Vector3(0.0777665, 0.0526284, 0.136229)
+
+[node name="computer" type="Node3D"]
+
+[node name="keyboard" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 3
+mass = 0.1
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="keyboard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0255026, 0.493643)
+shape = SubResource("BoxShape3D_ucqyp")
+
+[node name="computer-keyboard" parent="keyboard" instance=ExtResource("1_h0xva")]
+
+[node name="monitor" parent="." instance=ExtResource("2_rkf3j")]
+
+[node name="mouse" type="RigidBody3D" parent="."]
+collision_layer = 2
+collision_mask = 3
+sleeping = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="mouse"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385688, 0.0255026, 0.489459)
+shape = SubResource("BoxShape3D_8i4it")
+
+[node name="computer-mouse" parent="mouse" instance=ExtResource("3_ew1yu")]
+
+[node name="tower" parent="." instance=ExtResource("5_as634")]
+
+[node name="webcam" parent="." instance=ExtResource("5_s54i5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0211526, 0.637104, 0.170457)

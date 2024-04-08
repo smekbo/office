@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbex1wqk7tb1i"]
+
+[ext_resource type="Texture2D" uid="uid://rpb3win1bumj" path="res://1_archive/VEAR Texture/Wall4.png" id="1_sa3rq"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/weapon_impact.tscn" id="2_75hcw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hyh6"]
+size = Vector3(0.25, 6, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv6xx"]
+albedo_texture = ExtResource("1_sa3rq")
+metallic_specular = 0.0
+uv1_scale = Vector3(3, 2, 2)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_h3p8p"]
+material = SubResource("StandardMaterial3D_bv6xx")
+size = Vector3(0.25, 6, 8)
+
+[node name="wall" type="StaticBody3D"]
+collision_mask = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
+shape = SubResource("BoxShape3D_0hyh6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -4)
+mesh = SubResource("BoxMesh_h3p8p")
+
+[node name="weapon_impact" parent="." instance=ExtResource("2_75hcw")]
+visible = false
