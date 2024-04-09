@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cvolupdnqwj2v"
-path="res://.godot/imported/viewmodel-pistol.blend-b06ed5ce8a2ef357b913662914a59da5.scn"
+uid="uid://vyv5utpdk4mr"
+path="res://.godot/imported/viewarms_v2.blend-6e4dabc2bb220e6534226dbe95983516.scn"
 
 [deps]
 
-source_file="res://actors/player/viewmodel-pistol.blend"
-dest_files=["res://.godot/imported/viewmodel-pistol.blend-b06ed5ce8a2ef357b913662914a59da5.scn"]
+source_file="res://weapons/viewarms_v2.blend"
+dest_files=["res://.godot/imported/viewarms_v2.blend-6e4dabc2bb220e6534226dbe95983516.scn"]
 
 [params]
 
@@ -29,14 +29,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"uv-texture": {
-"use_external/enabled": true,
-"use_external/path": "res://art/weapons/volkerpistol-mat.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=0
 gltf/embedded_image_handling=1
 blender/nodes/visible=0

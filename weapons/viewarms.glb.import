@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bj5t32i2dftti"
-path="res://.godot/imported/viewarms.glb-581dc99b76c3dad9aff82b8d53676517.scn"
+path="res://.godot/imported/viewarms.glb-245692376e7a7fdefe735721da35ba51.scn"
 
 [deps]
 
-source_file="res://actors/player/viewarms.glb"
-dest_files=["res://.godot/imported/viewarms.glb-581dc99b76c3dad9aff82b8d53676517.scn"]
+source_file="res://weapons/viewarms.glb"
+dest_files=["res://.godot/imported/viewarms.glb-245692376e7a7fdefe735721da35ba51.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bxbyo30ylkvmc"
-path="res://.godot/imported/viewarms-teg.blend-f5931087a01ce998f648a8938e6a5b8c.scn"
+uid="uid://cgtoeeh676xu5"
+path="res://.godot/imported/viewarms.blend-68c9e3ef226ddf9520d7bdc74574108e.scn"
 
 [deps]
 
-source_file="res://actors/player/viewarms-teg.blend"
-dest_files=["res://.godot/imported/viewarms-teg.blend-f5931087a01ce998f648a8938e6a5b8c.scn"]
+source_file="res://weapons/viewarms.blend"
+dest_files=["res://.godot/imported/viewarms.blend-68c9e3ef226ddf9520d7bdc74574108e.scn"]
 
 [params]
 
