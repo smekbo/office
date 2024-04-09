@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://wlc4s2lsffk4"]
 
 [ext_resource type="Script" path="res://actors/player/weapon.gd" id="1_u2h6h"]
-[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/weapon_impact.tscn" id="2_07p3e"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/vfx_impact/vfx_impact.tscn" id="2_07p3e"]
 [ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://actors/player/viewarms.glb" id="2_vl28s"]
 [ext_resource type="PackedScene" uid="uid://cvolupdnqwj2v" path="res://actors/player/viewmodel-pistol.blend" id="3_2wel5"]
 [ext_resource type="Script" path="res://actors/player/SoundRadius.gd" id="4_rfu55"]

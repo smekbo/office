@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhe5ghgtcvlu2"]
-
-[ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://actors/player/player.tscn" id="2_wilt2"]
-
-[node name="office1-chunk" type="Node3D"]
-
-[node name="player" parent="." instance=ExtResource("2_wilt2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.619124, 0.121115, -0.406965)
