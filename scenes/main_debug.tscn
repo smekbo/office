@@ -28,7 +28,6 @@ reflected_light_source = 2
 [sub_resource type="NavigationMesh" id="NavigationMesh_6am11"]
 vertices = PackedVector3Array(-7.5, -3.04345, -0.1364, -7.5, -3.04345, 20.8636, 6, -3.04345, 20.8636, 6, -3.04345, -0.1364)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-cell_height = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e0ot"]
 albedo_texture = ExtResource("16_7ft7v")

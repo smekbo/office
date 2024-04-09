@@ -32,9 +32,9 @@ import_script/path=""
 _subresources={
 "animations": {
 "abrupt_poweroff": {
-"save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://art/characters/robot/animations/abrupt_poweroff.res",
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://actors/actor_workrobot/anim_workrobot_death.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -1831,9 +1831,9 @@ _subresources={
 "slices/amount": 0
 },
 "attack-r-hand-chop": {
-"save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://art/characters/robot/animations/attack-r-hand-chop.res",
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://actors/actor_workrobot/anim_workrobot_chop.res",
 "settings/loop_mode": 0,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -3630,9 +3630,9 @@ _subresources={
 "slices/amount": 0
 },
 "idle": {
-"save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://art/characters/robot/animations/idle.res",
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://actors/actor_workrobot/anim_workrobot_idle.res",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
@@ -5429,9 +5429,9 @@ _subresources={
 "slices/amount": 0
 },
 "walk": {
-"save_to_file/enabled": false,
-"save_to_file/keep_custom_tracks": "",
-"save_to_file/path": "res://art/characters/robot/animations/walk.res",
+"save_to_file/enabled": true,
+"save_to_file/keep_custom_tracks": true,
+"save_to_file/path": "res://actors/actor_workrobot/anim_workrobot_walk.res",
 "settings/loop_mode": 1,
 "slice_1/end_frame": 0,
 "slice_1/loop_mode": 0,
