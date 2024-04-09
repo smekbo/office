@@ -7,14 +7,6 @@
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="10_tju6r"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="16_7ft7v"]
 
-[sub_resource type="Resource" id="Resource_s4rif"]
-resource_local_to_scene = true
-script = ExtResource("8_jvgko")
-health_max = 100
-armor_max = 20
-resistance = 50
-super_armor = true
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
 sky_top_color = Color(1, 0.85098, 0.827451, 1)
 sky_horizon_color = Color(1, 0.490196, 0.286275, 1)
@@ -65,11 +57,15 @@ indices = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3vevd"]
 points = PackedVector3Array(-8, -1, -4.5, -8, -1.5, -4.5, 6.5, -1.5, -4.5, 6.5, -1, -4.5, -8, -1, 17.5, -8, -1.5, 17.5, 6.5, -1.5, 17.5, 6.5, -1, 17.5)
 
-[node name="fear_fps_main" type="Node3D"]
+[sub_resource type="Resource" id="Resource_kpjwe"]
+resource_local_to_scene = true
+script = ExtResource("8_jvgko")
+health_max = 100
+armor_max = 20
+resistance = 50
+super_armor = true
 
-[node name="entity_1_actor_workrobot" parent="." instance=ExtResource("9_r42y2")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, -0.708082, 2.5)
-health = SubResource("Resource_s4rif")
+[node name="fear_fps_main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("8_s0vle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3843, 0)
@@ -166,3 +162,7 @@ occluder = SubResource("ArrayOccluder3D_n3uxi")
 
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_3vevd")
+
+[node name="actor_workrobot" parent="." instance=ExtResource("9_r42y2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66268, -1, 2.13433)
+health = SubResource("Resource_kpjwe")

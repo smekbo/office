@@ -89,7 +89,6 @@ func _on_senses_saw(player):
 	intuition_timer = intuition
 
 func _ragdoll():
-	print("ragdoll")
 	skeleton.physical_bones_start_simulation()
 
 func attack():

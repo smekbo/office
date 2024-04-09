@@ -50,7 +50,6 @@ fadeout_time = 0.2
 fadeout_curve = SubResource("Curve_2miwo")
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cbttx"]
-graph_offset = Vector2(-885.022, 34.2478)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_t731x")
 nodes/Animation/position = Vector2(-240, 180)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0ps7f")
@@ -64,7 +63,7 @@ nodes/swipe/node = SubResource("AnimationNodeOneShot_3c52c")
 nodes/swipe/position = Vector2(60, 40)
 node_connections = [&"die", 0, &"swipe", &"die", 1, &"Animation 2", &"output", 0, &"die", &"swipe", 0, &"BlendSpace1D", &"swipe", 1, &"Animation"]
 
-[node name="workrobot" type="CharacterBody3D"]
+[node name="actor_workrobot" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_ryun6")
@@ -120,6 +119,7 @@ metadata/_edit_use_anchors_ = true
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37221, 0)
 target_position = Vector3(0, 0, 1)
+collision_mask = 2
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="heard" from="Senses" to="." method="_on_senses_heard"]
