@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c60yjv3w3ubgy"]
 
-[ext_resource type="Script" path="res://vfx/vfx_impact/vfx_impact_sparks.gd" id="1_abhyk"]
+[ext_resource type="Script" uid="uid://ddj2fcb47jrf2" path="res://vfx/vfx_impact/vfx_impact_sparks.gd" id="1_abhyk"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v80n0"]
 lifetime_randomness = 0.3

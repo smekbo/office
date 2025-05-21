@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://i2hfue0mmal0"]
 
-[ext_resource type="Script" path="res://vfx/vfx_impact/vfx_impact_dust.gd" id="1_7l06f"]
+[ext_resource type="Script" uid="uid://du7kbphr1j8cb" path="res://vfx/vfx_impact/vfx_impact_dust.gd" id="1_7l06f"]
 [ext_resource type="Texture2D" uid="uid://bgyyp4hkgp2lg" path="res://vfx/vfx_impact/sprite_smoke3.png" id="2_bower"]
 
 [sub_resource type="Animation" id="Animation_euq4h"]
@@ -124,8 +124,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nulfy"]
 _data = {
-"RESET": SubResource("Animation_euq4h"),
-"emit": SubResource("Animation_abqw4")
+&"RESET": SubResource("Animation_euq4h"),
+&"emit": SubResource("Animation_abqw4")
 }
 
 [node name="dust" type="Node3D"]

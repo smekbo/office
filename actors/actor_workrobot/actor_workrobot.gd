@@ -9,6 +9,10 @@ extends CharacterBody3D
 
 ## The health component for this enemy. Governs health, armor, injury, and healing.
 @export var health : Resource
+## The amount of damage each attack does
+@export var atk_damage: int
+## The distance at which the enemy can attack
+@export var atk_distance: float
 ## The amount of time (in [param seconds]) that this NPC will continue tracking a target it can't see.
 @export var intuition : float = 3.0
 var intuition_timer : float = 0.0
@@ -31,26 +35,28 @@ func _physics_process(delta):
 	swipe_timer = max(swipe_timer - delta, 0)
 	intuition_timer = max(intuition_timer - delta, 0)
 	
+	# basic movement setup
 	var velocity_next = Vector3.ZERO
 	var loc = global_transform.origin
 	var loc_next = nav_agent.get_next_path_position()
 	velocity_next = (loc_next - loc).normalized() * move_speed
 	
-	if target:
-		var distance = (target.global_transform.origin - global_transform.origin).length()
-		nav_agent.target_position = target.global_transform.origin
-		if distance < 1.5:
-			velocity_next = Vector3.ZERO
-			if swipe_timer <= 0:
-				animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
-				if ray.is_colliding():
-					var _player = ray.get_collider()
-				swipe_timer = animator.get_animation("attack-r-hand-chop").length
 	
-	if global_transform.origin != loc_next: 
-		look_at(Vector3(loc_next.x, position.y, loc_next.z))
-	nav_agent.velocity = velocity_next
-	move_and_slide()
+	if health.alive: # do this stuff every update if i'm alive
+		if target: # if i have a target, chase and attack them
+			var distance = (target.global_transform.origin - global_transform.origin).length()
+			nav_agent.target_position = target.global_transform.origin
+			if distance < atk_distance: # only melee attack if i'm close enough
+				velocity_next = Vector3.ZERO
+				if swipe_timer <= 0:
+					animation_tree.set("parameters/swipe/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+					if ray.is_colliding():
+						var _player = ray.get_collider()
+					swipe_timer = animator.get_current_animation_length()
+		if global_transform.origin != loc_next:  # look to my next positiong
+			look_at(Vector3(loc_next.x, position.y, loc_next.z))
+		nav_agent.velocity = velocity_next
+		move_and_slide()
 	
 	# conditionals to alter NPC behavior
 	if intuition_timer <= 0: target = null
@@ -77,16 +83,20 @@ func _on_health_died(_killer):
 	print("Robot died")
 	collision_layer = 32
 	target = null
+	health.alive = false
 	nav_agent.velocity = Vector3.ZERO
 	animation_tree.set("parameters/die/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	print("Target = " + str(target))
 
 func _on_senses_heard(location):
-	nav_agent.target_position = location
+	if health.alive:
+		nav_agent.target_position = location
 
 func _on_senses_saw(player):
-	if target != player: target = player
-	nav_agent.target_position = player.global_transform.origin
-	intuition_timer = intuition
+	if health.alive:
+		if target != player: target = player
+		nav_agent.target_position = player.global_transform.origin
+		intuition_timer = intuition
 
 func _ragdoll():
 	skeleton.physical_bones_start_simulation()
@@ -94,4 +104,4 @@ func _ragdoll():
 func attack():
 	if ray.is_colliding():
 		var player = ray.get_collider()
-		player.health.injure(10, self)
+		player.health.injure(atk_damage, self)

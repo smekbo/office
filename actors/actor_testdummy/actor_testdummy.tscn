@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmm2fjn3yen74"]
+
+[ext_resource type="Script" uid="uid://dsnghlfgmfnfv" path="res://actors/actor_testdummy/actor_testdummy.gd" id="1_21u3s"]
+[ext_resource type="Resource" uid="uid://dymok31fbkbaw" path="res://actors/actor_testdummy/comp_health_testdummy.tres" id="2_njdfo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_njdfo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_njdfo"]
+
+[node name="actor_testdummy" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_21u3s")
+health = ExtResource("2_njdfo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_njdfo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_njdfo")

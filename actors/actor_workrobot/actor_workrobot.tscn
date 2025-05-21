@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://ctt64a6xxbamg"]
 
-[ext_resource type="Script" path="res://actors/actor_workrobot/actor_workrobot.gd" id="1_ryun6"]
-[ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://actors/actor_workrobot/res_workrobot_health.tres" id="2_n5g00"]
+[ext_resource type="Script" uid="uid://deprsecj4akk4" path="res://actors/actor_workrobot/actor_workrobot.gd" id="1_ryun6"]
+[ext_resource type="Resource" uid="uid://kb70kcsdmbsx" path="res://actors/actor_workrobot/comp_health_workbot.tres" id="2_oaat2"]
 [ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://actors/actor_workrobot/model_workrobot.tscn" id="3_vhtk2"]
 [ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://actors/actor_workrobot/anim_lib_workrobot.res" id="4_7dw65"]
-[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://actors/common/comp_senses.tscn" id="5_71ru3"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://actors/components/component_senses.tscn" id="5_71ru3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 
@@ -50,12 +50,13 @@ fadeout_time = 0.2
 fadeout_curve = SubResource("Curve_2miwo")
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cbttx"]
+graph_offset = Vector2(-536.843, 83.2893)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_t731x")
-nodes/Animation/position = Vector2(-240, 180)
+nodes/Animation/position = Vector2(-380, 160)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0ps7f")
 "nodes/Animation 2/position" = Vector2(-120, 360)
 nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_01h7g")
-nodes/BlendSpace1D/position = Vector2(-240, 40)
+nodes/BlendSpace1D/position = Vector2(-260, -40)
 nodes/die/node = SubResource("AnimationNodeOneShot_d2177")
 nodes/die/position = Vector2(220, 220)
 nodes/output/position = Vector2(400, 220)
@@ -67,7 +68,9 @@ node_connections = [&"die", 0, &"swipe", &"die", 1, &"Animation 2", &"output", 0
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_ryun6")
-health = ExtResource("2_n5g00")
+health = ExtResource("2_oaat2")
+atk_damage = 10
+atk_distance = 1.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -82,13 +85,10 @@ debug_enabled = true
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="workrobot-model"]
 libraries = {
-"workrobot_library": ExtResource("4_7dw65")
+&"workrobot_library": ExtResource("4_7dw65")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="workrobot-model"]
-libraries = {
-"workrobot_library": ExtResource("4_7dw65")
-}
 tree_root = SubResource("AnimationNodeBlendTree_cbttx")
 anim_player = NodePath("../AnimationPlayer2")
 parameters/BlendSpace1D/blend_position = 0.0

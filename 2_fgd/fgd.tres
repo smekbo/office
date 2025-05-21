@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cxy7jnh6d7msn" path="res://addons/func_godot/fgd/func_detail.tres" id="3_0n2oo"]
 [ext_resource type="Resource" uid="uid://ch3e0dix85uhb" path="res://addons/func_godot/fgd/func_detail_illusionary.tres" id="4_lcm6s"]
 [ext_resource type="Resource" uid="uid://dg5x44cc7flew" path="res://addons/func_godot/fgd/func_illusionary.tres" id="5_13c2y"]
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="6_mb4sr"]
+[ext_resource type="Script" uid="uid://b17xa50ykaju6" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="6_mb4sr"]
 
 [resource]
 script = ExtResource("6_mb4sr")

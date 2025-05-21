@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FuncGodotFGDPointClass" load_steps=3 format=3 uid="uid://bki6ynue7us3h"]
 
 [ext_resource type="PackedScene" uid="uid://ctt64a6xxbamg" path="res://actors/actor_workrobot/actor_workrobot.tscn" id="1_5ogn4"]
-[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_lsls5"]
+[ext_resource type="Script" uid="uid://jdg0qetdc7sk" path="res://addons/func_godot/src/fgd/func_godot_fgd_point_class.gd" id="1_lsls5"]
 
 [resource]
 script = ExtResource("1_lsls5")

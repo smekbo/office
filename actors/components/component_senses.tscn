@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1ncslnll5lr4"]
 
-[ext_resource type="Script" path="res://actors/common/script_senses.gd" id="1_g78mx"]
-[ext_resource type="Shape3D" uid="uid://ci1w8g4rrpphg" path="res://actors/common/geo_visioncone.tres" id="2_pfvp2"]
+[ext_resource type="Script" uid="uid://d22igj88k4kq1" path="res://actors/components/script_senses.gd" id="1_g78mx"]
+[ext_resource type="Shape3D" uid="uid://ci1w8g4rrpphg" path="res://actors/components/geo_visioncone.tres" id="2_pfvp2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_egbxv"]
 size = Vector3(7.36304, 3.77376, 9.67022)

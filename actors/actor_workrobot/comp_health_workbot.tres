@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="HealthComponent" load_steps=2 format=3 uid="uid://kb70kcsdmbsx"]
+
+[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://actors/components/script_health.gd" id="1_kgne4"]
+
+[resource]
+script = ExtResource("1_kgne4")
+health_max = 100
+armor_max = 20
+resistance = 50
+super_armor = false
+invulnerable = false
+killable = false
+metadata/_custom_type_script = "uid://q2tw1cxc0enj"

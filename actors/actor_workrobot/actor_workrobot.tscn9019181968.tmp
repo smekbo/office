@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=3 uid="uid://ctt64a6xxbamg"]
+
+[ext_resource type="Script" uid="uid://deprsecj4akk4" path="res://actors/actor_workrobot/actor_workrobot.gd" id="1_ryun6"]
+[ext_resource type="Resource" uid="uid://bisin7cd6y23f" path="res://actors/actor_workrobot/res_workrobot_health.tres" id="2_n5g00"]
+[ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://actors/actor_workrobot/model_workrobot.tscn" id="3_vhtk2"]
+[ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://actors/actor_workrobot/anim_lib_workrobot.res" id="4_7dw65"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://actors/common/comp_senses.tscn" id="5_71ru3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ps7f"]
+animation = &"workrobot_library/abrupt_poweroff"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t731x"]
+animation = &"workrobot_library/attack-r-hand-chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fqf08"]
+animation = &"workrobot_library/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kkwih"]
+animation = &"workrobot_library/walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ifjba"]
+animation = &"workrobot_library/walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_01h7g"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_fqf08")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_kkwih")
+blend_point_1/pos = 0.6
+blend_point_2/node = SubResource("AnimationNodeAnimation_ifjba")
+blend_point_2/pos = -0.6
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_d2177"]
+
+[sub_resource type="Curve" id="Curve_dumbx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2miwo"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_3c52c"]
+filter_enabled = true
+filters = ["..", "metarig/Skeleton3D:chest", "metarig/Skeleton3D:forearm.L", "metarig/Skeleton3D:forearm.R", "metarig/Skeleton3D:hand.R", "metarig/Skeleton3D:neck", "metarig/Skeleton3D:spine", "metarig/Skeleton3D:upper_arm.L", "metarig/Skeleton3D:upper_arm.R"]
+fadein_time = 0.2
+fadein_curve = SubResource("Curve_dumbx")
+fadeout_time = 0.2
+fadeout_curve = SubResource("Curve_2miwo")
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_cbttx"]
+graph_offset = Vector2(-536.843, 83.2893)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_t731x")
+nodes/Animation/position = Vector2(-380, 160)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0ps7f")
+"nodes/Animation 2/position" = Vector2(-120, 360)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_01h7g")
+nodes/BlendSpace1D/position = Vector2(-260, -40)
+nodes/die/node = SubResource("AnimationNodeOneShot_d2177")
+nodes/die/position = Vector2(220, 220)
+nodes/output/position = Vector2(400, 220)
+nodes/swipe/node = SubResource("AnimationNodeOneShot_3c52c")
+nodes/swipe/position = Vector2(60, 40)
+node_connections = [&"die", 0, &"swipe", &"die", 1, &"Animation 2", &"output", 0, &"die", &"swipe", 0, &"BlendSpace1D", &"swipe", 1, &"Animation"]
+
+[node name="actor_workrobot" type="CharacterBody3D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_ryun6")
+health = ExtResource("2_n5g00")
+atk_damage = 10
+atk_distance = 1.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jqdnr")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_height_offset = 0.1
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="workrobot-model" parent="." instance=ExtResource("3_vhtk2")]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="workrobot-model"]
+libraries = {
+&"workrobot_library": ExtResource("4_7dw65")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="workrobot-model"]
+tree_root = SubResource("AnimationNodeBlendTree_cbttx")
+anim_player = NodePath("../AnimationPlayer2")
+parameters/BlendSpace1D/blend_position = 0.0
+parameters/die/active = false
+parameters/die/internal_active = false
+parameters/die/request = 0
+parameters/swipe/active = false
+parameters/swipe/internal_active = false
+parameters/swipe/request = 0
+
+[node name="Senses" parent="." instance=ExtResource("5_71ru3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.11612, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Health" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Health"
+metadata/_edit_use_anchors_ = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.37221, 0)
+target_position = Vector3(0, 0, 1)
+collision_mask = 2
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="heard" from="Senses" to="." method="_on_senses_heard"]
+[connection signal="saw" from="Senses" to="." method="_on_senses_saw"]

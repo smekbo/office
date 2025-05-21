@@ -13,9 +13,14 @@ class_name Weapon
 ## Base weapon damage.
 @export var damage : int = 10
 ## Damage penetration, expressed as a percentage ([code]penetration / 100[/code]).
-@export var penetration : int = 3
+@export_custom(PROPERTY_HINT_NONE, "suffix:%") var penetration : int = 3
 ## How much impulse force is applied on hit to objects.
 @export var force : float = 2.5
+## How distant in meters until gun damage begins to fall off.
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var falloff = 20
+## How distant in meters until the gun simply does no damage anymore
+## Damage falls off linearly from normal to 0 between the falloff and max distance
+@export_custom(PROPERTY_HINT_NONE, "suffix:m") var max_range = 50
 
 ## Variables related to firing.
 @export_group("Firing")
@@ -23,16 +28,16 @@ class_name Weapon
 var firing : bool = false
 ## Time in seconds between shots. 
 ## To get RPM, use the following formula: [cose](1 / fire_speed) * 60[/code].
-@export var fire_speed : float = 0.1
+@export_custom(PROPERTY_HINT_NONE, "suffix:s") var fire_speed : float = 0.1
 ## Time before you can pull the trigger again; ignored for automatic weapons.
-@export var fire_delay: float = 1
+@export_custom(PROPERTY_HINT_NONE, "suffix:s") var fire_delay: float = 1
 ## Firing timer.
 var fire_timer : float = 0
 ## Fire delay timer.
 var fire_cooldown : float = 0
 ## Number of shots fired before firing cooldown happens (each trigger pull).
 ## 0 or lower for automatic, 1 for semi, 2+ for burst.
-@export var shots : int = 3
+@export_custom(PROPERTY_HINT_NONE, "suffix:shots") var shots : int = 3
 ## Number of shots left in the current burst.
 var shots_left : int = 0
 
@@ -44,12 +49,15 @@ var spread : float = 0
 @export var spread_min : float = 0
 ## Maximum spread value (0 or greater).
 @export var spread_max : float = 3
-## How much the spread increases per shot.
-@export var spread_inc : float = 0.1
-## How much the spread decreases each second; "resting" time.
-@export var spread_dec : float = 0.05
+## How much the spread increases per shot; the "kick".
+@export var spread_kick : float = 0.1
+## How much the spread decreases per second; "resting" spread reduction.
+@export var spread_rest : float = 0.1
+## How long until the gun starts "resting"
+@export_custom(PROPERTY_HINT_NONE, "suffix:s") var spread_delay: float = 1.0
 ## The spread scalar; "accuracy".
 @export var spread_scalar : float = 1
+var spread_timer : float = 0
 
 ## Variables related to ammo
 @export_group("Ammo")
@@ -96,6 +104,7 @@ func fire():
 		var col_point : Vector3 = ray.get_collision_point()
 		col_normal = ray.get_collision_normal()
 		var dir : Vector3 = col_point - ray.global_position
+		var dist : float = abs(dir.z)
 		dir_normal = dir.normalized()
 		var _dir_reflect : Vector3 = dir_normal.reflect(col_normal)
 		var impact : WeaponImpact = col.get_node_or_null("weapon_impact")
@@ -104,13 +113,26 @@ func fire():
 		if col.is_class("RigidBody3D"):
 			col.apply_impulse(dir_normal * force)
 		
-		var h_comp = col.get("health")
+		var enemy_hp = col.get("health")
 		
-		# health damage
-		if h_comp != null: 
-			if h_comp.alive == false: 
+		
+		if enemy_hp != null: 
+			# damage falloff calc
+			var _dmg = damage
+			print(dist)
+			if falloff < dist && dist < max_range:
+				print("falloff")
+				var _pct = (dist - falloff) / (max_range - falloff)
+				_dmg = round(_dmg - (_dmg * _pct))
+				print("falloff percent: " + str(_pct))
+			elif dist > max_range:
+				_dmg = 0
+				
+			if enemy_hp.alive == false: 
 				ray.add_exception(col)
-			else: h_comp.injure(damage, penetration)
+			else: 
+				enemy_hp.injure(_dmg, penetration)
+				print("Damage taken: " + str(_dmg))
 		
 		# impact effect
 		if not col.is_class("CharacterBody3D"):
@@ -125,9 +147,10 @@ func fire():
 	animation.stop()
 	animation.play("fire_2")
 	fire_timer = fire_speed
+	spread_timer = spread_delay
 	ammo -= 1
 	shots_left -= 1
-	spread = min(spread_max, spread + spread_inc)
+	spread = min(spread_max, spread + spread_kick)
 	sound_col.emit_signal("sound_made", sound_col.global_transform.origin)
 
 # reload
@@ -173,9 +196,11 @@ func _process(delta):
 	# timers
 	
 	fire_timer = max(0, fire_timer - delta)
+	spread_timer = max(0, spread_timer - delta)
 	if not firing:
 		fire_cooldown = max(0, fire_cooldown - delta)
-		spread = max(0, spread - (spread_dec * delta))
+		if spread_timer <= 0:
+			spread = max(0, spread - (spread_rest * delta))
 	
 	# reloading takes time, and can be interrupted
 	if Input.is_action_just_pressed("reload"):

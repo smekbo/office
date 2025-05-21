@@ -22,6 +22,11 @@ var armor = 0
 ## Does this character [b]always resist[/b] attacks? Ignores armor values when calculating resistance.
 @export var super_armor = false
 
+## Is this character invulnerable (ignores all damage)?
+@export var invulnerable = false
+## Is this character unkillable (does not die)?
+@export var killable = false
+
 ## Is this character alive?
 var alive = true
 
@@ -33,24 +38,21 @@ func _ready():
 ## Takes [param damage] for initial damage, [param source] for damage source, [param penetration] for amount of resist ignored, and [param ignore] to fully ignore all resistance.
 ## Emits [param injured] signal, and [param died] signal if damage was lethal.
 func injure(damage:int, source = null, penetration:int = 0, ignore:bool = false):
-	
-	var taken = damage
-	var resist_percent = max(0 , min(1, (float(resistance - penetration)) / 100))
-	var resisted = taken * resist_percent
-	
-	# armor calculation and adjustment
-	if not ignore and resisted > 0:
-		if not super_armor: resisted = min(1, armor / resisted) * resisted
-		taken -= resisted
-	
-	# apply damage and armor loss
-	if taken > 0:
-		health = max(0, health - taken)
-		if not super_armor: armor = max(0, armor - resisted)
-		injured.emit(taken, source)
-	
+	if not invulnerable: # if you're invuln, you don't take damage!
+		var taken = damage
+		var resist_percent = max(0 , min(1, (float(resistance - penetration)) / 100))
+		var resisted = taken * resist_percent
+		
+		if not ignore and resisted > 0: # armor calculation and adjustment
+			if not super_armor: resisted = min(1, armor / resisted) * resisted
+			taken -= resisted
+		if taken > 0: # apply damage and armor loss
+			health = max(0, health - taken)
+			if not super_armor: armor = max(0, armor - resisted)
+			injured.emit(taken, source)
+		
 	# megamind meme no health???
-	if health <= 0: die(source)
+	if killable and health <= 0: die(source)
 
 ## Heals the character this [HealthComponent] is attached to. 
 ## Takes [param amount] for healing, and [param source] for healing source.

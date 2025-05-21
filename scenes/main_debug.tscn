@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=14 format=4 uid="uid://b3r0paotiofsf"]
 
-[ext_resource type="Script" path="res://actors/common/script_health.gd" id="8_jvgko"]
+[ext_resource type="PackedScene" uid="uid://cmm2fjn3yen74" path="res://actors/actor_testdummy/actor_testdummy.tscn" id="5_2jdy8"]
 [ext_resource type="PackedScene" uid="uid://bgqffqcrj76oa" path="res://actors/player/player.tscn" id="8_s0vle"]
-[ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="9_4g7vc"]
-[ext_resource type="PackedScene" uid="uid://ctt64a6xxbamg" path="res://actors/actor_workrobot/actor_workrobot.tscn" id="9_r42y2"]
+[ext_resource type="Script" uid="uid://o58tprnukore" path="res://addons/func_godot/src/map/func_godot_map.gd" id="9_4g7vc"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="10_tju6r"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="16_7ft7v"]
 
@@ -37,16 +36,16 @@ texture_filter = 2
 [sub_resource type="ArrayMesh" id="ArrayMesh_ljhes"]
 _surfaces = [{
 "aabb": AABB(-8, -1.5, -4.5, 14.5, 0.50001, 22),
-"attribute_data": PackedByteArray(0, 0, 136, 64, 0, 0, 0, 63, 0, 0, 136, 64, 0, 0, 64, 63, 0, 0, 64, 192, 0, 0, 64, 63, 0, 0, 64, 192, 0, 0, 0, 63, 0, 0, 16, 192, 0, 0, 0, 63, 0, 0, 12, 65, 0, 0, 0, 63, 0, 0, 12, 65, 0, 0, 64, 63, 0, 0, 16, 192, 0, 0, 64, 63, 0, 0, 16, 64, 0, 0, 64, 192, 0, 0, 16, 64, 0, 0, 136, 64, 0, 0, 12, 193, 0, 0, 136, 64, 0, 0, 12, 193, 0, 0, 64, 192, 0, 0, 16, 192, 0, 0, 64, 192, 0, 0, 12, 65, 0, 0, 64, 192, 0, 0, 12, 65, 0, 0, 136, 64, 0, 0, 16, 192, 0, 0, 136, 64, 0, 0, 16, 64, 0, 0, 0, 63, 0, 0, 16, 64, 0, 0, 64, 63, 0, 0, 12, 193, 0, 0, 64, 63, 0, 0, 12, 193, 0, 0, 0, 63, 0, 0, 136, 192, 0, 0, 0, 63, 0, 0, 64, 64, 0, 0, 0, 63, 0, 0, 64, 64, 0, 0, 64, 63, 0, 0, 136, 192, 0, 0, 64, 63),
+"attribute_data": PackedByteArray("AACIQAAAAD8AAIhAAABAPwAAQMAAAEA/AABAwAAAAD8AABDAAAAAPwAADEEAAAA/AAAMQQAAQD8AABDAAABAPwAAEEAAAEDAAAAQQAAAiEAAAAzBAACIQAAADMEAAEDAAAAQwAAAQMAAAAxBAABAwAAADEEAAIhAAAAQwAAAiEAAABBAAAAAPwAAEEAAAEA/AAAMwQAAQD8AAAzBAAAAPwAAiMAAAAA/AABAQAAAAD8AAEBAAABAPwAAiMAAAEA/"),
 "format": 34359742487,
 "index_count": 36,
-"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 2, 0, 3, 0, 4, 0, 5, 0, 6, 0, 4, 0, 6, 0, 7, 0, 8, 0, 9, 0, 10, 0, 8, 0, 10, 0, 11, 0, 12, 0, 13, 0, 14, 0, 12, 0, 14, 0, 15, 0, 16, 0, 17, 0, 18, 0, 16, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 20, 0, 22, 0, 23, 0),
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8AEAARABIAEAASABMAFAAVABYAFAAWABcA"),
 "material": SubResource("StandardMaterial3D_8e0ot"),
 "name": "__TB_empty",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 24,
-"vertex_data": PackedByteArray(0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 140, 65, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 140, 65, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 144, 192, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 140, 65, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 208, 64, 0, 0, 128, 191, 0, 0, 140, 65, 0, 0, 208, 64, 0, 0, 192, 191, 0, 0, 140, 65, 0, 0, 0, 193, 0, 0, 192, 191, 0, 0, 140, 65, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 255, 255, 255, 255, 0, 0, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 0, 0, 255, 255, 255, 255, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 127, 255, 255, 255, 127, 255, 191, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 255, 255, 127, 255, 255, 255, 255, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191)
+"vertex_data": PackedByteArray("AAAAwQAAgL8AAJDAAAAAwQAAwL8AAJDAAADQQAAAwL8AAJDAAADQQAAAgL8AAJDAAAAAwQAAgL8AAJDAAAAAwQAAgL8AAIxBAAAAwQAAwL8AAIxBAAAAwQAAwL8AAJDAAADQQAAAwL8AAJDAAAAAwQAAwL8AAJDAAAAAwQAAwL8AAIxBAADQQAAAwL8AAIxBAADQQAAAgL8AAJDAAADQQAAAgL8AAIxBAAAAwQAAgL8AAIxBAAAAwQAAgL8AAJDAAADQQAAAgL8AAJDAAADQQAAAwL8AAJDAAADQQAAAwL8AAIxBAADQQAAAgL8AAIxBAAAAwQAAgL8AAIxBAADQQAAAgL8AAIxBAADQQAAAwL8AAIxBAAAAwQAAwL8AAIxB/////wAA/7//////AAD/v/////8AAP+//////wAA/78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//v/9/AAD//////38AAP//////fwAA//////9/AAD//////3////9//7//f////3//v/9/////f/+//3////9//7////9//////////3//////////f/////////9///////9//3////+//3//f////7//f/9/////v/9//3////+/")
 }]
 
 [sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_n3uxi"]
@@ -56,18 +55,10 @@ indices = PackedInt32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3vevd"]
 points = PackedVector3Array(-8, -1, -4.5, -8, -1.5, -4.5, 6.5, -1.5, -4.5, 6.5, -1, -4.5, -8, -1, 17.5, -8, -1.5, 17.5, 6.5, -1.5, 17.5, 6.5, -1, 17.5)
 
-[sub_resource type="Resource" id="Resource_kpjwe"]
-resource_local_to_scene = true
-script = ExtResource("8_jvgko")
-health_max = 100
-armor_max = 20
-resistance = 50
-super_armor = true
-
 [node name="fear_fps_main" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("8_s0vle")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3843, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220276, 10.397)
 collision_layer = 2
 collision_mask = 1
 
@@ -162,6 +153,5 @@ occluder = SubResource("ArrayOccluder3D_n3uxi")
 [node name="entity_0_brush_0_collision_shape" type="CollisionShape3D" parent="NavigationRegion3D/FuncGodotMap/entity_0_worldspawn"]
 shape = SubResource("ConvexPolygonShape3D_3vevd")
 
-[node name="actor_workrobot" parent="." instance=ExtResource("9_r42y2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.66268, -1, 2.13433)
-health = SubResource("Resource_kpjwe")
+[node name="actor_testdummy" parent="." instance=ExtResource("5_2jdy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435412, -0.5, 0.41073)

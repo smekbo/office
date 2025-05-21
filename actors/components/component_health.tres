@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealthComponent" load_steps=2 format=3 uid="uid://bisin7cd6y23f"]
 
-[ext_resource type="Script" path="res://actors/common/script_health.gd" id="1_3id7d"]
+[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://actors/components/script_health.gd" id="1_3id7d"]
 
 [resource]
 resource_local_to_scene = true
@@ -9,3 +9,4 @@ health_max = 100
 armor_max = 20
 resistance = 50
 super_armor = true
+alive = true
