@@ -1,4 +1,4 @@
-extends Node3D
+extends StaticBody3D
 
 ## The health component for this enemy. Governs health, armor, injury, and healing.
 @export var health : Resource
