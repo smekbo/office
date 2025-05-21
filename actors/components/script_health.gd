@@ -7,6 +7,8 @@ signal died(killer)
 signal injured(amount, source)
 ## This object was healed. Passes the [param amount] of healing and its [param source].
 signal healed(amount, source)
+## This object was armored. Passes the [param amount] of armoring and its [param source].
+signal armored(amount, source)
 
 ## Current health. This is reduced when you take damage, and is modified by your resistance value.
 var health = 0
@@ -60,6 +62,13 @@ func injure(damage:int, source = null, penetration:int = 0, ignore:bool = false)
 func heal(amount:int, source = null):
 	health = min(health_max, health + amount)
 	healed.emit(amount, source)
+
+## Armors the character this [HealthComponent] is attached to. 
+## Takes [param amount] for armoring amount, and [param source] for armoring source.
+## Emits [param armored] signal.
+func armoring(amount:int, source = null):
+	armor = min(armor_max, armor + amount)
+	armored.emit(amount, source)
 
 ## Kills this character. Flips the [param alive] bool to false.
 ## Takes [param killer] for the object that made the final blow.
