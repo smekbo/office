@@ -16,6 +16,8 @@ class_name Weapon
 @export_custom(PROPERTY_HINT_NONE, "suffix:%") var penetration : int = 3
 ## How much impulse force is applied on hit to objects.
 @export var force : float = 2.5
+## Does this weapon do falloff calculations?
+@export var has_falloff : bool = true
 ## How distant in meters until gun damage begins to fall off.
 @export_custom(PROPERTY_HINT_NONE, "suffix:m") var falloff = 20
 ## How distant in meters until the gun simply does no damage anymore
@@ -27,7 +29,7 @@ class_name Weapon
 ## Is this weapon firing? Used in burst-fire weapons.
 var firing : bool = false
 ## Time in seconds between shots. 
-## To get RPM, use the following formula: [cose](1 / fire_speed) * 60[/code].
+## To get RPM, use the following formula: [code](1 / fire_speed) * 60[/code].
 @export_custom(PROPERTY_HINT_NONE, "suffix:s") var fire_speed : float = 0.1
 ## Time before you can pull the trigger again; ignored for automatic weapons.
 @export_custom(PROPERTY_HINT_NONE, "suffix:s") var fire_delay: float = 1
@@ -117,16 +119,15 @@ func fire():
 		
 		
 		if enemy_hp != null: 
-			# damage falloff calc
 			var _dmg = damage
-			print(dist)
-			if falloff < dist && dist < max_range:
-				print("falloff")
-				var _pct = (dist - falloff) / (max_range - falloff)
-				_dmg = round(_dmg - (_dmg * _pct))
-				print("falloff percent: " + str(_pct))
-			elif dist > max_range:
-				_dmg = 0
+			if has_falloff: # damage falloff calc
+				if falloff < dist && dist < max_range:
+					print("falloff")
+					var _pct = (dist - falloff) / (max_range - falloff)
+					_dmg = round(_dmg - (_dmg * _pct))
+					print("falloff percent: " + str(_pct))
+				elif dist > max_range:
+					_dmg = 0
 				
 			if enemy_hp.alive == false: 
 				ray.add_exception(col)
