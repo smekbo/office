@@ -8,19 +8,21 @@ func _on_body_entered(body: Node3D) -> void:
 	var _weapons : Array = []
 	var _used : bool = false
 	
-	#todo: make splitting properly split ammo when there's a remainder
-	#ex: 2 weapons splitting 5 ammo, first should get 3 second should get 2
+	# get all weapons in inventory that use this ammo type
 	for item : Weapon in _inventory:
-		if item.ammo_type == ammo_type:
+		if item.ammo_type == ammo_type && item.reserve != item.reserve_max:
 			_weapons.append(item)
-	var ammo_split = ammo_amount / _weapons.size()
-	var ammo_remainder = ammo_amount % _weapons.size()
 	
-	for item : Weapon in _weapons:
-		var _split = ammo_split
-		if ammo_remainder > 0:
-			_split += 1
-			ammo_remainder -= 1
-		_used = item.add_reserve(_split)
-		print(_split)
+	if not _weapons.is_empty():
+		# calc split + remainder
+		var ammo_split = ammo_amount / _weapons.size()
+		var ammo_remainder = ammo_amount % _weapons.size()
+		
+		# add ammo to all relevant weapons, respecting basic remainder rule
+		for item : Weapon in _weapons:
+			var _split = ammo_split
+			if ammo_remainder > 0:
+				_split += 1
+				ammo_remainder -= 1
+			_used = item.add_reserve(_split)
 	if _used: self.queue_free()
