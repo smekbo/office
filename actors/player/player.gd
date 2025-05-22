@@ -116,29 +116,24 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("injure"):
 		health.injure(10, 0, false)
-		
-	if Input.is_action_pressed("weapon 1"):
-		for index in weapon_inventory.size():
-			if index == 0:
-				weapon_inventory[index].set_process(true)
-				weapon_inventory[index].visible = true
-			else:
-				weapon_inventory[index].set_process(false)
-				weapon_inventory[index].visible = false
-		active_weapon = 0
-		weapon = weapon_inventory[active_weapon]
-		
-	if Input.is_action_pressed("weapon 2"):
-		for index in weapon_inventory.size():
-			if index == 1:
-				weapon_inventory[index].set_process(true)
-				weapon_inventory[index].visible = true
-			else:
-				weapon_inventory[index].set_process(false)
-				weapon_inventory[index].visible = false
-		active_weapon = 1
-		weapon = weapon_inventory[active_weapon]
-		
+	
+	# weapon swapping
+	if Input.is_action_just_pressed("weapon 1"):
+		weapon_swap(0)
+	if Input.is_action_just_pressed("weapon 2"):
+		weapon_swap(1)
+	if Input.is_action_just_pressed("weapon scroll up"):
+		active_weapon += 1
+		if active_weapon > weapon_inventory.size()-1:
+			active_weapon = 0
+		weapon_swap(active_weapon)
+	if Input.is_action_just_pressed("weapon scroll down"):
+		active_weapon -= 1
+		if active_weapon < 0:
+			active_weapon = weapon_inventory.size()-1
+		weapon_swap(active_weapon)
+	
+	# camera looking
 	if mouse_delta:
 		process_camera(delta)
 	
@@ -173,8 +168,18 @@ func process_camera(delta):
 	# rotate the player along their y-axis
 	rotation_degrees.y -= mouse_delta.x * look_sensitivity * delta
 	
-	
 	mouse_delta = Vector2()
+
+func weapon_swap(slot : int = 0):
+	for index in weapon_inventory.size():
+		if index == slot:
+			weapon_inventory[index].set_process(true)
+			weapon_inventory[index].visible = true
+			weapon = weapon_inventory[slot]
+			active_weapon = slot
+		else:
+			weapon_inventory[index].set_process(false)
+			weapon_inventory[index].visible = false
 
 func _on_health_injured(_amount, _source):
 	ui_animation.stop()
