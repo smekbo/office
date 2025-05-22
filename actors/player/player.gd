@@ -44,7 +44,7 @@ func _ready():
 	health.connect("healed", _on_health_healed)
 	health.connect("died", _on_health_died)
 	
-	weapon = weapon_inventory[active_weapon]
+	weapon_swap(0)
 
 func _process(delta):
 	

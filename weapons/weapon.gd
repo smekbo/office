@@ -179,9 +179,8 @@ func _reload():
 		if ammo_reload <= 0:
 			reloading = false	
 	reload_timer = 0
-	
 
-# starts the reload. does conditional checks
+## Starts the reload. Does conditional checks
 func start_reload():
 	if reserve_max == 0:
 		return
@@ -191,8 +190,13 @@ func start_reload():
 		reloading = true
 		animation.play("reload_2")
 		reload_speed = animation.current_animation_length
-		
-		
+
+## Adds ammo to your reserve
+func add_reserve(to_add : int) -> bool:
+	if reserve < reserve_max:
+		reserve = min(reserve_max, reserve + to_add)
+		return true
+	else: return false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
