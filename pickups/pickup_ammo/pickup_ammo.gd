@@ -8,6 +8,8 @@ func _on_body_entered(body: Node3D) -> void:
 	var _weapons : Array = []
 	var _used : bool = false
 	
+	#todo: make splitting properly split ammo when there's a remainder
+	#ex: 2 weapons splitting 5 ammo, first should get 3 second should get 2
 	for item : Weapon in _inventory:
 		if item.ammo_type == ammo_type:
 			_weapons.append(item)
