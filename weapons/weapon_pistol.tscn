@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://wlc4s2lsffk4"]
+
+[ext_resource type="Script" uid="uid://btdushedegpjk" path="res://weapons/weapon.gd" id="1_52hvf"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/vfx_impact/vfx_impact.tscn" id="2_ur7mo"]
+[ext_resource type="PackedScene" uid="uid://cvolupdnqwj2v" path="res://weapons/viewmodel-pistol.blend" id="3_8rak1"]
+[ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://weapons/viewarms.glb" id="4_qucm8"]
+[ext_resource type="Script" uid="uid://eldgixwai1sr" path="res://actors/player/SoundRadius.gd" id="5_wpm7f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8wqp6"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="weapon_pistol" type="Node3D"]
+script = ExtResource("1_52hvf")
+default_impact = ExtResource("2_ur7mo")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50797, 0)
+target_position = Vector3(0, 0, 1000)
+collision_mask = 13
+
+[node name="viewmodel-pistol" parent="." instance=ExtResource("3_8rak1")]
+
+[node name="Skeleton3D" parent="viewmodel-pistol/viewmodel-pistol-armature" index="0"]
+bones/0/rotation = Quaternion(0.00583049, -0.0148335, 0.930587, -0.365724)
+bones/1/rotation = Quaternion(0.0137296, -0.000153733, -0.0102777, 0.999853)
+bones/1/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0154205, 0.00183929, -0.144648, 0.989361)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0139672, 0.00261202, 0.00537191, 0.999885)
+bones/5/rotation = Quaternion(0.0416725, 0.000838032, -0.0903155, 0.995041)
+bones/6/rotation = Quaternion(-0.0147475, 0.00177048, -0.147676, 0.988924)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0110589, 0.00258398, 0.00467927, 0.999925)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(0.00707201, -0.000490862, -0.0883705, 0.996062)
+bones/9/rotation = Quaternion(-0.00962218, 0.000846806, -0.153782, 0.988058)
+bones/10/rotation = Quaternion(0.0110968, 0.00263312, 0.0133311, 0.999846)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.00344196, -0.000546798, -0.0828899, 0.996553)
+bones/12/rotation = Quaternion(0.001548, -0.000584487, -0.144799, 0.98946)
+bones/13/rotation = Quaternion(0.0267887, 0.0032898, 0.00262869, 0.999632)
+bones/13/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.12436, -0.0341511, -0.281681, 0.950802)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(-0.183977, 0.0160589, 0.149846, 0.971309)
+bones/17/rotation = Quaternion(-0.0197287, -0.0303098, 0.0583138, 0.997643)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.0217331, -0.0256586, 0.930351, 0.365124)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.0140733, 0.0251539, 0.00980164, 0.999536)
+bones/20/rotation = Quaternion(-0.010168, -0.0151008, -0.035416, 0.999207)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.00860824, -0.016581, 0.145213, 0.989224)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.01432, -0.0133435, -0.00434422, 0.999799)
+bones/23/rotation = Quaternion(0.0454007, 0.0406135, 0.0885001, 0.994212)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.00794219, -0.0155143, 0.148198, 0.988804)
+bones/25/rotation = Quaternion(0.0108498, 0.0147625, -0.0051454, 0.999819)
+bones/26/rotation = Quaternion(0.00875091, 0.0066469, 0.08822, 0.99604)
+bones/28/rotation = Quaternion(0.0106747, 0.0146355, -0.0136713, 0.999742)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(-0.00198246, -0.00306288, 0.0829376, 0.996548)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(0.00556695, 0.00487135, 0.1447, 0.989448)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.0268209, 0.0333657, -0.0022737, 0.999081)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(-0.00076859, -0.00578389, 0.0800534, 0.996774)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(0.114126, 0.0988126, 0.28598, 0.94627)
+bones/34/rotation = Quaternion(-0.18557, -0.127302, -0.14787, 0.963064)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(-0.0320011, -0.0642902, -0.0525895, 0.996031)
+bones/35/scale = Vector3(1, 1, 1)
+
+[node name="viewarms" parent="." instance=ExtResource("4_qucm8")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)
+visible = false
+
+[node name="Skeleton3D" parent="viewarms/Armature" index="0"]
+bones/0/rotation = Quaternion(0.00583049, -0.0148335, 0.930587, -0.365724)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.0137296, -0.000153733, -0.0102777, 0.999853)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(-0.00943406, 0.00367649, 0.0356185, 0.999314)
+bones/3/rotation = Quaternion(-0.0154205, 0.00183929, -0.144648, 0.989361)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0139672, 0.00261203, 0.00537191, 0.999885)
+bones/5/rotation = Quaternion(0.0416725, 0.000838032, -0.0903155, 0.995041)
+bones/6/rotation = Quaternion(-0.0147475, 0.00177049, -0.147676, 0.988924)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.0110589, 0.00258398, 0.00467927, 0.999925)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.00962217, 0.000846814, -0.153782, 0.988058)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0110968, 0.00263313, 0.0133311, 0.999846)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/rotation = Quaternion(-0.00344196, -0.000546799, -0.0828899, 0.996553)
+bones/12/rotation = Quaternion(0.00154801, -0.000584477, -0.144799, 0.98946)
+bones/13/rotation = Quaternion(0.0267887, 0.0032898, 0.00262876, 0.999632)
+bones/13/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.12436, -0.0341511, -0.281681, 0.950802)
+bones/16/rotation = Quaternion(-0.183977, 0.0160589, 0.149846, 0.971309)
+bones/17/rotation = Quaternion(-0.0197288, -0.0303098, 0.0583137, 0.997643)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(0.0217331, -0.0256586, 0.930351, 0.365124)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(0.0140733, 0.0251539, 0.00980164, 0.999536)
+bones/20/rotation = Quaternion(-0.0101679, -0.0151008, -0.035416, 0.999207)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.00860824, -0.016581, 0.145213, 0.989224)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.01432, -0.0133435, -0.00434423, 0.999799)
+bones/23/rotation = Quaternion(0.0454007, 0.0406135, 0.0885001, 0.994212)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.0079422, -0.0155143, 0.148198, 0.988804)
+bones/25/rotation = Quaternion(0.0108498, 0.0147625, -0.00514535, 0.999819)
+bones/26/rotation = Quaternion(0.00875092, 0.0066469, 0.08822, 0.99604)
+bones/27/rotation = Quaternion(-0.00341727, -0.00896258, 0.154045, 0.988017)
+bones/28/rotation = Quaternion(0.0106747, 0.0146355, -0.0136712, 0.999742)
+bones/28/scale = Vector3(1, 1, 1)
+bones/29/rotation = Quaternion(-0.00198246, -0.00306288, 0.0829375, 0.996548)
+bones/29/scale = Vector3(1, 1, 1)
+bones/30/rotation = Quaternion(0.00556695, 0.00487135, 0.1447, 0.989448)
+bones/30/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.0268209, 0.0333657, -0.0022737, 0.999081)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(-0.000768589, -0.00578389, 0.0800534, 0.996774)
+bones/32/scale = Vector3(1, 1, 1)
+bones/33/rotation = Quaternion(0.114127, 0.0988126, 0.28598, 0.94627)
+bones/34/scale = Vector3(1, 1, 1)
+bones/35/rotation = Quaternion(-0.0320011, -0.0642902, -0.0525895, 0.996031)
+
+[node name="AnimationPlayer" parent="viewarms" index="1"]
+autoplay = "fingerguns-pose-static"
+
+[node name="SoundRadius" type="Area3D" parent="."]
+collision_layer = 32768
+collision_mask = 0
+script = ExtResource("5_wpm7f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundRadius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04071, 0)
+shape = SubResource("BoxShape3D_8wqp6")
+
+[editable path="viewmodel-pistol"]
+[editable path="viewarms"]

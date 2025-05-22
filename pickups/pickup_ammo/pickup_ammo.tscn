@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcl8lt7kv5am0"]
+[gd_scene load_steps=5 format=3 uid="uid://dtoemcuke2g5x"]
 
-[ext_resource type="Script" uid="uid://bspr333u7cat4" path="res://pickups/pickup_health_armor/pickup_health_armor.gd" id="1_lo70e"]
+[ext_resource type="Script" uid="uid://by8bpvd5xonvx" path="res://pickups/pickup_ammo/pickup_ammo.gd" id="1_w4300"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ufe"]
 albedo_color = Color(0.092239, 0.569888, 1.02037e-05, 1)
@@ -10,10 +10,10 @@ material = SubResource("StandardMaterial3D_h0ufe")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4brs5"]
 
-[node name="pickup_health_armor" type="Area3D"]
+[node name="pickup_ammo" type="Area3D"]
 collision_layer = 32
 collision_mask = 2
-script = ExtResource("1_lo70e")
+script = ExtResource("1_w4300")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_lo70e")

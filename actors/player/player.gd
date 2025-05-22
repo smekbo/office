@@ -6,7 +6,8 @@ extends CharacterBody3D
 @onready var kick_raycast : RayCast3D = $cam_pivot/Camera3D/kick_raycast
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
-@onready var weapon = $cam_pivot/Camera3D/weapon
+@onready var weapons = $cam_pivot/Camera3D/weapons
+var weapon : Weapon
 @onready var ui_animation : AnimationPlayer = $Control/AnimationPlayer
 var smooth_animation_input : Vector2 
 
@@ -26,6 +27,9 @@ const JUMP_VELOCITY = 4.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+@export var weapon_inventory : Array[Node]
+@export var active_weapon : int = 0
+
 func _init():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -39,6 +43,8 @@ func _ready():
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)
 	health.connect("died", _on_health_died)
+	
+	weapon = weapon_inventory[active_weapon]
 
 func _process(delta):
 	
@@ -110,7 +116,29 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("injure"):
 		health.injure(10, 0, false)
-	
+		
+	if Input.is_action_pressed("weapon 1"):
+		for index in weapon_inventory.size():
+			if index == 0:
+				weapon_inventory[index].set_process(true)
+				weapon_inventory[index].visible = true
+			else:
+				weapon_inventory[index].set_process(false)
+				weapon_inventory[index].visible = false
+		active_weapon = 0
+		weapon = weapon_inventory[active_weapon]
+		
+	if Input.is_action_pressed("weapon 2"):
+		for index in weapon_inventory.size():
+			if index == 1:
+				weapon_inventory[index].set_process(true)
+				weapon_inventory[index].visible = true
+			else:
+				weapon_inventory[index].set_process(false)
+				weapon_inventory[index].visible = false
+		active_weapon = 1
+		weapon = weapon_inventory[active_weapon]
+		
 	if mouse_delta:
 		process_camera(delta)
 	

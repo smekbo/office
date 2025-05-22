@@ -63,6 +63,8 @@ var spread_timer : float = 0
 
 ## Variables related to ammo
 @export_group("Ammo")
+## Type of ammo
+@export_enum("Pistol","Shell","Rifle","Sniper","Explosive","Energy") var ammo_type = 0
 ## Current ammo.
 @export var ammo : int = 5
 ## Magazine capacity.

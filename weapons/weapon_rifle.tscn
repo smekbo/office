@@ -1,33 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://wlc4s2lsffk4"]
+[gd_scene load_steps=7 format=3 uid="uid://ck08rn8vkkfr1"]
 
-[ext_resource type="Script" uid="uid://btdushedegpjk" path="res://weapons/weapon.gd" id="1_u2h6h"]
-[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/vfx_impact/vfx_impact.tscn" id="2_07p3e"]
-[ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://weapons/viewarms.glb" id="2_vl28s"]
-[ext_resource type="PackedScene" uid="uid://cvolupdnqwj2v" path="res://weapons/viewmodel-pistol.blend" id="3_2wel5"]
-[ext_resource type="Script" uid="uid://eldgixwai1sr" path="res://actors/player/SoundRadius.gd" id="4_rfu55"]
+[ext_resource type="Script" uid="uid://btdushedegpjk" path="res://weapons/weapon.gd" id="1_p06ep"]
+[ext_resource type="PackedScene" uid="uid://crnjqovoto4t8" path="res://vfx/vfx_impact/vfx_impact.tscn" id="2_dd4vy"]
+[ext_resource type="PackedScene" uid="uid://cvolupdnqwj2v" path="res://weapons/viewmodel-pistol.blend" id="3_76j43"]
+[ext_resource type="PackedScene" uid="uid://bj5t32i2dftti" path="res://weapons/viewarms.glb" id="4_gagc4"]
+[ext_resource type="Script" uid="uid://eldgixwai1sr" path="res://actors/player/SoundRadius.gd" id="5_spqt6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8wqp6"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="weapon" type="Node3D"]
-script = ExtResource("1_u2h6h")
-default_impact = ExtResource("2_07p3e")
+[node name="weapon_rifle" type="Node3D"]
+script = ExtResource("1_p06ep")
+default_impact = ExtResource("2_dd4vy")
 damage = 200
-ammo = 100
-ammo_max = 100
-reserve = 100
-reserve_max = -1
+falloff = 50
+max_range = 100
+ammo_type = 2
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50797, 0)
 target_position = Vector3(0, 0, 1000)
 collision_mask = 13
 
-[node name="viewmodel-pistol" parent="." instance=ExtResource("3_2wel5")]
+[node name="viewmodel-pistol" parent="." instance=ExtResource("3_76j43")]
 
 [node name="Skeleton3D" parent="viewmodel-pistol/viewmodel-pistol-armature" index="0"]
 bones/0/rotation = Quaternion(0.00583049, -0.0148335, 0.930587, -0.365724)
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/rotation = Quaternion(0.0137296, -0.000153733, -0.0102777, 0.999853)
 bones/1/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(-0.0154205, 0.00183929, -0.144648, 0.989361)
@@ -80,7 +78,7 @@ bones/34/scale = Vector3(1, 1, 1)
 bones/35/rotation = Quaternion(-0.0320011, -0.0642902, -0.0525895, 0.996031)
 bones/35/scale = Vector3(1, 1, 1)
 
-[node name="viewarms" parent="." instance=ExtResource("2_vl28s")]
+[node name="viewarms" parent="." instance=ExtResource("4_gagc4")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -1.92733, -0.0687677)
 visible = false
 
@@ -144,7 +142,7 @@ autoplay = "fingerguns-pose-static"
 [node name="SoundRadius" type="Area3D" parent="."]
 collision_layer = 32768
 collision_mask = 0
-script = ExtResource("4_rfu55")
+script = ExtResource("5_spqt6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoundRadius"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04071, 0)
