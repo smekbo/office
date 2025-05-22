@@ -14,6 +14,13 @@ func _on_body_entered(body: Node3D) -> void:
 		if item.ammo_type == ammo_type:
 			_weapons.append(item)
 	var ammo_split = ammo_amount / _weapons.size()
-	for item in _weapons:
-		_used = item.add_reserve(ammo_split)
+	var ammo_remainder = ammo_amount % _weapons.size()
+	
+	for item : Weapon in _weapons:
+		var _split = ammo_split
+		if ammo_remainder > 0:
+			_split += 1
+			ammo_remainder -= 1
+		_used = item.add_reserve(_split)
+		print(_split)
 	if _used: self.queue_free()
