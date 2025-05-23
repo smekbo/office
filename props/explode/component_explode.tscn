@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhkvrgd1xv88g"]
+
+[ext_resource type="Script" uid="uid://clngqb4xnmq2w" path="res://props/explode/component_explode.gd" id="1_7bo6d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_03f4d"]
+radius = 3.948
+
+[node name="ComponentExplode" type="Area3D"]
+collision_layer = 0
+collision_mask = 15
+script = ExtResource("1_7bo6d")
+
+[node name="ExplodeShape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_03f4d")

@@ -5,7 +5,7 @@ class_name Weapon
 
 @onready var ray : RayCast3D = $RayCast3D
 @onready var animation : AnimationPlayer = $"viewmodel-pistol/AnimationPlayer"
-@onready var sound_col : Area3D = $SoundRadius
+@onready var sound_radius : Area3D = $SoundRadius
 @export var default_impact : PackedScene
 
 # Variables related to damage.
@@ -154,7 +154,7 @@ func fire():
 	ammo -= 1
 	shots_left -= 1
 	spread = min(spread_max, spread + spread_kick)
-	sound_col.emit_signal("sound_made", sound_col.global_transform.origin)
+	sound_radius.emit_signal("sound_made", sound_radius.global_transform.origin)
 
 # reload
 func _reload():
@@ -240,4 +240,4 @@ func _process(delta):
 			fire()
 			
 func _physics_process(_delta):
-	sound_col.visible = false
+	sound_radius.visible = false

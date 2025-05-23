@@ -27,7 +27,7 @@ var armor = 0
 ## Is this character invulnerable (ignores all damage)?
 @export var invulnerable = false
 ## Is this character unkillable (does not die)?
-@export var killable = false
+@export var killable = true
 
 ## Is this character alive?
 var alive = true
@@ -54,7 +54,8 @@ func injure(damage:int, source = null, penetration:int = 0, ignore:bool = false)
 			injured.emit(taken, source)
 		
 	# megamind meme no health???
-	if killable and health <= 0: die(source)
+	if killable and health <= 0:
+		die(source)
 
 ## Heals the character this [HealthComponent] is attached to. 
 ## Takes [param amount] for healing, and [param source] for healing source.

@@ -15,7 +15,7 @@ func _on_body_entered(body: Node3D) -> void:
 	
 	if not _weapons.is_empty():
 		# calc split + remainder
-		var ammo_split = ammo_amount / _weapons.size()
+		@warning_ignore("integer_division") var ammo_split = ammo_amount / _weapons.size()
 		var ammo_remainder = ammo_amount % _weapons.size()
 		
 		# add ammo to all relevant weapons, respecting basic remainder rule
