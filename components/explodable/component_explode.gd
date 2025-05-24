@@ -56,11 +56,11 @@ func explode():
 			lingering = true
 
 ## Damages all objects in the area. 
-## Objects must have a HealthComponent attached to "health" property to be damaged.
+## Objects must have a ComponentHealth attached to "health" property to be damaged.
 func damage_area():
 	var _bodies = self.get_overlapping_bodies()
 	var _parent = self.get_parent_node_3d()
 	for item in _bodies:
-		var _health : HealthComponent = item.get("health")
+		var _health : ComponentHealth = item.get("health")
 		if _health != null && item != _parent:
 			item.health.injure(damage, self.get_parent_node_3d(), penetration, ignore)

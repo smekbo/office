@@ -1,5 +1,8 @@
+## Adds "health" to this object, allowing it to be damaged. 
+## Should always be assigned to the "health" property on the object; see player object for an example.
+
 extends Resource
-class_name HealthComponent
+class_name ComponentHealth
 
 ## This object has died. Passes the [param killer].
 signal died(killer)
@@ -36,7 +39,7 @@ func _ready():
 	health = health_max
 	armor = armor_max
 
-## Injures the character this [HealthComponent] is attached to. 
+## Injures the character this [ComponentHealth] is attached to. 
 ## Takes [param damage] for initial damage, [param source] for damage source, [param penetration] for amount of resist ignored, and [param ignore] to fully ignore all resistance.
 ## Emits [param injured] signal, and [param died] signal if damage was lethal.
 func injure(damage:int, source = null, penetration:int = 0, ignore:bool = false):
@@ -57,14 +60,14 @@ func injure(damage:int, source = null, penetration:int = 0, ignore:bool = false)
 	if killable and health <= 0:
 		die(source)
 
-## Heals the character this [HealthComponent] is attached to. 
+## Heals the character this [ComponentHealth] is attached to. 
 ## Takes [param amount] for healing, and [param source] for healing source.
 ## Emits [param healed] signal.
 func heal(amount:int, source = null):
 	health = min(health_max, health + amount)
 	healed.emit(amount, source)
 
-## Armors the character this [HealthComponent] is attached to. 
+## Armors the character this [ComponentHealth] is attached to. 
 ## Takes [param amount] for armoring amount, and [param source] for armoring source.
 ## Emits [param armored] signal.
 func armoring(amount:int, source = null):

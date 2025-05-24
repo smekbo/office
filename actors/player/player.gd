@@ -7,6 +7,7 @@ extends CharacterBody3D
 @onready var legs : Node3D = $Hmercenary
 @onready var legs_animation : AnimationTree = $Hmercenary/AnimationTree
 @onready var weapons = $cam_pivot/Camera3D/weapons
+@onready var user = $cam_pivot/Camera3D/ComponentUser
 var weapon : Weapon
 @onready var ui_animation : AnimationPlayer = $Control/AnimationPlayer
 var smooth_animation_input : Vector2 
@@ -132,6 +133,9 @@ func _physics_process(delta):
 		if active_weapon < 0:
 			active_weapon = weapon_inventory.size()-1
 		weapon_swap(active_weapon)
+	
+	if Input.is_action_pressed("use"):
+		user.use()
 	
 	# camera looking
 	if mouse_delta:

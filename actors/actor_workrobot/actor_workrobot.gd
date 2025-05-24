@@ -8,7 +8,7 @@ extends CharacterBody3D
 @onready var ray : RayCast3D = $RayCast3D
 
 ## The health component for this enemy. Governs health, armor, injury, and healing.
-@export var health : Resource
+@export var health : ComponentHealth
 ## The amount of damage each attack does
 @export var atk_damage: int
 ## The distance at which the enemy can attack

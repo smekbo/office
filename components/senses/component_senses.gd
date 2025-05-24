@@ -1,4 +1,5 @@
 extends Node
+class_name ComponentSenses
 
 signal heard(location: Vector3)
 signal saw(player: Object)

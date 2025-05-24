@@ -1,8 +1,8 @@
 [gd_scene load_steps=31 format=3 uid="uid://dobhtjffagd31"]
 
 [ext_resource type="Script" uid="uid://dqwdgka1m38gy" path="res://props/explode/prop_expl_barrel.gd" id="1_5auri"]
-[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://actors/components/script_health.gd" id="2_1ffyd"]
-[ext_resource type="Script" uid="uid://clngqb4xnmq2w" path="res://props/explode/component_explode.gd" id="3_800ks"]
+[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://components/health/component_health.gd" id="2_1ffyd"]
+[ext_resource type="Script" uid="uid://clngqb4xnmq2w" path="res://components/explodable/component_explode.gd" id="3_800ks"]
 [ext_resource type="Script" uid="uid://bbsiex31ui4an" path="res://vfx/vfx_impact/vfx_impact.gd" id="4_wsus6"]
 [ext_resource type="PackedScene" uid="uid://bvmotqkv2o1rc" path="res://vfx/vfx_impact/vfx_impact_hole.tscn" id="5_jtqqe"]
 [ext_resource type="PlaneMesh" uid="uid://c5527hrtp75yj" path="res://vfx/vfx_paper/paper-curve-mesh.tres" id="6_setfh"]

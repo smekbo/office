@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://soynb48djqqq"]
+
+[ext_resource type="Script" uid="uid://c74ruu3vp4b6y" path="res://components/usable/component_user.gd" id="1_4y1bi"]
+
+[node name="ComponentUser" type="RayCast3D"]
+collision_mask = 64
+collide_with_areas = true
+script = ExtResource("1_4y1bi")

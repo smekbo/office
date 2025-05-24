@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgqffqcrj76oa"]
+[gd_scene load_steps=22 format=3 uid="uid://bgqffqcrj76oa"]
 
 [ext_resource type="Script" uid="uid://d3jvwtkctwowq" path="res://actors/player/player.gd" id="1_l1qma"]
 [ext_resource type="Resource" uid="uid://cnlahc7n2hwm" path="res://actors/player/PlayerHealth.tres" id="2_sj02o"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dk5gpkh6tndc6" path="res://actors/player/Hmercenary.glb" id="3_o0dom"]
 [ext_resource type="Texture2D" uid="uid://da16cgkalgvao" path="res://ui/ui_blood_heavy.png" id="5_21y5o"]
 [ext_resource type="PackedScene" uid="uid://ck08rn8vkkfr1" path="res://weapons/weapon_rifle.tscn" id="6_bop6h"]
+[ext_resource type="PackedScene" uid="uid://soynb48djqqq" path="res://components/usable/component_user.tscn" id="7_a744p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kl5tv"]
 
@@ -121,6 +122,7 @@ target_position = Vector3(0, -3, 0)
 collision_mask = 6
 
 [node name="weapons" type="Node3D" parent="cam_pivot/Camera3D"]
+visible = false
 
 [node name="weapon_pistol" parent="cam_pivot/Camera3D/weapons" instance=ExtResource("3_4olqu")]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0, -0.731843, 0.176275)
@@ -144,6 +146,9 @@ shots = 1
 ammo_type = 0
 reserve = 60
 reload_num = 5
+
+[node name="ComponentUser" parent="cam_pivot/Camera3D" instance=ExtResource("7_a744p")]
+target_position = Vector3(0, 0, -3)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

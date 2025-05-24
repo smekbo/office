@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://kb70kcsdmbsx" path="res://actors/actor_workrobot/comp_health_workbot.tres" id="2_oaat2"]
 [ext_resource type="PackedScene" uid="uid://x4vpv8jcyfff" path="res://actors/actor_workrobot/model_workrobot.tscn" id="3_vhtk2"]
 [ext_resource type="AnimationLibrary" uid="uid://cqvcaika5h542" path="res://actors/actor_workrobot/anim_lib_workrobot.res" id="4_7dw65"]
-[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://actors/components/component_senses.tscn" id="5_71ru3"]
+[ext_resource type="PackedScene" uid="uid://d1ncslnll5lr4" path="res://components/senses/component_senses.tscn" id="5_71ru3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqdnr"]
 

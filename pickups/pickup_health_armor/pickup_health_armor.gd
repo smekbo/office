@@ -4,7 +4,7 @@ extends Pickup
 @export_custom(PROPERTY_HINT_NONE, "suffix:armor") var armoring_amount : int = 25
 
 func _on_body_entered(body: Node3D) -> void:
-	var _health : HealthComponent = body.get("health")
+	var _health : ComponentHealth = body.get("health")
 	var _used : bool = false
 	
 	if _health:

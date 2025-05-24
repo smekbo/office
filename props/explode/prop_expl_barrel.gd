@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-@export var health : HealthComponent
+@export var health : ComponentHealth
 @export var explosion : Explodable
 
 func _ready():
