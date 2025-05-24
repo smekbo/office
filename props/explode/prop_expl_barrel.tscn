@@ -1,16 +1,16 @@
-[gd_scene load_steps=34 format=3 uid="uid://dobhtjffagd31"]
+[gd_scene load_steps=31 format=3 uid="uid://dobhtjffagd31"]
 
-[ext_resource type="Script" uid="uid://dqwdgka1m38gy" path="res://props/explode/prop_monitor.gd" id="1_mpnkb"]
-[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://actors/components/script_health.gd" id="2_kxdu6"]
-[ext_resource type="Script" uid="uid://clngqb4xnmq2w" path="res://props/explode/component_explode.gd" id="3_tx3ie"]
-[ext_resource type="Script" uid="uid://bbsiex31ui4an" path="res://vfx/vfx_impact/vfx_impact.gd" id="4_eaee3"]
-[ext_resource type="PackedScene" uid="uid://bvmotqkv2o1rc" path="res://vfx/vfx_impact/vfx_impact_hole.tscn" id="5_ldx80"]
-[ext_resource type="PlaneMesh" uid="uid://c5527hrtp75yj" path="res://vfx/vfx_paper/paper-curve-mesh.tres" id="6_fca7b"]
-[ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://vfx/vfx_impact/sprite_spark2.png" id="7_q7ays"]
-[ext_resource type="Texture2D" uid="uid://1etnlg2amxpk" path="res://vfx/vfx_impact/sprite_smoke1.png" id="8_6jo0k"]
+[ext_resource type="Script" uid="uid://dqwdgka1m38gy" path="res://props/explode/prop_expl_barrel.gd" id="1_5auri"]
+[ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://actors/components/script_health.gd" id="2_1ffyd"]
+[ext_resource type="Script" uid="uid://clngqb4xnmq2w" path="res://props/explode/component_explode.gd" id="3_800ks"]
+[ext_resource type="Script" uid="uid://bbsiex31ui4an" path="res://vfx/vfx_impact/vfx_impact.gd" id="4_wsus6"]
+[ext_resource type="PackedScene" uid="uid://bvmotqkv2o1rc" path="res://vfx/vfx_impact/vfx_impact_hole.tscn" id="5_jtqqe"]
+[ext_resource type="PlaneMesh" uid="uid://c5527hrtp75yj" path="res://vfx/vfx_paper/paper-curve-mesh.tres" id="6_setfh"]
+[ext_resource type="Texture2D" uid="uid://bb66bsc8u22pb" path="res://vfx/vfx_impact/sprite_spark2.png" id="7_xwbgw"]
+[ext_resource type="Texture2D" uid="uid://1etnlg2amxpk" path="res://vfx/vfx_impact/sprite_smoke1.png" id="8_k2qr6"]
 
 [sub_resource type="Resource" id="Resource_kxdu6"]
-script = ExtResource("2_kxdu6")
+script = ExtResource("2_1ffyd")
 health_max = 100
 armor_max = 20
 resistance = 50
@@ -19,22 +19,14 @@ invulnerable = false
 killable = true
 metadata/_custom_type_script = "uid://q2tw1cxc0enj"
 
-[sub_resource type="Gradient" id="Gradient_mpnkb"]
-colors = PackedColorArray(0.47451, 0, 0.941176, 1, 0.227451, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_276sn"]
-gradient = SubResource("Gradient_mpnkb")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23hlg"]
-albedo_texture = SubResource("GradientTexture2D_276sn")
-
-[sub_resource type="BoxMesh" id="BoxMesh_276sn"]
-material = SubResource("StandardMaterial3D_23hlg")
+[sub_resource type="CylinderMesh" id="CylinderMesh_dxqts"]
+height = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kxdu6"]
-albedo_color = Color(0, 0.908742, 0.909503, 1)
+albedo_color = Color(0.996078, 0.411765, 0.419608, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_23hlg"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5auri"]
+height = 1.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_03f4d"]
 radius = 3.948
@@ -128,7 +120,7 @@ scale_curve = SubResource("CurveTexture_jpjvv")
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("7_q7ays")
+albedo_texture = ExtResource("7_xwbgw")
 
 [sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_d3o1f"]
 material = SubResource("StandardMaterial3D_ixypf")
@@ -164,7 +156,7 @@ scale_curve = SubResource("CurveTexture_gny3v")
 transparency = 1
 disable_ambient_light = true
 albedo_color = Color(0.411765, 0.411765, 0.411765, 0.2)
-albedo_texture = ExtResource("8_6jo0k")
+albedo_texture = ExtResource("8_k2qr6")
 backlight_enabled = true
 backlight = Color(0.631373, 0.631373, 0.631373, 1)
 disable_receive_shadows = true
@@ -175,24 +167,25 @@ billboard_keep_scale = true
 material = SubResource("StandardMaterial3D_doy0c")
 orientation = 2
 
-[node name="prop_monitor" type="RigidBody3D" node_paths=PackedStringArray("explosion")]
+[node name="prop_explosive_barrel" type="RigidBody3D" node_paths=PackedStringArray("explosion")]
 collision_layer = 8
 collision_mask = 7
-script = ExtResource("1_mpnkb")
+mass = 3.0
+script = ExtResource("1_5auri")
 health = SubResource("Resource_kxdu6")
 explosion = NodePath("ComponentExplode")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_276sn")
+mesh = SubResource("CylinderMesh_dxqts")
 surface_material_override/0 = SubResource("StandardMaterial3D_kxdu6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_23hlg")
+shape = SubResource("CylinderShape3D_5auri")
 
 [node name="ComponentExplode" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 15
-script = ExtResource("3_tx3ie")
+script = ExtResource("3_800ks")
 fuse = 1.0
 linger = 2.0
 tickrate = 0.5
@@ -201,11 +194,11 @@ tickrate = 0.5
 shape = SubResource("SphereShape3D_03f4d")
 
 [node name="weapon_impact" type="Node3D" parent="ComponentExplode"]
-script = ExtResource("4_eaee3")
+script = ExtResource("4_wsus6")
 spark_chance = 0.0
 dust_chance = 0.0
-decal = ExtResource("5_ldx80")
-spark_override = ExtResource("6_fca7b")
+decal = ExtResource("5_jtqqe")
+spark_override = ExtResource("6_setfh")
 spark_process_override = SubResource("ParticleProcessMaterial_sspsl")
 spark_lifetime = 5.0
 spark_amount = 15
