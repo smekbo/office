@@ -26,11 +26,11 @@ var tick_timer : float = 0
 @export var vfx : WeaponImpact
 
 func _physics_process(delta: float) -> void:
-	if fuse_lit:
+	if fuse_lit: # fuse timing
 		fuse_timer -= delta
 		if fuse_timer <= 0:
 			explode()
-	if lingering:
+	if lingering: # lingering damage field
 		linger_timer -= delta
 		if linger_timer <= 0:
 			lingering = false
@@ -55,7 +55,8 @@ func explode():
 			tick_timer = tickrate
 			lingering = true
 
-## Damages all objects in the area. Objects must have a HealthComponent attached to "health" property to be damaged.
+## Damages all objects in the area. 
+## Objects must have a HealthComponent attached to "health" property to be damaged.
 func damage_area():
 	var _bodies = self.get_overlapping_bodies()
 	var _parent = self.get_parent_node_3d()
