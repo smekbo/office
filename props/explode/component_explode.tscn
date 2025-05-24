@@ -5,10 +5,11 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_03f4d"]
 radius = 3.948
 
-[node name="ComponentExplode" type="Area3D"]
+[node name="ComponentExplode" type="Area3D" node_paths=PackedStringArray("vfx")]
 collision_layer = 0
 collision_mask = 15
 script = ExtResource("1_7bo6d")
+vfx = NodePath("")
 
 [node name="ExplodeShape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_03f4d")
