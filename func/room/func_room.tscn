@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnp8ige2424s7"]
+
+[ext_resource type="Script" uid="uid://bqu2ur54m0s6f" path="res://func/room/func_room.gd" id="1_s8q2s"]
+
+[node name="FuncRoom" type="Node3D"]
+script = ExtResource("1_s8q2s")

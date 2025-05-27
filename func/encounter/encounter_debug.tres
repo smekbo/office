@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Encounter" load_steps=3 format=3 uid="uid://cl8a48h4vgqp3"]
+
+[ext_resource type="PackedScene" uid="uid://cmm2fjn3yen74" path="res://actors/actor_testdummy/actor_testdummy.tscn" id="1_dvde0"]
+[ext_resource type="Script" uid="uid://5yu8l7ornha4" path="res://func/encounter/func_encounter.gd" id="1_g2gsr"]
+
+[resource]
+script = ExtResource("1_g2gsr")
+enemies = Array[PackedScene]([ExtResource("1_dvde0")])
+metadata/_custom_type_script = "uid://5yu8l7ornha4"
