@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnt7uj2gmm1im"]
+[gd_scene load_steps=10 format=3 uid="uid://dnt7uj2gmm1im"]
 
 [ext_resource type="Script" uid="uid://cwd73l6wjsrso" path="res://props/cooler/prop_cooler.gd" id="1_55wc8"]
 [ext_resource type="ArrayMesh" uid="uid://5425knov6nww" path="res://props/cooler/Water_cooler.obj" id="1_dppfy"]
 [ext_resource type="PackedScene" uid="uid://dhkvrgd1xv88g" path="res://components/explodable/component_explode.tscn" id="2_55wc8"]
 [ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://components/health/component_health.gd" id="2_mkuf8"]
 [ext_resource type="Script" uid="uid://cqme0a65bk7s4" path="res://components/usable/component_usable.gd" id="5_mkuf8"]
+[ext_resource type="AudioStream" uid="uid://b2hdsbkdlpq35" path="res://sfx/debug_health.wav" id="6_3nvkt"]
 
 [sub_resource type="Resource" id="Resource_3nvkt"]
 script = ExtResource("2_mkuf8")
@@ -41,9 +42,12 @@ damage = 50
 collision_layer = 64
 collision_mask = 0
 script = ExtResource("5_mkuf8")
+use_sound = ExtResource("6_3nvkt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ComponentUsable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.892297, 0)
 shape = SubResource("BoxShape3D_3nvkt")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ComponentUsable"]
 
 [connection signal="used" from="ComponentUsable" to="." method="_on_component_usable_used"]

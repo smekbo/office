@@ -1,8 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ch6ugeifh7wik"]
+[gd_scene load_steps=4 format=3 uid="uid://ch6ugeifh7wik"]
 
 [ext_resource type="Script" uid="uid://tr7py7cxsuet" path="res://func/director/func_director.gd" id="1_3p4tm"]
 [ext_resource type="Resource" uid="uid://cl8a48h4vgqp3" path="res://func/encounter/encounter_debug.tres" id="2_bwoku"]
+[ext_resource type="Script" uid="uid://5yu8l7ornha4" path="res://func/encounter/func_encounter.gd" id="2_ohler"]
 
 [node name="Director" type="Node3D"]
 script = ExtResource("1_3p4tm")
-easy_encounters = [ExtResource("2_bwoku")]
+easy_encounters = Array[ExtResource("2_ohler")]([ExtResource("2_bwoku")])

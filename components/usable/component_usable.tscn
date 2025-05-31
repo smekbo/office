@@ -11,3 +11,5 @@ script = ExtResource("1_fuhs8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_6htdn")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
