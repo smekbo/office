@@ -50,4 +50,5 @@ shape = SubResource("BoxShape3D_3nvkt")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="ComponentUsable"]
 
+[connection signal="attempted" from="ComponentUsable" to="." method="_on_component_usable_attempted"]
 [connection signal="used" from="ComponentUsable" to="." method="_on_component_usable_used"]

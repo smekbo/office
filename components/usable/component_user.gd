@@ -7,4 +7,4 @@ class_name ComponentUser
 func use():
 	if is_colliding():
 		var _usable : ComponentUsable = get_collider()
-		_usable.use(self.get_owner())
+		_usable.attempt(self.get_owner())
