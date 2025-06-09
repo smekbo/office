@@ -63,4 +63,4 @@ func damage_area():
 	for item in _bodies:
 		var _health : ComponentHealth = item.get("health")
 		if _health != null && item != _parent:
-			item.health.injure(damage, self.get_parent_node_3d(), penetration, ignore)
+			item.health.injure(damage, false, penetration, ignore, self.get_parent_node_3d())

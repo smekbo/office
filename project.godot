@@ -128,6 +128,7 @@ injure={
 3d_physics/layer_4="enemy"
 3d_physics/layer_5="dust / fog"
 3d_physics/layer_7="usable"
+3d_physics/layer_8="weakspot"
 3d_physics/layer_9="pickups"
 3d_physics/layer_16="sound"
 3d_physics/layer_31="nothing"

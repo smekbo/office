@@ -14,6 +14,8 @@ class_name Weapon
 @export var damage : int = 10
 ## Damage penetration, expressed as a percentage ([code]penetration / 100[/code]).
 @export_custom(PROPERTY_HINT_NONE, "suffix:%") var penetration : int = 3
+## Whether this weapon ignores armor entirely (full penetration, always)
+@export var ignore : bool = false
 ## How much impulse force is applied on hit to objects.
 @export var force : float = 2.5
 ## Does this weapon do falloff calculations?
@@ -104,21 +106,26 @@ func fire():
 		return
 	ray.target_position = Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 100)
 	if ray.is_colliding():
-		var col : Node = ray.get_collider()
+		var col_obj : CollisionObject3D = ray.get_collider()
 		var col_point : Vector3 = ray.get_collision_point()
 		col_normal = ray.get_collision_normal()
 		var dir : Vector3 = col_point - ray.global_position
 		var dist : float = abs(dir.z)
 		dir_normal = dir.normalized()
 		var _dir_reflect : Vector3 = dir_normal.reflect(col_normal)
-		var impact : WeaponImpact = col.get_node_or_null("weapon_impact")
-		
+		var impact : WeaponImpact = col_obj.get_node_or_null("weapon_impact")
 		# impact impulse
-		if col.is_class("RigidBody3D"):
-			col.apply_impulse(dir_normal * force)
+		if col_obj.is_class("RigidBody3D"):
+			col_obj.apply_impulse(dir_normal * force)
 		
-		var enemy_hp = col.get("health")
-		
+		# find the hp component
+		var enemy_hp = null
+		var crit : bool = false
+		if col_obj.get_collision_layer_value(8):
+			print("Crit shot") 
+			enemy_hp = col_obj.owner.get("health") #todo: fix this so it doesn't suck so much shit
+			crit = true
+		else: enemy_hp = col_obj.get("health")
 		
 		if enemy_hp != null: 
 			var _dmg = damage
@@ -132,20 +139,20 @@ func fire():
 					_dmg = 0
 				
 			if enemy_hp.alive == false: 
-				ray.add_exception(col)
+				ray.add_exception(col_obj)
 			else: 
-				enemy_hp.injure(_dmg, penetration)
-				print("Damage taken: " + str(_dmg))
+				var _debug_taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
+				print("Damage taken: " + str(_debug_taken))
 		
 		# impact effect
-		if not col.is_class("CharacterBody3D"):
+		if not col_obj.is_class("CharacterBody3D"):
 			if impact:
-				impact.start(col, col_point, col_normal)
+				impact.start(col_obj, col_point, col_normal)
 			else:
 				var new_impact = default_impact.instantiate()
 				get_tree().get_root().add_child(new_impact)
 				new_impact.global_position = col_point
-				new_impact.start(col, col_point, col_normal)
+				new_impact.start(col_obj, col_point, col_normal)
 	
 	animation.stop()
 	animation.play("fire_2")

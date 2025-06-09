@@ -15,6 +15,7 @@ resistance = 0
 super_armor = false
 invulnerable = false
 killable = true
+crit_mult = 2.0
 metadata/_custom_type_script = "uid://q2tw1cxc0enj"
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3nvkt"]

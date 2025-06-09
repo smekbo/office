@@ -8,7 +8,7 @@ func _ready():
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)
 
-func _on_health_injured(_amount, _source):
+func _on_health_injured(_amount, _crit, _source):
 	print("Dummy health damage: " + str(_amount))
 
 func _on_health_healed(_amount, _source):
