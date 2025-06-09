@@ -10,4 +10,5 @@ resistance = 50
 super_armor = false
 invulnerable = false
 killable = false
+crit_mult = 2.0
 metadata/_custom_type_script = "uid://q2tw1cxc0enj"
