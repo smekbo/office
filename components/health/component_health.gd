@@ -41,6 +41,7 @@ var alive = true
 func _ready():
 	health = health_max
 	armor = armor_max
+	if not is_local_to_scene(): push_warning("Health component for " + str(resource_path) + " is not set to loca-to-scene! All stats are shared between all objects with this component!")
 
 ## Injures the character this [ComponentHealth] is attached to. 
 ## Takes [param damage] for initial damage, [param source] for damage source, [param penetration] for amount of resist ignored, and [param ignore] to fully ignore all resistance.

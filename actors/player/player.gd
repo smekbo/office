@@ -185,7 +185,7 @@ func weapon_swap(slot : int = 0):
 			weapon_inventory[index].set_process(false)
 			weapon_inventory[index].visible = false
 
-func _on_health_injured(_amount, _source):
+func _on_health_injured(_amount, _crit, _source):
 	ui_animation.stop()
 	ui_animation.play("hurt_screen")
 

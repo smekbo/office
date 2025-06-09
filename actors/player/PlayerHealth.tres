@@ -1,10 +1,14 @@
-[gd_resource type="Resource" script_class="HealthComponent" load_steps=2 format=3 uid="uid://cnlahc7n2hwm"]
+[gd_resource type="Resource" script_class="ComponentHealth" load_steps=2 format=3 uid="uid://cnlahc7n2hwm"]
 
 [ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://components/health/component_health.gd" id="1_btin2"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_btin2")
 health_max = 100
 armor_max = 50
 resistance = 50
 super_armor = false
+invulnerable = false
+killable = true
+crit_mult = 2.0
