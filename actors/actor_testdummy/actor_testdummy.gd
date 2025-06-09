@@ -8,6 +8,7 @@ func _ready():
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)
 
+# todo: figure out why this is firing twice
 func _on_health_injured(_amount, _crit, _source):
 	print("Dummy health damage: " + str(_amount))
 	print("Dummy health: " + str(health.health))
