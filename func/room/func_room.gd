@@ -17,7 +17,7 @@ func get_spawners():
 ## Currently only spawns one entity per spawner
 ## Todo: Multiple entities per spawner?
 func spawn_encounter(encounter : Encounter):
-	var spawner_num = spawners.size()
+	var _spawner_num = spawners.size()
 	var enemies = encounter.enemies
 	var i : int = 0
 	for spawner : Spawner in spawners:

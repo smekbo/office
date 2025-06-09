@@ -23,6 +23,10 @@ project/assembly_name="office"
 
 enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 
+[global_group]
+
+weakspot="This is a weak spot collision volume"
+
 [importer_defaults]
 
 2d_array_texture={

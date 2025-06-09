@@ -17,6 +17,6 @@ func _on_component_usable_attempted(user: Variant, usable: Variant) -> void:
 		usable.fail(user)
 	else: usable.use(user)
 
-func _on_component_usable_used(user: Variant, usable: Variant) -> void:
+func _on_component_usable_used(user: Variant, _usable: Variant) -> void:
 	var _health : ComponentHealth = user.get("health")
 	_health.heal(healing, self)

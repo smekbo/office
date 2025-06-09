@@ -10,6 +10,7 @@ func _ready():
 
 func _on_health_injured(_amount, _crit, _source):
 	print("Dummy health damage: " + str(_amount))
+	print("Dummy health: " + str(health.health))
 
 func _on_health_healed(_amount, _source):
 	pass

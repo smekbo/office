@@ -44,6 +44,9 @@ var fire_cooldown : float = 0
 @export_custom(PROPERTY_HINT_NONE, "suffix:shots") var shots : int = 3
 ## Number of shots left in the current burst.
 var shots_left : int = 0
+## Is this weapon automatic or semi-automatic?
+var automatic : bool:
+	get: return shots < 1
 
 ## Variables related to spread.
 @export_group("Spread")
@@ -106,28 +109,31 @@ func fire():
 		return
 	ray.target_position = Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 100)
 	if ray.is_colliding():
+		# get colliding object, shape, point, and normal
 		var col_obj : CollisionObject3D = ray.get_collider()
+		var col_shape = _get_real_collider_shape(col_obj, ray.get_collider_shape())
 		var col_point : Vector3 = ray.get_collision_point()
 		col_normal = ray.get_collision_normal()
+		
+		# direction, distance, and so on. used for impact decals and falloff calc
 		var dir : Vector3 = col_point - ray.global_position
 		var dist : float = abs(dir.z)
 		dir_normal = dir.normalized()
 		var _dir_reflect : Vector3 = dir_normal.reflect(col_normal)
 		var impact : WeaponImpact = col_obj.get_node_or_null("weapon_impact")
+		
 		# impact impulse
 		if col_obj.is_class("RigidBody3D"):
 			col_obj.apply_impulse(dir_normal * force)
 		
-		# find the hp component
-		var enemy_hp = null
+		# find hp component and determine if the hit was a crit
+		var enemy_hp = col_obj.get("health")
 		var crit : bool = false
-		if col_obj.get_collision_layer_value(8):
+		if "weakspot" in col_shape.get_groups():
 			print("Crit shot") 
-			enemy_hp = col_obj.owner.get("health") #todo: fix this so it doesn't suck so much shit
 			crit = true
-		else: enemy_hp = col_obj.get("health")
 		
-		if enemy_hp != null: 
+		if enemy_hp != null: # does all our damage functions
 			var _dmg = damage
 			if has_falloff: # damage falloff calc
 				if falloff < dist && dist < max_range:
@@ -138,11 +144,10 @@ func fire():
 				elif dist > max_range:
 					_dmg = 0
 				
-			if enemy_hp.alive == false: 
+			if enemy_hp.alive == false: # ignore damaging this target if it's dead already
 				ray.add_exception(col_obj)
-			else: 
-				var _debug_taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
-				print("Damage taken: " + str(_debug_taken))
+			else: # injure and store the taken damage for later use
+				var _taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
 		
 		# impact effect
 		if not col_obj.is_class("CharacterBody3D"):
@@ -225,13 +230,13 @@ func _process(delta):
 			_reload()
 	
 	# automatic fire
-	if Input.is_action_pressed("fire"):
+	if automatic and Input.is_action_pressed("fire"):
 		if ammo <= 0:
 			start_reload()
 		elif shots == 0:
 			fire()
 	# semi-auto and burst fire
-	if Input.is_action_just_pressed(("fire")):
+	if not automatic and Input.is_action_just_pressed(("fire")):
 		if ammo <= 0:
 			start_reload()
 		elif shots > 0 and fire_cooldown <= 0:
@@ -248,3 +253,8 @@ func _process(delta):
 			
 func _physics_process(_delta):
 	sound_radius.visible = false
+
+func _get_real_collider_shape(object:CollisionObject3D, shape_id:int):
+	var owner_id = object.shape_find_owner(shape_id)
+	var shape = object.shape_owner_get_owner(owner_id)
+	return shape
