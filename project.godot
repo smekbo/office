@@ -26,6 +26,7 @@ enabled=PackedStringArray("res://addons/func_godot/plugin.cfg")
 [global_group]
 
 weakspot="This is a weak spot collision volume"
+penetratable=""
 
 [importer_defaults]
 

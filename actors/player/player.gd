@@ -100,10 +100,13 @@ func _physics_process(delta):
 	velocity.z = relativeDir.z * SPEED
 
 	# apply gravity
-	velocity.y -= gravity * delta
+	velocity.y -= gravity * delta / 2
 
 	# move the player
 	move_and_slide()
+	
+	# apply gravity again (midpoint method)
+	velocity.y -= gravity * delta / 2
 
 	# jumping
 	if Input.is_action_pressed("jump") and is_on_floor():

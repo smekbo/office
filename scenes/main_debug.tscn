@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://b3r0paotiofsf"]
+[gd_scene load_steps=30 format=4 uid="uid://b3r0paotiofsf"]
 
 [ext_resource type="Script" uid="uid://tr7py7cxsuet" path="res://func/director/func_director.gd" id="1_djuw4"]
 [ext_resource type="Script" uid="uid://5yu8l7ornha4" path="res://func/encounter/func_encounter.gd" id="2_4kl2m"]
@@ -15,6 +15,17 @@
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="10_tju6r"]
 [ext_resource type="Script" uid="uid://q2tw1cxc0enj" path="res://components/health/component_health.gd" id="11_t7mkp"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="16_7ft7v"]
+
+[sub_resource type="Resource" id="Resource_qpdhn"]
+resource_local_to_scene = true
+script = ExtResource("11_t7mkp")
+health_max = 100
+armor_max = 50
+resistance = 50
+super_armor = false
+invulnerable = false
+killable = true
+crit_mult = 2.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_81ae5"]
 sky_top_color = Color(1, 0.85098, 0.827451, 1)
@@ -77,6 +88,18 @@ killable = false
 crit_mult = 2.0
 metadata/_custom_type_script = "uid://q2tw1cxc0enj"
 
+[sub_resource type="Resource" id="Resource_xcxwb"]
+resource_local_to_scene = true
+script = ExtResource("11_t7mkp")
+health_max = 100000
+armor_max = 0
+resistance = 0
+super_armor = false
+invulnerable = false
+killable = false
+crit_mult = 2.0
+metadata/_custom_type_script = "uid://q2tw1cxc0enj"
+
 [sub_resource type="Resource" id="Resource_t7mkp"]
 resource_local_to_scene = true
 script = ExtResource("11_t7mkp")
@@ -86,6 +109,18 @@ resistance = 0
 super_armor = false
 invulnerable = false
 killable = false
+crit_mult = 2.0
+metadata/_custom_type_script = "uid://q2tw1cxc0enj"
+
+[sub_resource type="Resource" id="Resource_j2a77"]
+resource_local_to_scene = true
+script = ExtResource("11_t7mkp")
+health_max = 100
+armor_max = 20
+resistance = 50
+super_armor = false
+invulnerable = false
+killable = true
 crit_mult = 2.0
 metadata/_custom_type_script = "uid://q2tw1cxc0enj"
 
@@ -195,6 +230,7 @@ spot_angle = 24.3886
 [node name="player" parent="." instance=ExtResource("8_s0vle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.220276, 10.397)
 collision_mask = 1
+health = SubResource("Resource_qpdhn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_vafh1")
@@ -221,8 +257,12 @@ occluder = SubResource("ArrayOccluder3D_n3uxi")
 shape = SubResource("ConvexPolygonShape3D_3vevd")
 
 [node name="actor_testdummy" parent="." instance=ExtResource("5_2jdy8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435412, -0.5, 0.41073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435412, -0.5, 0.387988)
 health = SubResource("Resource_7quo0")
+
+[node name="actor_testdummy3" parent="." instance=ExtResource("5_2jdy8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435412, -0.5, -0.854419)
+health = SubResource("Resource_xcxwb")
 
 [node name="actor_testdummy2" parent="." instance=ExtResource("5_2jdy8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51558, -0.5, 1.73283)
@@ -236,6 +276,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37686, -0.5, 0.417307)
 
 [node name="prop_monitor" parent="." instance=ExtResource("8_0p62j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55578, -0.500001, 6.323)
+health = SubResource("Resource_j2a77")
 
 [node name="PropCooler" parent="." instance=ExtResource("9_6i18p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.95016, -0.997431, 5.40015)

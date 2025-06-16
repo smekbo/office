@@ -22,10 +22,10 @@ health = ExtResource("2_njdfo")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_njdfo")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["penetratable"]]
 shape = SubResource("BoxShape3D_njdfo")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="." groups=["weakspot"]]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." groups=["penetratable", "weakspot"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.754851, 0)
 shape = SubResource("BoxShape3D_de01a")
 
