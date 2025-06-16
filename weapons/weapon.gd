@@ -190,7 +190,7 @@ func fire():
 					_dmg = 0
 				
 			if enemy_hp.alive: # ignore damaging this target if it's dead already
-				var _taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
+				var _taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self.get_owner())
 		
 		# impact effect
 		if not collision["object"].is_class("CharacterBody3D"):
@@ -211,8 +211,6 @@ func fire():
 	shots_left -= 1
 	spread = min(spread_max, spread + spread_kick)
 	sound_radius.emit_signal("sound_made", sound_radius.global_transform.origin)
-
-## Gets all collisions
 
 # reload
 func reload_gun():

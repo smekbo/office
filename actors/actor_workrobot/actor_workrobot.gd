@@ -67,14 +67,18 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 	else:
 		velocity = Vector3.ZERO
 		
-	# walk blend
+	# walk blendw
 	var _blendval = max(min(1, abs(velocity.x) + abs(velocity.z)), 0)
 	animation_tree["parameters/BlendSpace1D/blend_position"] = velocity.x + velocity.z
 	
 	move_and_slide()
 
-func _on_health_injured(_amount, _source):
+func _on_health_injured(_amount, _crit, _source):
 	health_bar.set_text(str("Enemy Health: ", health.health))
+	if health.alive:
+		target = _source
+		nav_agent.target_position = _source.global_transform.origin
+		intuition_timer = intuition
 
 func _on_health_healed(_amount, _source):
 	pass
