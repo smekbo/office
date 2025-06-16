@@ -127,6 +127,7 @@ func punch_through():
 	ray.clear_exceptions()
 	return collisions
 
+## Creates the collision dictionary we use for punch-through calculations and returns
 func _get_collision_dict():
 	# get colliding object, shape, point, and normal
 	var obj : CollisionObject3D = ray.get_collider()
@@ -165,58 +166,42 @@ func fire():
 	if fire_timer > 0 or ammo <= 0:
 		return
 	ray.target_position = Vector3(randf_range(-spread, spread), randf_range(-spread, spread), 100)
+	var collisions : Array[Dictionary] = punch_through()
 	
-	
-	if ray.is_colliding():
-		# get colliding object, shape, point, and normal
-		#var col_obj : CollisionObject3D = ray.get_collider()
-		#var col_shape : CollisionShape3D = Boilerplate.get_shape_from_id(col_obj, ray.get_collider_shape())
-		#var col_point : Vector3 = ray.get_collision_point()
-		#col_normal = ray.get_collision_normal()
+	for collision in collisions:
+		# impact impulse
+		if collision["object"].is_class("RigidBody3D"):
+			collision["object"].apply_impulse(collision["direction"] * force)
 		
-		# direction, distance, and so on. used for impact decals and falloff calc
-		#var dir : Vector3 = col_point - ray.global_position
-		#var dist : float = abs(dir.z)
-		#dir_normal = dir.normalized()
-		#var _dir_reflect : Vector3 = dir_normal.reflect(col_normal)
-		#var impact : WeaponImpact = col_obj.get_node_or_null("weapon_impact")
+		# find hp component and determine if the hit was a crit
+		var enemy_hp = collision["object"].get("health")
+		var crit : bool = false
+		if "weakspot" in collision["shape"].get_groups(): crit = true
 		
-		var collisions : Array[Dictionary] = punch_through()
+		if enemy_hp != null: # does all our damage functions
+			var _dmg = damage
+			if has_falloff: # damage falloff calc
+				if falloff < collision["distance"] && collision["distance"] < max_range:
+					print("falloff")
+					var _pct = (collision["distance"] - falloff) / (max_range - falloff)
+					_dmg = round(_dmg - (_dmg * _pct))
+					print("falloff percent: " + str(_pct))
+				elif collision["distance"] > max_range:
+					_dmg = 0
+				
+			if enemy_hp.alive: # ignore damaging this target if it's dead already
+				var _taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
 		
-		for collision in collisions:
-			# impact impulse
-			if collision["object"].is_class("RigidBody3D"):
-				collision["object"].apply_impulse(collision["direction"] * force)
-			
-			# find hp component and determine if the hit was a crit
-			var enemy_hp = collision["object"].get("health")
-			var crit : bool = false
-			if "weakspot" in collision["shape"].get_groups(): crit = true
-			
-			if enemy_hp != null: # does all our damage functions
-				var _dmg = damage
-				if has_falloff: # damage falloff calc
-					if falloff < collision["distance"] && collision["distance"] < max_range:
-						print("falloff")
-						var _pct = (collision["distance"] - falloff) / (max_range - falloff)
-						_dmg = round(_dmg - (_dmg * _pct))
-						print("falloff percent: " + str(_pct))
-					elif collision["distance"] > max_range:
-						_dmg = 0
-					
-				if enemy_hp.alive: # ignore damaging this target if it's dead already
-					var _taken = enemy_hp.injure(_dmg, crit, penetration, ignore, self)
-			
-			# impact effect
-			if not collision["object"].is_class("CharacterBody3D"):
-				var impact = collision["impact"]
-				if impact != null:
-					impact.start(collision["object"], collision["point"], collision["normal"])
-				else:
-					var new_impact = default_impact.instantiate()
-					get_tree().get_root().add_child(new_impact)
-					new_impact.global_position = collision["point"]
-					new_impact.start(collision["object"], collision["point"], collision["normal"])
+		# impact effect
+		if not collision["object"].is_class("CharacterBody3D"):
+			var impact = collision["impact"]
+			if impact != null:
+				impact.start(collision["object"], collision["point"], collision["normal"])
+			else:
+				var new_impact = default_impact.instantiate()
+				get_tree().get_root().add_child(new_impact)
+				new_impact.global_position = collision["point"]
+				new_impact.start(collision["object"], collision["point"], collision["normal"])
 	
 	animation.stop()
 	animation.play("fire_2")
@@ -227,8 +212,10 @@ func fire():
 	spread = min(spread_max, spread + spread_kick)
 	sound_radius.emit_signal("sound_made", sound_radius.global_transform.origin)
 
+## Gets all collisions
+
 # reload
-func _reload():
+func reload_gun():
 	if reloading == false or firing == true:
 		return
 	firing = false
@@ -286,7 +273,7 @@ func _process(delta):
 	if reloading:
 		reload_timer += delta
 		if reload_timer >= reload_speed:
-			_reload()
+			reload_gun()
 	
 	# automatic fire
 	if automatic and Input.is_action_pressed("fire"):
