@@ -39,7 +39,6 @@ func _input(event):
 		mouse_delta = event.relative
 
 func _ready():
-	health._ready()
 	$Control/Health.set_text(str("health ", snapped(health.health, 1), " armor ", snapped(health.armor, 1)))
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)

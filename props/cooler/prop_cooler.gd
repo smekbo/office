@@ -5,7 +5,6 @@ extends StaticBody3D
 @export_custom(PROPERTY_HINT_NONE, "suffix:hp") var healing : int = 5
 
 func _ready():
-	health._ready()
 	health.died.connect(_on_health_died)
 	
 func _on_health_died(_killer):

@@ -38,6 +38,10 @@ var armor = 0
 ## Is this character alive?
 var alive = true
 
+func _init() -> void:
+	resource_local_to_scene = true
+	call_deferred("_ready")
+
 func _ready():
 	health = health_max
 	armor = armor_max

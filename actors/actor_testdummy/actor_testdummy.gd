@@ -4,9 +4,9 @@ extends StaticBody3D
 @export var health : Resource
 
 func _ready():
-	health._ready()
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)
+	health.connect("died", _on_health_died)
 
 # todo: figure out why this is firing twice
 func _on_health_injured(_amount, _crit, _source):
@@ -14,4 +14,7 @@ func _on_health_injured(_amount, _crit, _source):
 	print("Dummy health: " + str(health.health))
 
 func _on_health_healed(_amount, _source):
+	pass
+
+func _on_health_died(_killer):
 	pass

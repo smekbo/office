@@ -24,7 +24,6 @@ var swipe_timer : float = 1.0
 
 func _ready():
 	animator.play("idle")
-	health._ready()
 	health_bar.set_text(str("Enemy Health: ", health.health))
 	health.connect("injured", _on_health_injured)
 	health.connect("healed", _on_health_healed)
